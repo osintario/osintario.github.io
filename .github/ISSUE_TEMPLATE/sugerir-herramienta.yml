@@ -1,0 +1,36 @@
+name: Sugerir una herramienta
+description: Propón una herramienta OSINT para el directorio.
+title: "[Herramienta] "
+labels: ["sugerencia"]
+body:
+  - type: input
+    id: nombre
+    attributes:
+      label: Nombre
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL oficial
+      description: Página oficial o repositorio. No se aceptan acortadores.
+    validations:
+      required: true
+  - type: textarea
+    id: uso
+    attributes:
+      label: Qué hace y cuándo la usaste
+    validations:
+      required: true
+  - type: dropdown
+    id: costo
+    attributes:
+      label: Costo
+      options: [Gratuita, Freemium, De pago]
+  - type: checkboxes
+    id: reglas
+    attributes:
+      label: Reglas
+      options:
+        - label: No es una herramienta de doxxing, acoso ni acceso no autorizado.
+          required: true
