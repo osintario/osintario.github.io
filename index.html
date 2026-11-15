@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>OSINTario</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,6 +111,7 @@ form.wait{display:grid;gap:8px;margin-top:6px}
 form.wait label{font-size:13px}
 form.wait input,form.wait select{font:inherit;font-size:14px;padding:9px 10px;border-radius:4px;border:1px solid color-mix(in srgb,var(--paper) 30%,transparent);background:transparent;color:var(--paper)}
 form.wait select option{color:#0F1C21}
+.join{display:block;text-align:center;text-decoration:none;font:600 15px var(--body);padding:10px;border-radius:4px;background:var(--accent);color:var(--accent-ink)}
 form.wait button{font:600 15px var(--body);padding:10px;border:0;border-radius:4px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
 .ok-msg{font-size:14px;color:var(--paper);background:color-mix(in srgb,var(--ok) 35%,transparent);padding:10px;border-radius:4px}
 footer{padding:28px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
@@ -211,14 +214,11 @@ footer .wrap{display:grid;grid-template-columns:2fr 1fr;gap:20px}
         <div class="plan"><div class="row"><b>Equipo</b><span class="price">a consultar</span></div><p>Varios usuarios, registro de auditoría compartido, soporte prioritario.</p></div>
         <div class="plan"><div class="row"><b>Informe a medida</b><span class="price">desde 150 €</span></div><p>Due diligence de empresas y contrapartes. Se cotiza y se paga antes de empezar.</p></div>
       </div>
-      <form class="wait" id="wait" novalidate>
-        <label for="w-email">Únete a la lista de espera</label>
-        <input id="w-email" type="email" placeholder="tu@email.com" required>
-        <label for="w-role">Perfil</label>
-        <select id="w-role"><option>Investigador independiente</option><option>Periodista</option><option>Abogado o compliance</option><option>Analista de ciberseguridad</option><option>Estudiante</option></select>
-        <button type="submit">Quiero acceso anticipado</button>
-        <div id="w-msg" role="status" aria-live="polite"></div>
-      </form>
+      <div class="wait">
+        <p style="margin:6px 0 4px;font-size:14px">La lista de espera funciona con tu cuenta de GitHub. Es pública: no hace falta dejar email ni teléfono.</p>
+        <a class="join" href="https://github.com/osintario/osintario.github.io/issues/new?template=lista-espera.yml" target="_blank" rel="noopener noreferrer">Unirme a la lista de espera</a>
+        <p style="margin:6px 0 0;font-size:12px;opacity:.75">¿Conoces una herramienta que falta? <a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">Sugiérela aquí</a>.</p>
+      </div>
     </div>
   </div>
 </div></section>
@@ -335,9 +335,6 @@ function render(){
   $("#grid").innerHTML=rows.length?rows.map(t=>{const s=S[t[3]];return '<article class="card s-'+t[3]+'"><h3>'+esc(t[1])+'<span class="pill '+s[1]+'">'+s[0]+'</span></h3><p>'+esc(t[2])+'</p><div class="meta"><span class="tag">'+esc(t[0])+'</span>'+(t[3]==="no"?'<span class="note">No enlazada</span>':'<a class="go" href="'+t[4]+'" target="_blank" rel="noopener noreferrer">Abrir</a>')+'</div></article>'}).join(""):'<div class="empty">No hay herramientas con esos filtros. Prueba con otra categoría o borra la búsqueda.</div>';
 }
 $("#q").addEventListener("input",render);$("#st").addEventListener("change",render);
-$("#wait").addEventListener("submit",e=>{e.preventDefault();const m=$("#w-msg"),v=$("#w-email").value.trim();
-  m.className=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)?"ok-msg":"";
-  m.textContent=m.className?"Vista previa: en el sitio publicado este formulario guardará tu email en la lista de espera. Por ahora no se envía nada.":"Escribe un email válido, por ejemplo nombre@dominio.com.";});
 chips();render();
 </script>
 </body>
