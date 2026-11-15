@@ -1,0 +1,45 @@
+name: Lista de espera Multi-OSINT Pro
+description: Pide acceso anticipado a la herramienta Multi-OSINT Pro.
+title: "[Lista de espera] "
+labels: ["lista-espera"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este Issue es **público**. No escribas tu email, teléfono ni datos de terceros: te respondemos por aquí.
+  - type: dropdown
+    id: perfil
+    attributes:
+      label: Perfil
+      options:
+        - Investigador independiente
+        - Periodista
+        - Abogado o compliance
+        - Analista de ciberseguridad
+        - Estudiante
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: uso
+    attributes:
+      label: ¿Para qué la usarías?
+      description: Describe el tipo de investigación, sin nombres de personas ni casos concretos.
+    validations:
+      required: true
+  - type: dropdown
+    id: plan
+    attributes:
+      label: Plan que te interesa
+      options:
+        - Investigador (29 €/mes)
+        - Equipo
+        - Informe a medida
+        - Todavía no lo sé
+  - type: checkboxes
+    id: uso-licito
+    attributes:
+      label: Uso responsable
+      options:
+        - label: Entiendo que el acceso requiere verificar mi identidad y declarar la finalidad de cada búsqueda.
+          required: true
