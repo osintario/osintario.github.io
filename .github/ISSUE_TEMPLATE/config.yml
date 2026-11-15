@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reportar una vulnerabilidad del sitio
+    url: https://github.com/osintario/osintario.github.io/security/advisories/new
+    about: De forma privada, no en un Issue público.
