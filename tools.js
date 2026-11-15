@@ -64,7 +64,10 @@ async function srcDNS(domain, out) {
 }
 
 async function srcCrt(domain, out) {
-  const j = await getJSON(`https://crt.sh/?q=${enc("%." + domain)}&output=json`, { timeout: 30000 });
+  const url = `https://crt.sh/?q=${enc("%." + domain)}&output=json`;
+  let j;
+  try { j = await getJSON(url, { timeout: 30000 }); }
+  catch { await new Promise((r) => setTimeout(r, 2500)); j = await getJSON(url, { timeout: 40000 }); } // crt.sh falla a menudo: un reintento
   if (j.__notFound || !Array.isArray(j)) return;
   const subs = new Set();
   for (const row of j) for (const n of String(row.name_value || "").split("\n")) {
