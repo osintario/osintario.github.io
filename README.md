@@ -4,6 +4,14 @@ Directorio en español de herramientas OSINT, revisado a mano: qué hace cada un
 
 🌐 Sitio: https://osintario.github.io · Mantenido por Federico Dosio, profesor de Investigación con Fuentes Abiertas (IFA) en el Instituto Universitario de la Policía Federal Argentina (IUPFA).
 
+## 🔎 Multi-OSINT Lite (gratis, en tu navegador)
+
+Investiga un **dominio, una IP, un alias, un email, un teléfono o una imagen** y genera dorks de Google: https://osintario.github.io/herramientas.html
+
+- Consulta varias fuentes a la vez (DNS, crt.sh, RDAP, Wayback, AlienVault OTX, Shodan InternetDB, ipinfo, GitHub, Keybase, Gravatar, Have I Been Pwned).
+- Informe con fuente, nivel de confianza y **hash SHA-256**, exportable en JSON y Markdown.
+- **Sin servidor:** lo que buscas no pasa por OSINTario.
+
 > Si te sirve, deja una ⭐. Las sugerencias de herramientas nuevas van por *Issues* o *Pull Request*.
 
 **Última revisión:** 15-nov-2026
