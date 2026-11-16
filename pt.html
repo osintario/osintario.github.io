@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src https://api.github.com; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>OSINTario · Ferramentas OSINT verificadas, em português</title>
+<meta name="description" content="Diretório de ferramentas OSINT verificadas e ferramentas gratuitas que rodam no seu navegador. Por Federico Dosio, professor de Investigação com Fontes Abertas no IUPFA.">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="OSINTario · Ferramentas OSINT verificadas, em português"><meta property="og:description" content="Diretório de ferramentas OSINT verificadas e ferramentas gratuitas que rodam no seu navegador. Por Federico Dosio, professor de Investigação com Fontes Abertas no IUPFA.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/pt.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://osintario.github.io/pt.html">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/index.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/en.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/pt.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "OSINTario", "url": "https://osintario.github.io/pt.html", "inLanguage": "pt", "description": "Diretório de ferramentas OSINT verificadas e ferramentas gratuitas que rodam no seu navegador. Por Federico Dosio, professor de Investigação com Fontes Abertas no IUPFA.", "author": {"@type": "Person", "name": "Federico Dosio", "affiliation": {"@type": "CollegeOrUniversity", "name": "Instituto Universitario de la Policía Federal Argentina (IUPFA)"}, "sameAs": ["https://www.linkedin.com/in/dosiofederico/"]}}</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="pt.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <span class="tag opt">Fontes abertas, com método</span>
+  <nav class="main" aria-label="Secciones"><a href="#directorio">Diretório</a><a class="opt" href="#metodo">Método</a><a class="opt" href="#kits">Kits</a><a class="opt" href="#sobre">Sobre mim</a><a class="cta" href="ferramentas.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="index.html" hreflang="es" lang="es" aria-current="false">ES</a><a href="en.html" hreflang="en" lang="en" aria-current="false">EN</a><a href="pt.html" hreflang="pt" lang="pt" aria-current="true">PT</a></nav>
+</div></header>
+<main id="inicio">
+<div class="wrap hero">
+  <div>
+    <span class="tag">Por Federico Dosio · Professor de Investigação com Fontes Abertas (IFA), IUPFA</span>
+    <h1>As ferramentas OSINT que funcionam hoje, e como usá-las sem errar.</h1>
+    <p>Um diretório revisado à mão: o que cada ferramenta faz, se ainda funciona, se pede cadastro ou pagamento e quando usá-la com cuidado. Grátis e sem cadastro. Para cada achado, o mesmo princípio: uma pista não é uma conclusão.</p>
+    <div class="ctas"><a class="btn" href="ferramentas.html">Investigar grátis com Multi-OSINT Lite</a><a class="btn ghost" href="#directorio">Ver o diretório</a></div>
+  </div>
+  <div class="ledger">
+    <div><span>Ferramentas revisadas</span><b id="count-total">0</b></div>
+    <div><span>Ativas e verificadas</span><b id="count-ok">0</b></div>
+    <div><span>Categorias</span><b id="count-cat">0</b></div>
+    <div><span>Última revisão</span><b id="count-date">–</b></div>
+  </div>
+</div>
+
+<section id="herramientas"><div class="wrap">
+  <span class="tag">01 · Ferramentas gratuitas</span>
+  <h2>Multi-OSINT Lite: investigue pelo navegador</h2>
+  <p class="lede">Digite um dado e a ferramenta consulta várias fontes abertas ao mesmo tempo. Você recebe um relatório com fonte, nível de confiança e hash SHA-256. Sem cadastro e sem servidor: o que você busca não passa pelo OSINTario.</p>
+  <div class="toolgrid"><a class="tool" href="ferramentas.html#domain"><b>Domínio ou empresa</b><span>DNS, SPF e DMARC, subdomínios, registro, histórico, reputação e portas expostas.</span><em>7 fontes</em></a><a class="tool" href="ferramentas.html#ip"><b>Endereço IP</b><span>Rede, localização aproximada, portas, vulnerabilidades conhecidas, reputação e se é nó Tor.</span><em>5 fontes</em></a><a class="tool" href="ferramentas.html#alias"><b>Apelido</b><span>Contas verificadas no GitHub e Keybase e links diretos para 40 plataformas.</span><em>2 + 40 sites</em></a><a class="tool" href="ferramentas.html#email"><b>Email</b><span>Gravatar, conta Proton, domínio do email e vazamentos do serviço.</span><em>4 fontes</em></a><a class="tool" href="ferramentas.html#onion"><b>Site .onion</b><span>Verifica se um serviço Tor existe e mostra títulos, idioma e datas.</span><em>2 fontes</em></a><a class="tool" href="ferramentas.html#image"><b>Imagem</b><span>EXIF, GPS e hash para sua cadeia de custódia. A foto não sai do seu equipamento.</span><em>local</em></a><a class="tool" href="ferramentas.html#dorks"><b>Gerador de dorks</b><span>13 buscas avançadas prontas: documentos, painéis, vazamentos e menções.</span><em>gerador</em></a></div>
+</div></section>
+
+<section id="directorio"><div class="wrap">
+  <span class="tag">02 · Diretório</span>
+  <h2>Diretório de ferramentas</h2>
+  <p class="lede">Cada ficha indica o status e se pede cadastro ou pagamento. As marcadas "com cautela" podem ser legais no seu país e ainda exigir autorização, finalidade clara ou uma conta separada de investigação.</p>
+  <div class="controls">
+    <label class="tag" for="q">Buscar</label>
+    <input id="q" type="search" placeholder="Nome ou uso: subdomínios, Telegram, metadados…">
+    <label class="tag" for="st">Status</label>
+    <select id="st"><option value="all">Todos</option><option value="ok">Ativas</option><option value="lim">Com limites</option><option value="risk">Com cautela</option><option value="no">Descartadas</option></select>
+    <label class="tag" for="ac">Acesso</label>
+    <select id="ac"><option value="all">Todos</option><option value="free">Livre, sem cadastro</option><option value="l">Requer cadastro</option><option value="p">Pago / recursos pagos</option></select>
+  </div>
+  <p class="legend">Cadastro: é preciso criar uma conta (grátis) para usar. Pago: a ferramenta ou seus recursos úteis custam dinheiro. Nunca investigue com sua conta pessoal.</p>
+  <div class="chips" id="chips" role="group"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="metodo"><div class="wrap">
+  <span class="tag">03 · Método</span>
+  <h2>O ciclo de uma investigação</h2>
+  <p class="lede">As ferramentas mudam todo mês. O método é o que faz um relatório resistir à revisão de outra pessoa.</p>
+  <ol class="steps"><li><b>Escopo e base legal</b><span>Quem pede, para quê e com qual autorização. Sem finalidade lícita não há investigação.</span></li><li><b>Descobrir</b><span>Domínios, IPs, subdomínios, contas e serviços expostos.</span></li><li><b>Enriquecer</b><span>DNS, metadados, vazamentos, relações entre entidades.</span></li><li><b>Ameaças</b><span>IOCs, phishing, infraestrutura maliciosa e atores.</span></li><li><b>Pegada digital</b><span>Repositórios, redes, paste sites, canais do Telegram.</span></li><li><b>Validar</b><span>Duas fontes independentes por achado, com data e nível de confiança.</span></li><li><b>Relatar</b><span>Evidência arquivada, hash de cada captura e conclusões proporcionais.</span></li></ol>
+  <div class="rules"><div class="rule"><span class="k">Vazamentos</span><span>Um email em um vazamento é uma pista. Confirme com outra fonte.</span></div><div class="rule"><span class="k">Usuários</span><span>O mesmo apelido em duas redes é uma hipótese: homônimos são comuns.</span></div><div class="rule"><span class="k">Telefones</span><span>Os diretórios envelhecem rápido. Compare antes de anotar.</span></div><div class="rule"><span class="k">Imagens</span><span>A busca reversa mostra onde apareceu, não onde foi tirada.</span></div><div class="rule"><span class="k">Blockchain</span><span>Os fluxos são públicos; a identidade requer evidência externa.</span></div><div class="rule"><span class="k">Evidência</span><span>URL, data UTC, captura, hash SHA-256 e cópia arquivada.</span></div></div>
+</div></section>
+
+<section id="kits"><div class="wrap">
+  <span class="tag">04 · Kits por perfil</span>
+  <h2>Por onde começar conforme seu trabalho</h2>
+  <div class="kits"><div class="kit"><h3>Analista internacional</h3><p class="out">Entrega: brief de país ou tema com cronologia, mapa e nível de confiança.</p><ul><li>ACLED e GDELT</li><li>Sentinel Hub EO Browser</li><li>Flightradar24 e MarineTraffic</li><li>OpenSanctions e OpenCorporates</li><li>TGStat para canais do Telegram</li></ul></div><div class="kit"><h3>Investigador</h3><p class="out">Entrega: matriz de pistas, hipóteses e achados verificados.</p><ul><li>Sherlock e Maigret</li><li>Holehe e Hunter.io</li><li>PhoneInfoga</li><li>Busca reversa: TinEye, Lens, Yandex</li><li>Hunchly para registrar o caso</li></ul></div><div class="kit"><h3>Forense digital</h3><p class="out">Entrega: relatório com cadeia de custódia reproduzível.</p><ul><li>ExifTool</li><li>Wayback Machine e Archive.today</li><li>InVID-WeVerify</li><li>VirusTotal e URLScan</li><li>Darkweb archive para preservar sites .onion</li></ul></div><div class="kit"><h3>Pentest e superfície de ataque</h3><p class="out">Entrega: mapa de exposição priorizado por impacto.</p><ul><li>Shodan e Censys</li><li>Amass, Subfinder e crt.sh</li><li>dnstwist</li><li>Gitleaks e TruffleHog</li><li>SOCRadar Dark Web Report</li></ul></div></div>
+</div></section>
+
+<section id="pro"><div class="wrap">
+  <div class="pro">
+    <div>
+      <span class="tag">05 · Em breve</span>
+      <h2>Multi-OSINT Pro</h2>
+      <p class="lede">Para quem precisa de mais: buscas automáticas em milhares de sites, relatórios completos e acompanhamento em investigações sob medida. Estamos testando com um grupo pequeno de investigadores.</p>
+      <ul><li>Busca unificada por apelido, email, telefone, domínio, imagem ou empresa.</li><li>Resultados agrupados por categoria.</li><li>Relatório exportável com evidência arquivada e hash de cada captura.</li><li>Investigação sob medida com fontes pagas, com orçamento prévio.</li></ul>
+      <p class="no">Como as pessoas investigadas são protegidas: acesso só com identidade verificada, finalidade declarada em cada busca e registro de auditoria. Perfis de particulares não são vendidos a usuários anônimos.</p>
+    </div>
+    <div class="wait">
+      <p>A lista de espera funciona com sua conta do GitHub. É pública: não precisa deixar email nem telefone.</p>
+      <a class="join" href="https://github.com/osintario/osintario.github.io/issues/new?template=lista-espera.yml" target="_blank" rel="noopener noreferrer">Entrar na lista de espera</a>
+      <p><a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">Conhece uma ferramenta que falta? Sugira aqui.</a></p>
+    </div>
+  </div>
+</div></section>
+
+<section id="apoyo"><div class="wrap goal">
+  <div>
+    <span class="tag">Ajude-me a crescer</span>
+    <h2>Uma estrela no GitHub mantém este projeto vivo</h2>
+    <p class="lede">O OSINTario é grátis e vai continuar sendo. Cada ⭐ no repositório faz mais investigadores o encontrarem e me ajuda a somar ferramentas e fontes novas. Falta algo ou algo falha? Abra uma Issue: também conta.</p>
+    <div class="ctas"><a class="btn" href="https://github.com/osintario/osintario.github.io" target="_blank" rel="noopener noreferrer">Dar uma ⭐ no GitHub</a><a class="btn ghost" href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">Sugerir uma ferramenta</a></div>
+  </div>
+  <div class="meter">
+    <div class="m-row"><span>Estrelas</span><b><span id="stars">–</span> / 100</b></div>
+    <div class="bar"><i id="stars-bar"></i></div>
+    <div class="m-row"><span>Contribuições da comunidade (Issues)</span><b><span id="issues">–</span> / 10</b></div>
+    <div class="bar"><i id="issues-bar"></i></div>
+    <p class="note">Meta dos primeiros 30 dias. Atualiza ao vivo pelo GitHub.</p>
+  </div>
+</div></section>
+
+<section id="sobre"><div class="wrap about">
+  <div>
+    <span class="tag">06 · Sobre mim</span>
+    <h2>Federico Dosio</h2>
+    <p>Sou professor titular de <b>Investigação com Fontes Abertas (IFA)</b> na Licenciatura em Cibersegurança do Instituto Universitário da Polícia Federal Argentina (IUPFA), onde leciono desde 2018. Há 8 anos investigo cibercrimes com fontes abertas nos setores público e privado.</p>
+    <p>Criei o OSINTario porque meus alunos sempre perguntavam a mesma coisa: qual ferramenta ainda funciona e como usá-la sem tirar conclusões apressadas. Esta é minha resposta, atualizada.</p>
+    <div class="ctas"><a class="btn ghost" href="https://www.linkedin.com/in/dosiofederico/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a class="btn ghost" href="https://github.com/osintario/osintario.github.io" target="_blank" rel="noopener noreferrer">Repositório no GitHub ⭐</a></div>
+  </div>
+  <ul class="creds"><li><b>Mestrado em Cibersegurança Internacional</b></li><li><b>MBA</b></li><li><b>Auditor líder ISO 27001 · CRISC</b></li><li><b>Docente desde 2018 em CyberCrimes & Mobile Forensics e IFA</b></li></ul>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><b>Uso responsável.</b> Este diretório aponta para serviços de terceiros, sem afiliação. Investigar uma pessoa exige finalidade lícita e respeito ao RGPD e à lei de proteção de dados do seu país. Os serviços mudam: verifique sempre na fonte.</div>
+  <div>OSINTario · Federico Dosio<br>Professor de IFA no IUPFA</div>
+</div></footer>
+<script src="directory.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

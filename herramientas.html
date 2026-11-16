@@ -5,53 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Multi-OSINT Lite</title>
-<meta name="description" content="Herramientas OSINT gratuitas en español que corren en tu navegador: dominio, IP, alias, email, teléfono, metadatos de imagen y generador de dorks. Informes con fuentes y hash SHA-256.">
-<meta property="og:title" content="Multi-OSINT Lite · OSINTario">
-<meta property="og:description" content="Investiga un dominio, una IP, un alias o una imagen desde tu navegador. Gratis, en español y sin registro.">
-<meta property="og:image" content="https://osintario.github.io/og.png">
-<meta property="og:url" content="https://osintario.github.io/herramientas.html">
+<title>Multi-OSINT Lite · herramientas OSINT gratis en tu navegador</title>
+<meta name="description" content="Herramientas OSINT gratuitas que corren en tu navegador: dominio, IP, alias, email, teléfono, sitios .onion, metadatos de imagen y dorks. Informes con fuentes y hash SHA-256.">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Multi-OSINT Lite · herramientas OSINT gratis en tu navegador"><meta property="og:description" content="Herramientas OSINT gratuitas que corren en tu navegador: dominio, IP, alias, email, teléfono, sitios .onion, metadatos de imagen y dorks. Informes con fuentes y hash SHA-256.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/herramientas.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://osintario.github.io/herramientas.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/herramientas.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/tools-en.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/ferramentas.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/herramientas.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 <header class="top"><div class="wrap">
-  <a class="logo" href="./"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <a class="logo" href="index.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
   <span class="tag opt">Fuentes abiertas, con método</span>
-  <nav class="main" aria-label="Secciones">
-    <a href="./#directorio">Directorio</a><a class="opt" href="./#metodo">Método</a><a href="herramientas.html" aria-current="page" class="cta">Multi-OSINT Lite</a>
-  </nav>
+  <nav class="main" aria-label="Secciones"><a href="index.html#directorio">Directorio</a><a class="opt" href="index.html#metodo">Método</a><a class="cta" aria-current="page" href="herramientas.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="herramientas.html" hreflang="es" lang="es" aria-current="true">ES</a><a href="tools-en.html" hreflang="en" lang="en" aria-current="false">EN</a><a href="ferramentas.html" hreflang="pt" lang="pt" aria-current="false">PT</a></nav>
 </div></header>
-
 <main class="wrap">
   <section class="intro">
-    <span class="tag">Herramientas gratuitas · v1 · noviembre 2026</span>
+    <span class="tag">Herramientas gratuitas · v2 · noviembre 2026</span>
     <h1>Multi-OSINT Lite</h1>
     <p>Escribe un dato y la herramienta consulta varias fuentes abiertas a la vez, ordena lo que encuentra y te entrega un informe con fuente, nivel de confianza y hash SHA-256 para tu evidencia.</p>
     <div class="privacy"><span aria-hidden="true">🔒</span><span><b>Todo corre en tu navegador.</b> OSINTario no tiene servidor ni guarda lo que buscas. Tu navegador consulta cada fuente directamente, así que esa fuente sí ve tu IP: para casos sensibles, usa una VPN o un equipo de investigación.</span></div>
   </section>
-
   <div class="tool-layout">
-    <nav class="tool-nav" role="tablist" aria-label="Herramientas">
-      <button role="tab" data-tool="domain" aria-selected="true">Dominio <span class="k">7 fuentes</span></button>
-      <button role="tab" data-tool="ip" aria-selected="false">IP <span class="k">4 fuentes</span></button>
-      <button role="tab" data-tool="alias" aria-selected="false">Alias <span class="k">2 + 40 sitios</span></button>
-      <button role="tab" data-tool="email" aria-selected="false">Email <span class="k">3 fuentes</span></button>
-      <button role="tab" data-tool="phone" aria-selected="false">Teléfono <span class="k">enlaces</span></button>
-      <button role="tab" data-tool="image" aria-selected="false">Imagen <span class="k">local</span></button>
-      <button role="tab" data-tool="dorks" aria-selected="false">Dorks <span class="k">generador</span></button>
-    </nav>
-
+    <nav class="tool-nav" role="tablist"><button role="tab" data-tool="domain" aria-selected="true">Dominio o empresa <span class="k">7 fuentes</span></button><button role="tab" data-tool="ip" aria-selected="false">Dirección IP <span class="k">5 fuentes</span></button><button role="tab" data-tool="alias" aria-selected="false">Alias <span class="k">2 + 40 sitios</span></button><button role="tab" data-tool="email" aria-selected="false">Email <span class="k">4 fuentes</span></button><button role="tab" data-tool="phone" aria-selected="false">Teléfono <span class="k">enlaces</span></button><button role="tab" data-tool="onion" aria-selected="false">Sitio .onion <span class="k">2 fuentes</span></button><button role="tab" data-tool="image" aria-selected="false">Imagen <span class="k">local</span></button><button role="tab" data-tool="dorks" aria-selected="false">Dorks <span class="k">generador</span></button></nav>
     <section class="panel" id="panel" aria-live="polite">
       <h2 id="t-title"></h2>
       <p class="desc" id="t-desc"></p>
       <form id="t-form" class="row" novalidate>
-        <label class="tag" for="t-input" id="t-label" hidden></label>
         <input id="t-input" autocomplete="off" spellcheck="false">
         <input id="t-file" type="file" accept="image/*" hidden>
         <button class="go" id="t-go" type="submit">Investigar</button>
@@ -62,11 +47,9 @@
     </section>
   </div>
 </main>
-
 <footer><div class="wrap">
-  <b>Uso responsable.</b> Estas herramientas consultan solo fuentes abiertas. Un resultado es una pista, no una conclusión: valídalo con una segunda fuente. Investigar a una persona exige una finalidad lícita y respetar el RGPD y la ley de tu país. · <a href="./">OSINTario</a> · Federico Dosio, profesor de IFA en el IUPFA · <a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" rel="noopener noreferrer" target="_blank">Sugerir una mejora</a>
+  <b>Uso responsable.</b> Estas herramientas consultan solo fuentes abiertas. Un resultado es una pista, no una conclusión: valídalo con una segunda fuente. Investigar a una persona exige una finalidad lícita y respetar el RGPD y la ley de tu país. · <a href="index.html">OSINTario</a> · Federico Dosio, Profesor de IFA en el IUPFA · <a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" rel="noopener noreferrer" target="_blank">Sugerir una mejora</a>
 </div></footer>
-
 <script src="exifr.umd.js"></script>
 <script src="tools.js"></script>
 </body>

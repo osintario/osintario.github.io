@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://osintario.github.io/</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://osintario.github.io/herramientas.html</loc><lastmod>2026-11-15</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://osintario.github.io/index.html</loc><xhtml:link rel="alternate" hreflang="es" href="https://osintario.github.io/index.html"/><xhtml:link rel="alternate" hreflang="en" href="https://osintario.github.io/en.html"/><xhtml:link rel="alternate" hreflang="pt" href="https://osintario.github.io/pt.html"/></url>
+  <url><loc>https://osintario.github.io/en.html</loc><xhtml:link rel="alternate" hreflang="es" href="https://osintario.github.io/index.html"/><xhtml:link rel="alternate" hreflang="en" href="https://osintario.github.io/en.html"/><xhtml:link rel="alternate" hreflang="pt" href="https://osintario.github.io/pt.html"/></url>
+  <url><loc>https://osintario.github.io/pt.html</loc><xhtml:link rel="alternate" hreflang="es" href="https://osintario.github.io/index.html"/><xhtml:link rel="alternate" hreflang="en" href="https://osintario.github.io/en.html"/><xhtml:link rel="alternate" hreflang="pt" href="https://osintario.github.io/pt.html"/></url>
+  <url><loc>https://osintario.github.io/herramientas.html</loc><xhtml:link rel="alternate" hreflang="es" href="https://osintario.github.io/herramientas.html"/><xhtml:link rel="alternate" hreflang="en" href="https://osintario.github.io/tools-en.html"/><xhtml:link rel="alternate" hreflang="pt" href="https://osintario.github.io/ferramentas.html"/></url>
+  <url><loc>https://osintario.github.io/tools-en.html</loc><xhtml:link rel="alternate" hreflang="es" href="https://osintario.github.io/herramientas.html"/><xhtml:link rel="alternate" hreflang="en" href="https://osintario.github.io/tools-en.html"/><xhtml:link rel="alternate" hreflang="pt" href="https://osintario.github.io/ferramentas.html"/></url>
+  <url><loc>https://osintario.github.io/ferramentas.html</loc><xhtml:link rel="alternate" hreflang="es" href="https://osintario.github.io/herramientas.html"/><xhtml:link rel="alternate" hreflang="en" href="https://osintario.github.io/tools-en.html"/><xhtml:link rel="alternate" hreflang="pt" href="https://osintario.github.io/ferramentas.html"/></url>
 </urlset>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Multi-OSINT Lite · ferramentas OSINT grátis no navegador</title>
+<meta name="description" content="Ferramentas OSINT gratuitas que rodam no navegador: domínio, IP, apelido, email, telefone, sites .onion, metadados de imagem e dorks. Relatórios com fontes e hash SHA-256.">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="Multi-OSINT Lite · ferramentas OSINT grátis no navegador"><meta property="og:description" content="Ferramentas OSINT gratuitas que rodam no navegador: domínio, IP, apelido, email, telefone, sites .onion, metadados de imagem e dorks. Relatórios com fontes e hash SHA-256.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/ferramentas.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://osintario.github.io/ferramentas.html">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/herramientas.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/tools-en.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/ferramentas.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/herramientas.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="pt.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <span class="tag opt">Fontes abertas, com método</span>
+  <nav class="main" aria-label="Secciones"><a href="pt.html#directorio">Diretório</a><a class="opt" href="pt.html#metodo">Método</a><a class="cta" aria-current="page" href="ferramentas.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="herramientas.html" hreflang="es" lang="es" aria-current="false">ES</a><a href="tools-en.html" hreflang="en" lang="en" aria-current="false">EN</a><a href="ferramentas.html" hreflang="pt" lang="pt" aria-current="true">PT</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="intro">
+    <span class="tag">Ferramentas gratuitas · v2 · novembro 2026</span>
+    <h1>Multi-OSINT Lite</h1>
+    <p>Digite um dado e a ferramenta consulta várias fontes abertas ao mesmo tempo, organiza o que encontra e entrega um relatório com fonte, nível de confiança e hash SHA-256 para sua evidência.</p>
+    <div class="privacy"><span aria-hidden="true">🔒</span><span><b>Tudo roda no seu navegador.</b> O OSINTario não tem servidor nem guarda o que você busca. Seu navegador consulta cada fonte diretamente, então essa fonte vê seu IP: em casos sensíveis, use uma VPN ou um equipamento de investigação.</span></div>
+  </section>
+  <div class="tool-layout">
+    <nav class="tool-nav" role="tablist"><button role="tab" data-tool="domain" aria-selected="true">Domínio ou empresa <span class="k">7 fontes</span></button><button role="tab" data-tool="ip" aria-selected="false">Endereço IP <span class="k">5 fontes</span></button><button role="tab" data-tool="alias" aria-selected="false">Apelido <span class="k">2 + 40 sites</span></button><button role="tab" data-tool="email" aria-selected="false">Email <span class="k">4 fontes</span></button><button role="tab" data-tool="phone" aria-selected="false">Telefone <span class="k">links</span></button><button role="tab" data-tool="onion" aria-selected="false">Site .onion <span class="k">2 fontes</span></button><button role="tab" data-tool="image" aria-selected="false">Imagem <span class="k">local</span></button><button role="tab" data-tool="dorks" aria-selected="false">Dorks <span class="k">gerador</span></button></nav>
+    <section class="panel" id="panel" aria-live="polite">
+      <h2 id="t-title"></h2>
+      <p class="desc" id="t-desc"></p>
+      <form id="t-form" class="row" novalidate>
+        <input id="t-input" autocomplete="off" spellcheck="false">
+        <input id="t-file" type="file" accept="image/*" hidden>
+        <button class="go" id="t-go" type="submit">Investigar</button>
+      </form>
+      <div class="examples" id="t-examples"></div>
+      <p class="msg" id="t-msg" role="alert"></p>
+      <div id="t-out"></div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap">
+  <b>Uso responsável.</b> Estas ferramentas consultam apenas fontes abertas. Um resultado é uma pista, não uma conclusão: valide com uma segunda fonte. Investigar uma pessoa exige finalidade lícita e respeito ao RGPD e à lei do seu país. · <a href="pt.html">OSINTario</a> · Federico Dosio, Professor de IFA no IUPFA · <a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" rel="noopener noreferrer" target="_blank">Sugerir uma melhoria</a>
+</div></footer>
+<script src="exifr.umd.js"></script>
+<script src="tools.js"></script>
+</body>
+</html>

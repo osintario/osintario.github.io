@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Multi-OSINT Lite · free OSINT tools in your browser</title>
+<meta name="description" content="Free OSINT tools that run in your browser: domain, IP, username, email, phone, .onion sites, image metadata and dorks. Reports with sources and SHA-256 hash.">
+<meta property="og:type" content="website"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="Multi-OSINT Lite · free OSINT tools in your browser"><meta property="og:description" content="Free OSINT tools that run in your browser: domain, IP, username, email, phone, .onion sites, image metadata and dorks. Reports with sources and SHA-256 hash.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/tools-en.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://osintario.github.io/tools-en.html">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/herramientas.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/tools-en.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/ferramentas.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/herramientas.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="en.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <span class="tag opt">Open sources, with method</span>
+  <nav class="main" aria-label="Secciones"><a href="en.html#directorio">Directory</a><a class="opt" href="en.html#metodo">Method</a><a class="cta" aria-current="page" href="tools-en.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="herramientas.html" hreflang="es" lang="es" aria-current="false">ES</a><a href="tools-en.html" hreflang="en" lang="en" aria-current="true">EN</a><a href="ferramentas.html" hreflang="pt" lang="pt" aria-current="false">PT</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="intro">
+    <span class="tag">Free tools · v2 · November 2026</span>
+    <h1>Multi-OSINT Lite</h1>
+    <p>Type one data point and the tool queries several open sources at once, sorts what it finds and gives you a report with source, confidence level and SHA-256 hash for your evidence.</p>
+    <div class="privacy"><span aria-hidden="true">🔒</span><span><b>Everything runs in your browser.</b> OSINTario has no server and stores nothing you search. Your browser queries each source directly, so that source does see your IP: for sensitive cases, use a VPN or a research machine.</span></div>
+  </section>
+  <div class="tool-layout">
+    <nav class="tool-nav" role="tablist"><button role="tab" data-tool="domain" aria-selected="true">Domain or company <span class="k">7 sources</span></button><button role="tab" data-tool="ip" aria-selected="false">IP address <span class="k">5 sources</span></button><button role="tab" data-tool="alias" aria-selected="false">Username <span class="k">2 + 40 sites</span></button><button role="tab" data-tool="email" aria-selected="false">Email <span class="k">4 sources</span></button><button role="tab" data-tool="phone" aria-selected="false">Phone <span class="k">links</span></button><button role="tab" data-tool="onion" aria-selected="false">.onion site <span class="k">2 sources</span></button><button role="tab" data-tool="image" aria-selected="false">Image <span class="k">local</span></button><button role="tab" data-tool="dorks" aria-selected="false">Dorks <span class="k">generator</span></button></nav>
+    <section class="panel" id="panel" aria-live="polite">
+      <h2 id="t-title"></h2>
+      <p class="desc" id="t-desc"></p>
+      <form id="t-form" class="row" novalidate>
+        <input id="t-input" autocomplete="off" spellcheck="false">
+        <input id="t-file" type="file" accept="image/*" hidden>
+        <button class="go" id="t-go" type="submit">Investigate</button>
+      </form>
+      <div class="examples" id="t-examples"></div>
+      <p class="msg" id="t-msg" role="alert"></p>
+      <div id="t-out"></div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap">
+  <b>Responsible use.</b> These tools query open sources only. A result is a lead, not a conclusion: validate it with a second source. Investigating a person requires a lawful purpose and compliance with GDPR and your local law. · <a href="en.html">OSINTario</a> · Federico Dosio, IFA professor at IUPFA · <a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" rel="noopener noreferrer" target="_blank">Suggest an improvement</a>
+</div></footer>
+<script src="exifr.umd.js"></script>
+<script src="tools.js"></script>
+</body>
+</html>
