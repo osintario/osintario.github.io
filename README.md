@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 99 · **Última revisión:** 2026-11-16
+**Herramientas:** 100 · **Última revisión:** 2026-11-16
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -82,6 +82,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | Herramienta | Uso | Estado | Acceso |
 |---|---|---|---|
 | [Sherlock](https://github.com/sherlock-project/sherlock) | Busca un nombre de usuario en cientos de sitios. | ✅ Activa | libre |
+| [Consensus OSINT](https://github.com/OSINT-Experts-Society/Consensus-OSINT) | Une 19 proyectos (Maigret, WhatsMyName, Holehe y otros) en una sola terminal: 7.700+ sitios para alias, 200+ chequeos de email, deduplicados y revisados cada semana. Informes en HTML, JSON y PDF. Incluye sitios de citas y adultos: úsalo solo con finalidad legítima. | ✅ Activa | libre |
 | [Maigret](https://github.com/soxoj/maigret) | Dossier por usuario en miles de sitios. | ✅ Activa | libre |
 | [WhatsMyName](https://whatsmyname.app) | Dataset de sitios para buscar usuarios. Archivado en nov-2026: ya no se actualiza. | 🟡 Con límites | libre |
 | [Holehe](https://github.com/megadose/holehe) | Qué sitios tienen registrado un email. Sin mantenimiento desde 2024. | 🟡 Con límites | libre |

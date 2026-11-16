@@ -252,9 +252,9 @@ const TOOLS = {
   },
   alias: {
     title: tr("Alias o nombre de usuario", "Username or handle", "Apelido ou nome de usuário"), ph: "username", examples: ["torvalds", "octocat"],
-    desc: tr("Consulta GitHub y Keybase con datos verificables y prepara enlaces directos a 40 plataformas para revisar a mano. Para un barrido de miles de sitios usa Maigret o Sherlock (ver directorio).",
-      "Queries GitHub and Keybase for verifiable data and prepares direct links to 40 platforms for manual review. For a sweep of thousands of sites, use Maigret or Sherlock (see directory).",
-      "Consulta GitHub e Keybase com dados verificáveis e prepara links diretos para 40 plataformas para revisar à mão. Para varrer milhares de sites, use Maigret ou Sherlock (ver diretório)."),
+    desc: tr("Consulta GitHub y Keybase con datos verificables y prepara enlaces directos a 40 plataformas para revisar a mano. Para un barrido de miles de sitios usa Consensus OSINT o Maigret (ver directorio).",
+      "Queries GitHub and Keybase for verifiable data and prepares direct links to 40 platforms for manual review. For a sweep of thousands of sites, use Consensus OSINT or Maigret (see directory).",
+      "Consulta GitHub e Keybase com dados verificáveis e prepara links diretos para 40 plataformas para revisar à mão. Para varrer milhares de sites, use Consensus OSINT ou Maigret (ver diretório)."),
     parse(v) { const u = v.trim().replace(/^@/, ""); if (!RE.alias.test(u)) throw new Error(tr("El alias solo puede tener letras, números, punto, guion y guion bajo.", "Usernames may only contain letters, numbers, dots, hyphens and underscores.", "O apelido só pode ter letras, números, ponto, hífen e sublinhado.")); return u; },
     async run(u, out, mark, extra) {
       await Promise.all([
@@ -279,6 +279,7 @@ const TOOLS = {
       out.push(F(C.warn, tr("Un mismo alias en dos sitios es una hipótesis, no una identidad", "The same handle on two sites is a hypothesis, not an identity", "O mesmo apelido em dois sites é uma hipótese, não uma identidade"), "OSINTario", "", "baja",
         tr("Compara foto, fecha de creación, idioma y contactos antes de vincular cuentas.", "Compare photo, creation date, language and contacts before linking accounts.", "Compare foto, data de criação, idioma e contatos antes de vincular contas.")));
       extra.links = PLATFORMS.map(([n, t]) => [n, t.replace("{u}", enc(u))]);
+      extra.links.unshift([tr("Barrido de 7.700+ sitios: Consensus OSINT (terminal)", "Sweep 7,700+ sites: Consensus OSINT (CLI)", "Varredura de 7.700+ sites: Consensus OSINT (terminal)"), "https://github.com/OSINT-Experts-Society/Consensus-OSINT"]);
       extra.links.push([tr("Foros de la dark web: DarkSherlock (terminal)", "Dark web forums: DarkSherlock (CLI)", "Fóruns da dark web: DarkSherlock (terminal)"), "https://github.com/banaxou/dark-sherlock"]);
     },
   },
