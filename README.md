@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 100 · **Última revisión:** 2026-11-16
+**Herramientas:** 105 · **Última revisión:** 2026-11-17
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -51,7 +51,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Amass](https://github.com/owasp-amass/amass) | Mapeo de superficie de ataque y subdominios. | ✅ Activa | libre |
 | [Subfinder](https://github.com/projectdiscovery/subfinder) | Enumeración pasiva de subdominios. | ✅ Activa | libre |
 | [MassDNS](https://github.com/blechschmidt/massdns) | Resolución masiva de DNS. | ✅ Activa | libre |
-| [dnstwist](https://github.com/elceef/dnstwist) | Dominios de typosquatting y phishing contra una marca. | ✅ Activa | libre |
+| [dnstwist](https://github.com/elceef/dnstwist) | Dominios de typosquatting y phishing contra una marca. Sin cambios desde abr-2025, aún funciona. | 🟡 Con límites | libre |
 | [theHarvester](https://github.com/laramies/theHarvester) | Emails, subdominios y nombres de un dominio. | ✅ Activa | libre |
 | [Wayback Machine](https://web.archive.org) | Versiones archivadas de sitios web. | ✅ Activa | libre |
 | [Archive.today](https://archive.ph) | Archivo de páginas que a veces captura lo que Wayback no. | ✅ Activa | libre |
@@ -83,6 +83,11 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 |---|---|---|---|
 | [Sherlock](https://github.com/sherlock-project/sherlock) | Busca un nombre de usuario en cientos de sitios. | ✅ Activa | libre |
 | [Consensus OSINT](https://github.com/OSINT-Experts-Society/Consensus-OSINT) | Une 19 proyectos (Maigret, WhatsMyName, Holehe y otros) en una sola terminal: 7.700+ sitios para alias, 200+ chequeos de email, deduplicados y revisados cada semana. Informes en HTML, JSON y PDF. Incluye sitios de citas y adultos: úsalo solo con finalidad legítima. | ✅ Activa | libre |
+| [User Scanner](https://github.com/kaifcodec/user-scanner) | Alias y email en una sola CLI: 2.500+ plataformas y 200+ sitios con chequeo de email. | ✅ Activa | libre |
+| [GoSearch](https://github.com/ibnaleem/gosearch) | Clon de Sherlock en Go, rápido y concurrente; cruza el alias con credenciales filtradas de Hudson Rock. | ✅ Activa | libre |
+| [Marple](https://github.com/soxoj/marple) | Junta enlaces a perfiles de un alias consultando 10+ buscadores (Google, Bing, DuckDuckGo…). | ✅ Activa | libre |
+| [Linkook](https://github.com/JackJuly/linkook) | Encuentra cuentas vinculadas entre sí y emails asociados a partir de un alias; exporta el grafo a Neo4j. | ✅ Activa | libre |
+| [Mailcat](https://github.com/sharsil/mailcat) | Descubre direcciones de email existentes a partir de un alias en 20+ proveedores de correo. | ✅ Activa | libre |
 | [Maigret](https://github.com/soxoj/maigret) | Dossier por usuario en miles de sitios. | ✅ Activa | libre |
 | [WhatsMyName](https://whatsmyname.app) | Dataset de sitios para buscar usuarios. Archivado en nov-2026: ya no se actualiza. | 🟡 Con límites | libre |
 | [Holehe](https://github.com/megadose/holehe) | Qué sitios tienen registrado un email. Sin mantenimiento desde 2024. | 🟡 Con límites | libre |
@@ -178,7 +183,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | Herramienta | Uso | Estado | Acceso |
 |---|---|---|---|
 | [X-osint](https://github.com/TermuxHackz/X-osint) | Framework de terminal (Linux/Termux) con 17 módulos: IP, email, teléfono, subdominios, CVE, metadatos, infostealers. El instalador pide sudo: revísalo y úsalo en una VM. | ⚠️ Con precaución | libre |
-| [SpiderFoot](https://github.com/smicallef/spiderfoot) | Reconocimiento automatizado con más de 200 módulos. | ✅ Activa | libre |
+| [SpiderFoot](https://github.com/smicallef/spiderfoot) | Reconocimiento automatizado con más de 200 módulos. Sin cambios desde nov-2023: algunos módulos fallan. | 🟡 Con límites | libre |
 | [Recon-ng](https://github.com/lanmaster53/recon-ng) | Framework modular de reconocimiento. | ✅ Activa | libre |
 | [Maltego](https://www.maltego.com) | Grafos de relaciones entre entidades. | 🟡 Con límites | 🔑 registro 💳 pago |
 | [Awesome OSINT MCP servers](https://start.me/p/aNMY5j/awesome-osint-mcp-servers) | Catálogo de servidores MCP para conectar OSINT a agentes de IA. | ✅ Activa | libre |
