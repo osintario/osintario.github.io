@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 113 · **Última revisión:** 2026-11-18
+**Herramientas:** 121 · **Última revisión:** 2026-11-18
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -185,6 +185,19 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | Onioff | Inspector de URLs .onion. Abandonado desde 2022. | ❌ Descartada | libre |
 | [Dark Web Scraper (Apify)](https://apify.com/epcsht/darkweb-scraper) | Rastrea un sitio .onion buscando wallets, claves y contactos. | 🟡 Con límites | 🔑 registro 💳 pago |
 | The Hidden Wiki | Directorio lleno de estafas y contenido ilegal. Usa Ahmia. | ❌ Descartada | libre |
+
+## Forense digital
+
+| Herramienta | Uso | Estado | Acceso |
+|---|---|---|---|
+| [Autopsy](https://www.autopsy.com) | Interfaz gráfica de The Sleuth Kit para analizar discos, teléfonos y líneas de tiempo. La referencia para empezar. | ✅ Activa | libre |
+| [Volatility 3](https://github.com/volatilityfoundation/volatility3) | Análisis de memoria RAM: procesos, conexiones y artefactos de malware. | ✅ Activa | libre |
+| [MemProcFS](https://github.com/ufrisk/MemProcFS) | Monta un volcado de memoria como si fuera una carpeta para revisarlo con cualquier herramienta. | ✅ Activa | libre |
+| [Plaso (log2timeline)](https://github.com/log2timeline/plaso) | Arma una supertimeline con los eventos de un disco o de logs. | ✅ Activa | libre |
+| [Herramientas de Eric Zimmerman](https://ericzimmerman.github.io) | Parsers de artefactos de Windows (MFT, registro, LNK, prefetch). Gratuitas y muy usadas en peritajes. | ✅ Activa | libre |
+| [Velociraptor](https://github.com/Velocidex/velociraptor) | Recolección y análisis forense en muchos equipos a la vez (DFIR). | ✅ Activa | libre |
+| [YARA](https://github.com/VirusTotal/yara) | Reglas para identificar y clasificar malware o archivos por patrones. | ✅ Activa | libre |
+| [CyberChef](https://gchq.github.io/CyberChef/) | Decodifica, convierte y analiza datos en el navegador (Base64, hashes, fechas, XOR…). | ✅ Activa | libre |
 
 ## Frameworks, IA y automatización
 

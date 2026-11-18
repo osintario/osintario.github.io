@@ -138,3 +138,16 @@ footer .wrap{display:grid;grid-template-columns:2fr 1fr;gap:20px}
 .pro .wait p{font-size:14px;margin:6px 0}
 .pro .wait a{color:inherit}
 @media (max-width:560px){header.top .wrap{gap:10px}.logo{font-size:19px}}
+
+/* Página de estrella */
+.starpage{max-width:640px;text-align:center;padding:48px 20px}
+.starpage .bigstar{font-size:96px;line-height:1;color:#F5B301;margin-bottom:8px}
+.starpage h1{font-family:var(--display);font-size:clamp(28px,5vw,40px);margin:0 0 12px}
+.starpage .steps{list-style:none;padding:0;margin:24px 0;text-align:left;display:grid;gap:12px}
+.starpage .steps li{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px}
+.starpage .steps b{flex:none;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display)}
+.btn.big{font-size:18px;padding:14px 26px}
+.starcount{font-size:18px;margin-top:20px}
+.starpage code{font-family:var(--mono);background:var(--paper);border:1px solid var(--line);padding:2px 6px;border-radius:4px}
+.starpage .steps li::before{content:none;display:none}
+.starpage .steps{counter-reset:none}

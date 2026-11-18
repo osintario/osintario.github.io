@@ -10,6 +10,7 @@ import re
 LANGS = ["es", "en", "pt"]
 HOME = {"es": "index.html", "en": "en.html", "pt": "pt.html"}
 TOOLSP = {"es": "herramientas.html", "en": "tools-en.html", "pt": "ferramentas.html"}
+STARP = {"es": "estrella.html", "en": "star.html", "pt": "estrela.html"}
 LOCALE = {"es": "es_ES", "en": "en_US", "pt": "pt_PT"}
 BASE = "https://osintario.github.io/"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -171,7 +172,7 @@ def alternates(pages):
     return out + f'<link rel="alternate" hreflang="x-default" href="{BASE}{pages["es"]}">'
 
 
-def head(lang, title, desc, page, pages, csp, css):
+def head(lang, title, desc, page, pages, csp, css, og="og.png"):
     return f'''<!DOCTYPE html>
 <html lang="{lang}">
 <head>
@@ -183,7 +184,7 @@ def head(lang, title, desc, page, pages, csp, css):
 <meta name="description" content="{desc}">
 <meta property="og:type" content="website"><meta property="og:locale" content="{LOCALE[lang]}">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">
-<meta property="og:image" content="{BASE}og.png"><meta property="og:url" content="{BASE}{page}">
+<meta property="og:image" content="{BASE}{og}"><meta property="og:url" content="{BASE}{page}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="{BASE}{page}">
@@ -301,7 +302,7 @@ def home(lang):
     <span class="tag">{s("g_tag", lang)}</span>
     <h2>{s("g_h", lang)}</h2>
     <p class="lede">{s("g_p", lang)}</p>
-    <div class="ctas"><a class="btn" href="{GH}" target="_blank" rel="noopener noreferrer">{s("g_star", lang)}</a><a class="btn ghost" href="{GH}/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">{s("g_sug", lang)}</a></div>
+    <div class="ctas"><a class="btn" href="{STARP[lang]}">{s("g_star", lang)}</a><a class="btn ghost" href="{GH}/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">{s("g_sug", lang)}</a></div>
   </div>
   <div class="meter">
     <div class="m-row"><span>{s("g_stars", lang)}</span><b><span id="stars">–</span> / 100</b></div>
@@ -380,18 +381,69 @@ def tools(lang):
     return h
 
 
+SS = {
+    "title": ("Dale una ⭐ a OSINTario en 30 segundos", "Give OSINTario a ⭐ in 30 seconds", "Dê uma ⭐ ao OSINTario em 30 segundos"),
+    "desc": ("Cómo dejar una estrella en GitHub, paso a paso. Es gratis y ayuda a que más investigadores encuentren el directorio.",
+             "How to star the project on GitHub, step by step. It is free and helps more investigators find the directory.",
+             "Como deixar uma estrela no GitHub, passo a passo. É grátis e ajuda mais investigadores a encontrar o diretório."),
+    "lede": ("Una estrella en GitHub es como un «me gusta» para proyectos de código abierto. Es gratis y hace que OSINTario aparezca más arriba cuando otros investigadores buscan herramientas.",
+             "A GitHub star is like a “like” for open-source projects. It is free and pushes OSINTario higher when other investigators search for tools.",
+             "Uma estrela no GitHub é como um «gosto» para projetos de código aberto. É grátis e faz o OSINTario aparecer mais acima quando outros investigadores procuram ferramentas."),
+    "s1": ("Toca el botón naranja. Se abre la página del proyecto en GitHub.", "Tap the orange button. The project page opens on GitHub.", "Toque no botão laranja. Abre-se a página do projeto no GitHub."),
+    "s2": ("Inicia sesión. Si no tienes cuenta, créala gratis: solo pide un email (1 minuto).", "Sign in. No account? Create one for free: it only needs an email (1 minute).", "Inicie sessão. Sem conta? Crie uma grátis: só pede um email (1 minuto)."),
+    "s3": ("Toca «☆ Star» arriba a la derecha (en el celular, debajo del nombre del proyecto). Cuando cambia a «★ Starred», listo.",
+           "Tap “☆ Star” at the top right (on mobile, below the project name). When it turns into “★ Starred”, you are done.",
+           "Toque em «☆ Star» no canto superior direito (no telemóvel, por baixo do nome do projeto). Quando mudar para «★ Starred», está feito."),
+    "btn": ("Abrir GitHub y dejar la ⭐", "Open GitHub and leave a ⭐", "Abrir o GitHub e deixar a ⭐"),
+    "count": ("estrellas hasta ahora · meta: 100", "stars so far · goal: 100", "estrelas até agora · meta: 100"),
+    "share": ("¿Ya la dejaste? ¡Gracias! Si te sirvió, comparte este link:", "Already starred? Thank you! If it helped, share this link:", "Já deixou? Obrigado! Se lhe foi útil, partilhe este link:"),
+    "back": ("Ver las herramientas", "See the tools", "Ver as ferramentas"),
+    "free": ("Sin costo. GitHub no te pide tarjeta ni datos de pago.", "No cost. GitHub does not ask for a card or payment details.", "Sem custo. O GitHub não pede cartão nem dados de pagamento."),
+}
+
+
+def star(lang):
+    t = lambda k: SS[k][LANGS.index(lang)]
+    csp = "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'"
+    og = {"es": "og-estrella.png", "en": "og-star.png", "pt": "og-estrela.png"}[lang]
+    h = head(lang, t("title"), t("desc"), STARP[lang], STARP, csp, "home.css", og) + "</head>\n<body>\n"
+    h += header(lang, "", TOOLSP[lang], "Multi-OSINT Lite", STARP)
+    h += f"""<main id="main"><section><div class="wrap starpage">
+  <div class="bigstar" aria-hidden="true">★</div>
+  <h1>{t("title")}</h1>
+  <p class="lede">{t("lede")}</p>
+  <ol class="steps">
+    <li><b>1</b><span>{t("s1")}</span></li>
+    <li><b>2</b><span>{t("s2")}</span></li>
+    <li><b>3</b><span>{t("s3")}</span></li>
+  </ol>
+  <p><a class="btn big" href="{GH}" target="_blank" rel="noopener noreferrer">{t("btn")}</a></p>
+  <p class="note">{t("free")}</p>
+  <p class="starcount"><b id="stars">–</b> {t("count")}</p>
+  <p>{t("share")} <code>osintario.github.io/{STARP[lang].replace(".html", "")}</code></p>
+  <p><a class="btn ghost" href="{HOME[lang]}#directorio">{t("back")}</a></p>
+</div></section></main>
+<footer><div class="wrap">OSINTario · Federico Dosio</div></footer>
+<script src="star.js"></script>
+</body>
+</html>
+"""
+    return h
+
+
 if __name__ == "__main__":
     for lang in LANGS:
         open(HOME[lang], "w", encoding="utf-8").write(home(lang))
         open(TOOLSP[lang], "w", encoding="utf-8").write(tools(lang))
+        open(STARP[lang], "w", encoding="utf-8").write(star(lang))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for pages in (HOME, TOOLSP):
+    for pages in (HOME, TOOLSP, STARP):
         for l in LANGS:
             alts = "".join(f'<xhtml:link rel="alternate" hreflang="{x}" href="{BASE}{pages[x]}"/>' for x in LANGS)
             sm.append(f"  <url><loc>{BASE}{pages[l]}</loc>{alts}</url>")
     sm.append("</urlset>")
     open("sitemap.xml", "w").write("\n".join(sm) + "\n")
-    print("OK: 6 páginas y sitemap")
+    print("OK: 9 páginas y sitemap")
 
 
 def readme():
