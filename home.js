@@ -10,6 +10,8 @@
   const ALL = tr("Todas", "All", "Todas");
   let cat = ALL;
   const rows = TOOLS.map((t) => ({ c: t[0], cat: CATS[t[0]][L], n: t[1], d: t[2 + L], s: t[5], u: t[6], a: t[7] || "" }));
+  const LA = typeof LAUNCH === "undefined" ? {} : LAUNCH;
+  const TP = (document.querySelector("nav.main a.cta") || {}).getAttribute ? document.querySelector("nav.main a.cta").getAttribute("href") : "herramientas.html";
   const cats = Object.keys(CATS).filter((k) => rows.some((r) => r.c === k)).map((k) => CATS[k][L]);
   const set = (id, v) => { const e = $(id); if (e) e.textContent = v; };
   set("#count-total", rows.length); set("#count-ok", rows.filter((r) => r.s === "ok").length); set("#count-cat", cats.length);
@@ -32,7 +34,7 @@
       const link = r.s === "no" ? '<span class="note">' + tr("No enlazada", "Not linked", "Sem link") + "</span>" :
         '<a class="go" href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + tr("Abrir", "Open", "Abrir") + "</a>";
       return '<article class="card s-' + r.s + '"><h3>' + esc(r.n) + '<span class="pill ' + s[1] + '">' + s[0] + "</span></h3><p>" + esc(r.d) + "</p>" +
-        (badges ? '<div class="badges">' + badges + "</div>" : "") + '<div class="meta"><span class="tag">' + esc(r.cat) + "</span>" + link + "</div></article>";
+        ((badges || (LA[r.n] && r.s !== "no")) ? '<div class="badges">' + badges + (LA[r.n] && r.s !== "no" ? '<a class="acc live" href="' + TP + "#" + Object.keys(LA[r.n])[0] + '">⚡ ' + tr("Se abre desde Multi-OSINT Lite", "Opens from Multi-OSINT Lite", "Abre a partir do Multi-OSINT Lite") + "</a>" : "") + "</div>" : "") + '<div class="meta"><span class="tag">' + esc(r.cat) + "</span>" + link + "</div></article>";
     }).join("") : '<div class="empty">' + tr("No hay herramientas con esos filtros. Prueba con otra categoría o borra la búsqueda.", "No tools match these filters. Try another category or clear the search.", "Nenhuma ferramenta com esses filtros. Tente outra categoria ou limpe a busca.") + "</div>";
   }
   $("#q").addEventListener("input", render); $("#st").addEventListener("change", render); $("#ac").addEventListener("change", render);

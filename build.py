@@ -374,6 +374,7 @@ def tools(lang):
   {s("tfoot", lang)} · <a href="{HOME[lang]}">OSINTario</a> · Federico Dosio, {s("foot2", lang)} · <a href="{GH}/issues/new?template=sugerir-herramienta.yml" rel="noopener noreferrer" target="_blank">{s("improve", lang)}</a>
 </div></footer>
 <script src="exifr.umd.js"></script>
+<script src="dirlinks.js"></script>
 <script src="tools.js"></script>
 </body>
 </html>
@@ -431,6 +432,24 @@ def star(lang):
     return h
 
 
+def dirlinks():
+    """Genera dirlinks.js para Multi-OSINT Lite a partir de TOOLS y LAUNCH de directory.js."""
+    src = open("directory.js", encoding="utf-8").read()
+    launch = json.loads(re.search(r"const LAUNCH = (\{[\s\S]*?\n\});", src).group(1))
+    rows = {}
+    for m in re.finditer(r'^\["([a-z]+)","((?:[^"\\]|\\.)*)",(?:"(?:[^"\\]|\\.)*",){3}"([a-z]+)","(?:[^"\\]|\\.)*","([lp]*)"\]', src, re.M):
+        rows[m.group(2)] = (m.group(3), m.group(4))
+    out = []
+    for name, kinds in launch.items():
+        if name not in rows:
+            raise SystemExit(f"LAUNCH: '{name}' no está en TOOLS")
+        st, acc = rows[name]
+        if st != "no":
+            out.append([name, acc, kinds])
+    open("dirlinks.js", "w", encoding="utf-8").write("/* Generado por build.py desde directory.js (LAUNCH). No editar a mano. */\nconst DIRLINKS = " + json.dumps(out, ensure_ascii=False) + ";\n")
+    return len(out)
+
+
 if __name__ == "__main__":
     for lang in LANGS:
         open(HOME[lang], "w", encoding="utf-8").write(home(lang))
@@ -444,6 +463,7 @@ if __name__ == "__main__":
     sm.append("</urlset>")
     open("sitemap.xml", "w").write("\n".join(sm) + "\n")
     print("OK: 9 páginas y sitemap")
+    print(f"dirlinks.js: {dirlinks()} herramientas del directorio con atajo")
 
 
 def readme():

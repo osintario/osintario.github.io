@@ -144,3 +144,82 @@ const TOOLS = [
 ["auto","World Intel MCP","Inteligencia global en tiempo real. Proyecto pequeño: pruébalo aislado.","Real-time global intelligence. Small project: test it isolated.","Inteligência global em tempo real. Projeto pequeno: teste isolado.","lim","https://github.com/marc-shade/world-intel-mcp",""],
 ["auto","n8n","Orquestación de flujos y alertas.","Workflow and alert orchestration.","Orquestração de fluxos e alertas.","ok","https://n8n.io",""],
 ];
+
+/* Atajos para Multi-OSINT Lite: herramientas del directorio que aceptan el dato en la URL.
+   Clave = nombre exacto de la herramienta en TOOLS; {q} se reemplaza por el dato buscado.
+   Tipos: domain, ip, alias, email, phone, onion. Para sumar una: agrega su nombre aquí y corre build.py. */
+const LAUNCH = {
+ "Shodan": {
+  "domain": "https://www.shodan.io/search?query=hostname%3A{q}",
+  "ip": "https://www.shodan.io/host/{q}"
+ },
+ "Censys": {
+  "domain": "https://search.censys.io/search?resource=hosts&q={q}",
+  "ip": "https://search.censys.io/hosts/{q}"
+ },
+ "GreyNoise": {
+  "ip": "https://viz.greynoise.io/ip/{q}"
+ },
+ "BuiltWith": {
+  "domain": "https://builtwith.com/{q}"
+ },
+ "Wappalyzer": {
+  "domain": "https://www.wappalyzer.com/lookup/{q}/"
+ },
+ "SecurityTrails": {
+  "domain": "https://securitytrails.com/domain/{q}/dns"
+ },
+ "Wayback Machine": {
+  "domain": "https://web.archive.org/web/*/{q}*"
+ },
+ "Archive.today": {
+  "domain": "https://archive.ph/{q}"
+ },
+ "VirusTotal": {
+  "domain": "https://www.virustotal.com/gui/domain/{q}",
+  "ip": "https://www.virustotal.com/gui/ip-address/{q}"
+ },
+ "AlienVault OTX": {
+  "domain": "https://otx.alienvault.com/indicator/domain/{q}",
+  "ip": "https://otx.alienvault.com/indicator/ip/{q}"
+ },
+ "URLScan": {
+  "domain": "https://urlscan.io/search/#domain:{q}",
+  "ip": "https://urlscan.io/search/#ip:{q}"
+ },
+ "grep.app": {
+  "domain": "https://grep.app/search?q={q}",
+  "alias": "https://grep.app/search?q={q}",
+  "email": "https://grep.app/search?q={q}"
+ },
+ "Hunter.io": {
+  "domain": "https://hunter.io/search/{q}",
+  "email": "https://hunter.io/email-verifier/{q}"
+ },
+ "WhatsMyName": {
+  "alias": "https://whatsmyname.app/?q={q}"
+ },
+ "Epieos": {
+  "email": "https://epieos.com/?q={q}&t=email"
+ },
+ "Intelligence X": {
+  "domain": "https://intelx.io/?s={q}",
+  "ip": "https://intelx.io/?s={q}",
+  "alias": "https://intelx.io/?s={q}",
+  "email": "https://intelx.io/?s={q}",
+  "phone": "https://intelx.io/?s={q}",
+  "onion": "https://intelx.io/?s={q}"
+ },
+ "Ahmia": {
+  "domain": "https://ahmia.fi/search/?q={q}",
+  "alias": "https://ahmia.fi/search/?q={q}",
+  "email": "https://ahmia.fi/search/?q={q}",
+  "onion": "https://ahmia.fi/search/?q={q}"
+ },
+ "ExoneraTor": {
+  "ip": "https://metrics.torproject.org/exonerator.html?ip={q}"
+ },
+ "Onionoo / Relay Search": {
+  "ip": "https://metrics.torproject.org/rs.html#search/{q}"
+ }
+};

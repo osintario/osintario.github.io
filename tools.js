@@ -438,6 +438,23 @@ function selectTool(key) {
 }
 document.querySelectorAll(".tool-nav button").forEach((b) => b.addEventListener("click", () => selectTool(b.dataset.tool)));
 
+/* Atajos a herramientas del directorio que aceptan el dato en la URL (dirlinks.js, generado desde directory.js). */
+function dirLaunchers(kind, q, existing) {
+  if (typeof DIRLINKS === "undefined") return [];
+  const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch (e) { return ""; } };
+  const seen = new Set(existing.map(([, u]) => host(u)));
+  const lab = { l: tr("registro", "sign-up", "registo"), p: tr("pago", "paid", "pago") };
+  const out = [];
+  DIRLINKS.forEach(([n, acc, k]) => {
+    if (!k[kind]) return;
+    const u = k[kind].replace(/\{q\}/g, encodeURIComponent(q));
+    if (seen.has(host(u))) return;
+    seen.add(host(u));
+    out.push([n + (acc ? " · " + [...acc].map((x) => lab[x]).join(", ") : ""), u]);
+  });
+  return out;
+}
+
 $("#t-form").addEventListener("submit", async (ev) => {
   ev.preventDefault();
   const t = TOOLS[current]; $("#t-msg").textContent = "";
@@ -455,6 +472,7 @@ $("#t-form").addEventListener("submit", async (ev) => {
   const box = $("#t-out"); box.innerHTML = ""; box.append(el("div", { class: "report" }, el("p", { class: "meta", text: tr(`Investigando ${target}…`, `Investigating ${target}…`, `Investigando ${target}…`) }), prog));
   try { await t.run(target, out, mark, extra); } finally { $("#t-go").disabled = false; }
   const errors = Object.values(chips).filter((c) => c.classList.contains("err")).map((c) => c.textContent);
+  extra.links = (extra.links || []).concat(dirLaunchers(current, target, extra.links || []));
   await renderReport({ tool: current, title: t.title, target, findings: out, links: extra.links || [], errors }, prog);
 });
 

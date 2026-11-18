@@ -151,3 +151,4 @@ footer .wrap{display:grid;grid-template-columns:2fr 1fr;gap:20px}
 .starpage code{font-family:var(--mono);background:var(--paper);border:1px solid var(--line);padding:2px 6px;border-radius:4px}
 .starpage .steps li::before{content:none;display:none}
 .starpage .steps{counter-reset:none}
+.acc.live{text-decoration:none;border-color:var(--accent);color:var(--accent)}
