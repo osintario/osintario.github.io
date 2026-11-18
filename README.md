@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 105 · **Última revisión:** 2026-11-17
+**Herramientas:** 109 · **Última revisión:** 2026-11-18
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -51,7 +51,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Amass](https://github.com/owasp-amass/amass) | Mapeo de superficie de ataque y subdominios. | ✅ Activa | libre |
 | [Subfinder](https://github.com/projectdiscovery/subfinder) | Enumeración pasiva de subdominios. | ✅ Activa | libre |
 | [MassDNS](https://github.com/blechschmidt/massdns) | Resolución masiva de DNS. | ✅ Activa | libre |
-| [dnstwist](https://github.com/elceef/dnstwist) | Dominios de typosquatting y phishing contra una marca. Sin cambios desde abr-2025, aún funciona. | 🟡 Con límites | libre |
+| [dnstwist](https://github.com/elceef/dnstwist) | Dominios de typosquatting y phishing contra una marca. | ✅ Activa | libre |
 | [theHarvester](https://github.com/laramies/theHarvester) | Emails, subdominios y nombres de un dominio. | ✅ Activa | libre |
 | [Wayback Machine](https://web.archive.org) | Versiones archivadas de sitios web. | ✅ Activa | libre |
 | [Archive.today](https://archive.ph) | Archivo de páginas que a veces captura lo que Wayback no. | ✅ Activa | libre |
@@ -65,6 +65,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [AlienVault OTX](https://otx.alienvault.com) | Indicadores de compromiso compartidos por la comunidad. | ✅ Activa | libre |
 | [URLScan](https://urlscan.io) | Análisis de URLs sospechosas y phishing. | ✅ Activa | libre |
 | [MISP](https://www.misp-project.org) | Plataforma para compartir indicadores de amenazas. | ✅ Activa | libre |
+| [OpenCTI](https://github.com/OpenCTI-Platform/opencti) | Plataforma abierta para organizar y relacionar inteligencia de amenazas (STIX). | ✅ Activa | libre |
 | [CTILookUp](https://www.ctilookup.com) | Enriquecimiento de IPs, dominios, URLs y emails. | 🟡 Con límites | 🔑 registro |
 | [Hudson Rock Cavalier](https://www.hudsonrock.com/free-tools) | Comprueba si un email o dominio aparece en infecciones de infostealers. | ✅ Activa | libre |
 
@@ -83,12 +84,13 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 |---|---|---|---|
 | [Sherlock](https://github.com/sherlock-project/sherlock) | Busca un nombre de usuario en cientos de sitios. | ✅ Activa | libre |
 | [Consensus OSINT](https://github.com/OSINT-Experts-Society/Consensus-OSINT) | Une 19 proyectos (Maigret, WhatsMyName, Holehe y otros) en una sola terminal: 7.700+ sitios para alias, 200+ chequeos de email, deduplicados y revisados cada semana. Informes en HTML, JSON y PDF. Incluye sitios de citas y adultos: úsalo solo con finalidad legítima. | ✅ Activa | libre |
-| [User Scanner](https://github.com/kaifcodec/user-scanner) | Alias y email en una sola CLI: 2.500+ plataformas y 200+ sitios con chequeo de email. | ✅ Activa | libre |
-| [GoSearch](https://github.com/ibnaleem/gosearch) | Clon de Sherlock en Go, rápido y concurrente; cruza el alias con credenciales filtradas de Hudson Rock. | ✅ Activa | libre |
-| [Marple](https://github.com/soxoj/marple) | Junta enlaces a perfiles de un alias consultando 10+ buscadores (Google, Bing, DuckDuckGo…). | ✅ Activa | libre |
-| [Linkook](https://github.com/JackJuly/linkook) | Encuentra cuentas vinculadas entre sí y emails asociados a partir de un alias; exporta el grafo a Neo4j. | ✅ Activa | libre |
-| [Mailcat](https://github.com/sharsil/mailcat) | Descubre direcciones de email existentes a partir de un alias en 20+ proveedores de correo. | ✅ Activa | libre |
 | [Maigret](https://github.com/soxoj/maigret) | Dossier por usuario en miles de sitios. | ✅ Activa | libre |
+| [Blackbird](https://github.com/p1ngul1n0/blackbird) | Busca un alias o un email en cientos de sitios, con exportación a PDF y CSV. Muy activo. | ✅ Activa | libre |
+| [Mailcat](https://github.com/sharsil/mailcat) | A partir de un alias, encuentra direcciones de email existentes en decenas de proveedores. | ✅ Activa | libre |
+| [NAMINT](https://seintpl.github.io/NAMINT/) | Con nombre y apellido, genera alias y emails probables y los enlaces para buscarlos. En el navegador. | ✅ Activa | libre |
+| [Namechk](https://namechk.com) | Comprueba si un alias está ocupado en redes y dominios. | ✅ Activa | libre |
+| [Epieos](https://epieos.com) | Búsqueda inversa de email y teléfono (cuentas de Google, Skype y otras). Búsquedas gratis limitadas. | ✅ Activa | 🔑 registro 💳 pago |
+| [OSINT Industries](https://www.osint.industries) | Búsqueda de email, teléfono y alias en cientos de módulos. De pago. | ✅ Activa | 🔑 registro 💳 pago |
 | [WhatsMyName](https://whatsmyname.app) | Dataset de sitios para buscar usuarios. Archivado en nov-2026: ya no se actualiza. | 🟡 Con límites | libre |
 | [Holehe](https://github.com/megadose/holehe) | Qué sitios tienen registrado un email. Sin mantenimiento desde 2024. | 🟡 Con límites | libre |
 | [Hunter.io](https://hunter.io) | Emails corporativos asociados a un dominio. | ✅ Activa | 🔑 registro 💳 pago |
@@ -115,6 +117,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [InVID-WeVerify](https://weverify.eu/verification-plugin/) | Verificación de videos y fotogramas. | ✅ Activa | libre |
 | [FOCA](https://github.com/ElevenPaths/FOCA) | Metadatos en documentos de una organización. Sin cambios desde 2022, solo Windows. | 🟡 Con límites | libre |
 | [Hunchly](https://www.hunch.ly) | Captura y registro automático de la investigación. | 🟡 Con límites | 💳 pago |
+| [SingleFile](https://github.com/gildas-lormeau/SingleFile) | Extensión que guarda una página web completa en un solo archivo HTML. Útil para preservar evidencia. | ✅ Activa | libre |
+| [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | Archivo web propio: guarda URLs en HTML, PDF, captura y WARC en tu servidor. | ✅ Activa | libre |
 | Clearview AI | Reconocimiento facial. Incompatible con el RGPD en la UE. | ❌ Descartada | 💳 pago |
 
 ## GEOINT y transporte
@@ -183,7 +187,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | Herramienta | Uso | Estado | Acceso |
 |---|---|---|---|
 | [X-osint](https://github.com/TermuxHackz/X-osint) | Framework de terminal (Linux/Termux) con 17 módulos: IP, email, teléfono, subdominios, CVE, metadatos, infostealers. El instalador pide sudo: revísalo y úsalo en una VM. | ⚠️ Con precaución | libre |
-| [SpiderFoot](https://github.com/smicallef/spiderfoot) | Reconocimiento automatizado con más de 200 módulos. Sin cambios desde nov-2023: algunos módulos fallan. | 🟡 Con límites | libre |
+| [SpiderFoot](https://github.com/smicallef/spiderfoot) | Reconocimiento automatizado con más de 200 módulos. | ✅ Activa | libre |
 | [Recon-ng](https://github.com/lanmaster53/recon-ng) | Framework modular de reconocimiento. | ✅ Activa | libre |
 | [Maltego](https://www.maltego.com) | Grafos de relaciones entre entidades. | 🟡 Con límites | 🔑 registro 💳 pago |
 | [Awesome OSINT MCP servers](https://start.me/p/aNMY5j/awesome-osint-mcp-servers) | Catálogo de servidores MCP para conectar OSINT a agentes de IA. | ✅ Activa | libre |

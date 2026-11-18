@@ -280,6 +280,7 @@ const TOOLS = {
         tr("Compara foto, fecha de creación, idioma y contactos antes de vincular cuentas.", "Compare photo, creation date, language and contacts before linking accounts.", "Compare foto, data de criação, idioma e contatos antes de vincular contas.")));
       extra.links = PLATFORMS.map(([n, t]) => [n, t.replace("{u}", enc(u))]);
       extra.links.unshift([tr("Barrido de 7.700+ sitios: Consensus OSINT (terminal)", "Sweep 7,700+ sites: Consensus OSINT (CLI)", "Varredura de 7.700+ sites: Consensus OSINT (terminal)"), "https://github.com/OSINT-Experts-Society/Consensus-OSINT"]);
+      extra.links.push([tr("Alias y emails probables a partir del nombre: NAMINT", "Likely usernames and emails from a name: NAMINT", "Aliases e emails prováveis a partir do nome: NAMINT"), "https://seintpl.github.io/NAMINT/"]);
       extra.links.push([tr("Foros de la dark web: DarkSherlock (terminal)", "Dark web forums: DarkSherlock (CLI)", "Fóruns da dark web: DarkSherlock (terminal)"), "https://github.com/banaxou/dark-sherlock"]);
     },
   },
@@ -322,6 +323,7 @@ const TOOLS = {
       ]);
       extra.links = [
         ["Have I Been Pwned", "https://haveibeenpwned.com/"],
+        [tr("Epieos: cuentas asociadas (búsquedas gratis limitadas)", "Epieos: linked accounts (limited free searches)", "Epieos: contas associadas (pesquisas grátis limitadas)"), "https://epieos.com"],
         [tr("Hudson Rock: ¿infectado por infostealer?", "Hudson Rock: infostealer infection?", "Hudson Rock: infectado por infostealer?"), "https://www.hudsonrock.com/free-tools"],
         [tr("Epieos (cuentas Google y más)", "Epieos (Google accounts and more)", "Epieos (contas Google e mais)"), "https://epieos.com/"],
         [tr("Hunter: verificar email (registro)", "Hunter: verify email (login)", "Hunter: verificar email (cadastro)"), `https://hunter.io/email-verifier/${enc(e)}`],
