@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 122 · **Última revisión:** 2026-11-19
+**Herramientas:** 130 · **Última revisión:** 2026-11-19
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -24,7 +24,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 |---|---|---|---|
 | [OSINT Stuff Tool Collection](https://github.com/cipher387/osint_stuff_tool_collection) | Cientos de herramientas online por categoría, incluidas Telegram y dark web. | ✅ Activa | libre |
 | [Awesome OSINT](https://github.com/jivoi/awesome-osint) | La lista curada más completa de la comunidad. | ✅ Activa | libre |
-| [YogSec OSINT Tools](https://github.com/yogsec/OSINT-Tools) | Lista enorme por categorías (alias, registros, cripto, deepfakes, extremismo…). Muy activa; sin licencia declarada. Su sección de citas incluye herramientas de vigilancia de parejas: no las usamos. | ✅ Activa | libre |
+| [YogSec OSINT Tools](https://github.com/yogsec/OSINT-Tools) | Lista enorme por categorías (alias, registros, cripto, deepfakes, extremismo…). Muy activa; sin licencia declarada. Sus herramientas de citas están en la categoría Apps de citas, con su aviso RGPD. | ✅ Activa | libre |
 | [OSINT Framework](https://osintframework.com) | Árbol interactivo de herramientas por tipo de dato. | ✅ Activa | libre |
 | [Awesome OSINT Arsenal](https://github.com/rawfilejson/awesome-osint-arsenal) | Más de 100 herramientas con instalador en un comando. | ✅ Activa | libre |
 | [OSINTJet Quick Search](https://osintjet.com/en/osint-search-tools/) | Lanzador de búsquedas por categoría. Servicio comercial nuevo: no subas datos de casos reales. | 🟡 Con límites | libre |
@@ -199,6 +199,19 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Velociraptor](https://github.com/Velocidex/velociraptor) | Recolección y análisis forense en muchos equipos a la vez (DFIR). | ✅ Activa | libre |
 | [YARA](https://github.com/VirusTotal/yara) | Reglas para identificar y clasificar malware o archivos por patrones. | ✅ Activa | libre |
 | [CyberChef](https://gchq.github.io/CyberChef/) | Decodifica, convierte y analiza datos en el navegador (Base64, hashes, fechas, XOR…). | ✅ Activa | libre |
+
+## Apps de citas (RGPD)
+
+| Herramienta | Uso | Estado | Acceso |
+|---|---|---|---|
+| [FootprintIQ Dating Lookup](https://footprintiq.app/dating-profile-lookup) | Comprueba si un alias existe en Tinder, Bumble, Hinge, OkCupid y 500+ servicios. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | libre |
+| [Social Catfish](https://www.socialcatfish.com) | Búsqueda inversa de fotos, alias y teléfonos para detectar perfiles falsos. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | 💳 pago |
+| [Spokeo](https://www.spokeo.com) | Buscador de personas de EE. UU.; puede vincular email o teléfono con perfiles de citas. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | 💳 pago |
+| [CheatSpyder](https://addons.mozilla.org/firefox/addon/cheatspyder-profile-search/) | Extensión de Firefox que revisa si un email, alias o teléfono está registrado en 100+ plataformas de citas. Se promociona para vigilar parejas. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | libre |
+| [Perfil por URL directa (Tinder, OkCupid)](https://tinder.com) | Si conoces el alias, el perfil público se abre en tinder.com/@alias u okcupid.com/profile/alias. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | libre |
+| [Dorks de perfiles de citas](https://www.google.com) | Búsquedas tipo site:tinder.com "nombre" o site:okcupid.com "alias" para perfiles indexados. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | libre |
+| [TraceLens](https://apps.apple.com/app/tracelens-ai-face-search/id6770221940) | App de iOS de búsqueda facial para verificar con quién hablas en una app de citas. Datos biométricos: categoría especial del RGPD (art. 9). Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | 💳 pago |
+| [Maigret en Apify](https://apify.com/ntriqpro/maigret-actor) | Maigret en la nube (3.000+ sitios, incluidos de citas) sin instalar nada. De pago por uso. Solo con base legal (RGPD art. 6): estafas románticas, sextorsión, suplantación o investigación encargada. Vigilar a una pareja o expareja puede ser acoso. | ⚠️ Con precaución | 🔑 registro 💳 pago |
 
 ## Frameworks, IA y automatización
 
