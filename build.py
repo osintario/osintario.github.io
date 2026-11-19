@@ -143,6 +143,9 @@ STR = {
  "tools_p": ("Escribe un dato y la herramienta consulta varias fuentes abiertas a la vez, ordena lo que encuentra y te entrega un informe con fuente, nivel de confianza y hash SHA-256 para tu evidencia.",
              "Type one data point and the tool queries several open sources at once, sorts what it finds and gives you a report with source, confidence level and SHA-256 hash for your evidence.",
              "Digite um dado e a ferramenta consulta várias fontes abertas ao mesmo tempo, organiza o que encontra e entrega um relatório com fonte, nível de confiança e hash SHA-256 para sua evidência."),
+    "ethics": ("<b>Uso ético y legal.</b> OSINTario es una guía para investigar con fuentes abiertas, no un permiso. Cada búsqueda sobre una persona necesita una finalidad legítima y base legal (RGPD y leyes locales). No lo uses para acosar, vigilar a parejas o exparejas, exponer datos personales ni acceder a sistemas sin autorización. Quien busca es responsable de lo que hace con la información.",
+               "<b>Ethical and lawful use.</b> OSINTario is a guide to open-source investigation, not a permission slip. Every search about a person needs a legitimate purpose and a legal basis (GDPR and local laws). Do not use it to harass, monitor partners or exes, expose personal data or access systems without authorisation. Whoever searches is responsible for what they do with the information.",
+               "<b>Uso ético e legal.</b> O OSINTario é um guia para investigar com fontes abertas, não uma autorização. Cada pesquisa sobre uma pessoa precisa de uma finalidade legítima e base legal (RGPD e leis locais). Não o use para assediar, vigiar parceiros ou ex-parceiros, expor dados pessoais nem aceder a sistemas sem autorização. Quem pesquisa é responsável pelo que faz com a informação."),
  "privacy": ("<b>Todo corre en tu navegador.</b> OSINTario no tiene servidor ni guarda lo que buscas. Tu navegador consulta cada fuente directamente, así que esa fuente sí ve tu IP: para casos sensibles, usa una VPN o un equipo de investigación.",
              "<b>Everything runs in your browser.</b> OSINTario has no server and stores nothing you search. Your browser queries each source directly, so that source does see your IP: for sensitive cases, use a VPN or a research machine.",
              "<b>Tudo roda no seu navegador.</b> O OSINTario não tem servidor nem guarda o que você busca. Seu navegador consulta cada fonte diretamente, então essa fonte vê seu IP: em casos sensíveis, use uma VPN ou um equipamento de investigação."),
@@ -253,6 +256,7 @@ def home(lang):
   <span class="tag">{s("s2_tag", lang)}</span>
   <h2>{s("s2_h", lang)}</h2>
   <p class="lede">{s("s2_p", lang)}</p>
+  <p class="ethics" role="note"><span aria-hidden="true">⚖️</span> <span>{s("ethics", lang)}</span></p>
   <div class="controls">
     <label class="tag" for="q">{s("search", lang)}</label>
     <input id="q" type="search" placeholder="{s("search_ph", lang)}">
@@ -367,6 +371,7 @@ def tools(lang):
     <h1>Multi-OSINT Lite</h1>
     <p>{s("tools_p", lang)}</p>
     <div class="privacy"><span aria-hidden="true">🔒</span><span>{s("privacy", lang)}</span></div>
+    <div class="privacy ethics" role="note"><span aria-hidden="true">⚖️</span><span>{s("ethics", lang)}</span></div>
   </section>
   <div class="tool-layout">
     <nav class="tool-nav" role="tablist">{nav}</nav>

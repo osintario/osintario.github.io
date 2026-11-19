@@ -97,3 +97,4 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);font-size:13px;color
 .goalcard .lk{margin:0;padding-left:18px;font-size:14px;display:grid;gap:6px}
 .goalcard .lk li{opacity:.75}
 .cta-star{display:inline-block;text-decoration:none;font:600 15px var(--body);padding:10px 18px;border-radius:4px;background:var(--accent);color:var(--accent-ink)}
+.privacy.ethics{border-left:4px solid var(--warn);margin-top:10px}
