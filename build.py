@@ -517,7 +517,11 @@ def readme():
            "- Consulta varias fuentes a la vez: Google DNS, crt.sh, RDAP, Wayback, AlienVault OTX, Shodan InternetDB, ipinfo, Tor Onionoo, AIL onion-lookup, GitHub, Keybase, Gravatar, Proton y Have I Been Pwned.",
            "- Informe con fuente, nivel de confianza y **hash SHA-256**, exportable en JSON, Markdown o PDF.",
            "- **Sin servidor:** lo que buscas no pasa por OSINTario.", "",
-           "> Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.", "",
+           f"> Si te sirve, deja una ⭐ ([cómo hacerlo en 30 segundos]({BASE}estrella)). Con 100 estrellas se destraba el barrido de alias en miles de sitios y con 1.000, el resto ([ver metas]({BASE}herramientas.html#comunidad)). Las sugerencias van por *Issues* o *Pull Request*.", "",
+           "## ⚖️ Uso ético y legal", "",
+           "OSINTario es una guía para investigar con fuentes abiertas, no un permiso. Cada búsqueda sobre una persona necesita una **finalidad legítima y base legal** (RGPD y leyes locales). No lo uses para acosar, vigilar a parejas o exparejas, exponer datos personales ni acceder a sistemas sin autorización. Quien busca es responsable de lo que hace con la información.", "",
+           "Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocimiento facial) están marcadas ⚠️ y cada una explica su riesgo y cuándo está justificado usarla.", "",
+           "> *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*", "",
            f"**Herramientas:** {len(tools)} · **Última revisión:** {re.search(r'REVIEWED = \"([^\"]+)\"', src).group(1)}", "",
            "Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.", ""]
     for key, names in cats.items():
@@ -530,7 +534,7 @@ def readme():
             out.append(f"| {name} | {t[2]} | {st[t[5]]} | {' '.join(acc[c] for c in t[7]) or 'libre'} |")
         out.append("")
     out += ["## Uso responsable", "", "Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación.", "",
-            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 6 páginas, el sitemap y este README.", "",
+            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 9 páginas, `dirlinks.js`, el sitemap y este README.", "",
             "## Licencia", "", "Contenido bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)."]
     open("README.md", "w", encoding="utf-8").write("\n".join(out) + "\n")
 
