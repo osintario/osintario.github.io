@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 130 · **Última revisión:** 2026-11-19
+**Herramientas:** 133 · **Última revisión:** 2026-11-19
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -91,6 +91,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Linkook](https://github.com/JackJuly/linkook) | Encuentra cuentas vinculadas entre sí y emails asociados a partir de un alias; exporta el grafo a Neo4j. | ✅ Activa | libre |
 | [Mailcat](https://github.com/sharsil/mailcat) | Descubre direcciones de email existentes a partir de un alias en 20+ proveedores de correo. | ✅ Activa | libre |
 | [Blackbird](https://github.com/p1ngul1n0/blackbird) | Busca un alias o un email en cientos de sitios, con exportación a PDF y CSV. Muy activo; el repo no declara licencia. | ✅ Activa | libre |
+| [Aliens Eye](https://github.com/arxhr007/Aliens_eye) | Busca un alias en 7.700+ plataformas con detección por aprendizaje automático (menos falsos positivos); informes en PDF, HTML y Maltego. MIT, muy activo. | ✅ Activa | libre |
+| [FindMe](https://github.com/0xSaikat/findme) | Busca un alias en 400+ redes desde la terminal (pip install findme-osint); tiene versión web. MIT. | ✅ Activa | libre |
 | [NAMINT](https://seintpl.github.io/NAMINT/) | Con nombre y apellido, genera alias y emails probables y los enlaces para buscarlos. En el navegador. | ✅ Activa | libre |
 | [Namechk](https://namechk.com) | Comprueba si un alias está ocupado en redes y dominios. | ✅ Activa | libre |
 | [Epieos](https://epieos.com) | Búsqueda inversa de email y teléfono (cuentas de Google, Skype y otras). Búsquedas gratis limitadas. | ✅ Activa | 🔑 registro 💳 pago |
@@ -100,6 +102,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Holehe](https://github.com/megadose/holehe) | Qué sitios tienen registrado un email. Sin mantenimiento desde 2024. | 🟡 Con límites | libre |
 | [Hunter.io](https://hunter.io) | Emails corporativos asociados a un dominio. | ✅ Activa | 🔑 registro 💳 pago |
 | [PhoneInfoga](https://github.com/sundowndev/phoneinfoga) | Información pública sobre números de teléfono. | ✅ Activa | libre |
+| [Numint](https://github.com/whoamitang/numint) | Perfil de un teléfono: validez, tipo de línea, país y operador sin registro; con claves API gratuitas suma riesgo de fraude y si el número está en Instagram, Amazon y otros. Terminal, web local o Discord. MIT. | ✅ Activa | libre |
 | [Proton keyserver](https://api.protonmail.ch/pks/lookup?op=index&search=ejemplo@proton.me) | Comprueba si un email tiene clave pública de Proton (indica cuenta Proton). | ✅ Activa | libre |
 | [Buscadores de personas de EE. UU.](https://www.whitepages.com) | PeekYou, Whitepages, TruePeopleSearch: poco útiles fuera de EE. UU. y con datos viejos. | ⚠️ Con precaución | 💳 pago |
 
