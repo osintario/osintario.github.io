@@ -14,7 +14,7 @@ Investiga un **dominio, una IP, un alias, un email, un teléfono, un sitio .onio
 
 > Si te sirve, deja una ⭐. Meta de la comunidad: 100 estrellas. Las sugerencias van por *Issues* o *Pull Request*.
 
-**Herramientas:** 121 · **Última revisión:** 2026-11-18
+**Herramientas:** 122 · **Última revisión:** 2026-11-19
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -24,6 +24,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 |---|---|---|---|
 | [OSINT Stuff Tool Collection](https://github.com/cipher387/osint_stuff_tool_collection) | Cientos de herramientas online por categoría, incluidas Telegram y dark web. | ✅ Activa | libre |
 | [Awesome OSINT](https://github.com/jivoi/awesome-osint) | La lista curada más completa de la comunidad. | ✅ Activa | libre |
+| [YogSec OSINT Tools](https://github.com/yogsec/OSINT-Tools) | Lista enorme por categorías (alias, registros, cripto, deepfakes, extremismo…). Muy activa; sin licencia declarada. Su sección de citas incluye herramientas de vigilancia de parejas: no las usamos. | ✅ Activa | libre |
 | [OSINT Framework](https://osintframework.com) | Árbol interactivo de herramientas por tipo de dato. | ✅ Activa | libre |
 | [Awesome OSINT Arsenal](https://github.com/rawfilejson/awesome-osint-arsenal) | Más de 100 herramientas con instalador en un comando. | ✅ Activa | libre |
 | [OSINTJet Quick Search](https://osintjet.com/en/osint-search-tools/) | Lanzador de búsquedas por categoría. Servicio comercial nuevo: no subas datos de casos reales. | 🟡 Con límites | libre |

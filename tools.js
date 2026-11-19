@@ -434,6 +434,7 @@ function selectTool(key) {
     ex.append(tr("Prueba con:", "Try:", "Teste com:"));
     t.examples.forEach((v) => { const b = el("button", { type: "button", text: v.length > 30 ? v.slice(0, 14) + "…onion" : v }); b.addEventListener("click", () => { $("#t-input").value = v; $("#t-form").requestSubmit(); }); ex.append(b); });
   }
+  renderLockHint(key);
   if (location.hash !== "#" + key) history.replaceState(null, "", "#" + key);
 }
 document.querySelectorAll(".tool-nav button").forEach((b) => b.addEventListener("click", () => selectTool(b.dataset.tool)));
@@ -454,6 +455,30 @@ function dirLaunchers(kind, q, existing) {
   });
   return out;
 }
+
+/* Herramientas que se destraban con la comunidad (DIRLOCKED, generado desde directory.js). */
+function renderLockHint(key) {
+  const old = document.getElementById("t-lock"); if (old) old.remove();
+  if (typeof DIRLOCKED === "undefined") return;
+  const items = DIRLOCKED.filter((x) => x[2] === key);
+  if (!items.length) return;
+  const by = {}; items.forEach(([n, g]) => { (by[g] = by[g] || []).push(n); });
+  const p = el("p", { class: "lockhint", id: "t-lock" }, "🔒 " + tr("Se destraban aquí con la comunidad: ", "Unlocking here with the community: ", "Desbloqueiam aqui com a comunidade: "));
+  Object.keys(by).sort((a, b) => a - b).forEach((g, i) => { if (i) p.append(" · "); p.append(by[g].join(", ") + " (" + Number(g).toLocaleString(document.documentElement.lang) + " ⭐)"); });
+  p.append(" ", el("a", { href: "#comunidad", text: tr("Ver metas", "See goals", "Ver metas") }));
+  $("#t-examples").after(p);
+}
+(function renderUnlock() {
+  if (typeof DIRLOCKED === "undefined") return;
+  document.querySelectorAll(".goalcard").forEach((c) => {
+    const g = Number(c.dataset.goal); const ul = c.querySelector(".lk");
+    DIRLOCKED.filter((x) => x[1] === g).forEach(([n, , tab, d]) => ul.append(el("li", {}, el("b", { text: n }), " — " + d[LI])));
+  });
+  fetch("https://api.github.com/repos/osintario/osintario.github.io").then((r) => r.json()).then((j) => {
+    const s = j.stargazers_count; if (typeof s !== "number") return;
+    document.querySelectorAll(".goalcard").forEach((c) => { const g = Number(c.dataset.goal); c.querySelector(".st").textContent = s; c.querySelector(".bar i").style.width = Math.min(100, (s / g) * 100) + "%"; });
+  }).catch(() => {});
+})();
 
 $("#t-form").addEventListener("submit", async (ev) => {
   ev.preventDefault();

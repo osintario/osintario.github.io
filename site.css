@@ -80,3 +80,20 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);font-size:13px;color
 .lang{display:flex;gap:2px;font:500 12px var(--mono)}
 .lang a{text-decoration:none;color:var(--muted);padding:3px 6px;border-radius:3px}
 .lang a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+
+/* Metas de la comunidad */
+.lockhint{font-size:14px;color:var(--muted);margin:8px 0 0}
+.lockhint a{color:var(--accent)}
+.unlock{margin:40px 0 20px;padding-top:24px;border-top:1px solid var(--line)}
+.unlock h2{font-family:var(--display);font-size:26px;margin:6px 0 8px}
+.unlock>p{max-width:75ch;color:var(--muted)}
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:18px 0}
+.goalcard{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:16px}
+.goalcard h3{margin:0 0 4px;font-size:18px}
+.goalcard>p{margin:0 0 10px;color:var(--muted);font-size:14px}
+.goalcard .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.goalcard .bar i{display:block;height:100%;width:0;background:#F5B301}
+.goalcard .cnt{font:13px var(--mono);margin:6px 0 10px}
+.goalcard .lk{margin:0;padding-left:18px;font-size:14px;display:grid;gap:6px}
+.goalcard .lk li{opacity:.75}
+.cta-star{display:inline-block;text-decoration:none;font:600 15px var(--body);padding:10px 18px;border-radius:4px;background:var(--accent);color:var(--accent-ink)}

@@ -3,7 +3,7 @@
    estado: ok = activa · lim = con límites · risk = con precaución · no = descartada
    acceso: "" libre · "l" requiere registro/login · "p" de pago o con funciones pagas · "lp" ambas
    Para sumar una herramienta: agrega una fila y actualiza REVIEWED. */
-const REVIEWED = "2026-11-18";
+const REVIEWED = "2026-11-19";
 const CATS = {
   col: ["Colecciones", "Collections", "Coleções"],
   infra: ["Infraestructura", "Infrastructure", "Infraestrutura"],
@@ -24,6 +24,7 @@ const CATS = {
 const TOOLS = [
 ["col","OSINT Stuff Tool Collection","Cientos de herramientas online por categoría, incluidas Telegram y dark web.","Hundreds of online tools by category, including Telegram and dark web.","Centenas de ferramentas online por categoria, incluindo Telegram e dark web.","ok","https://github.com/cipher387/osint_stuff_tool_collection",""],
 ["col","Awesome OSINT","La lista curada más completa de la comunidad.","The most complete community-curated list.","A lista curada mais completa da comunidade.","ok","https://github.com/jivoi/awesome-osint",""],
+["col","YogSec OSINT Tools","Lista enorme por categorías (alias, registros, cripto, deepfakes, extremismo…). Muy activa; sin licencia declarada. Su sección de citas incluye herramientas de vigilancia de parejas: no las usamos.","Huge categorised list (usernames, records, crypto, deepfakes, extremism…). Very active; no declared license. Its dating section includes partner-surveillance tools: we do not use them.","Lista enorme por categorias (alias, registos, cripto, deepfakes, extremismo…). Muito ativa; sem licença declarada. A secção de encontros inclui ferramentas de vigilância de parceiros: não as usamos.","ok","https://github.com/yogsec/OSINT-Tools",""],
 ["col","OSINT Framework","Árbol interactivo de herramientas por tipo de dato.","Interactive tree of tools by data type.","Árvore interativa de ferramentas por tipo de dado.","ok","https://osintframework.com",""],
 ["col","Awesome OSINT Arsenal","Más de 100 herramientas con instalador en un comando.","100+ tools with a one-command installer.","Mais de 100 ferramentas com instalador em um comando.","ok","https://github.com/rawfilejson/awesome-osint-arsenal",""],
 ["col","OSINTJet Quick Search","Lanzador de búsquedas por categoría. Servicio comercial nuevo: no subas datos de casos reales.","Search launcher by category. New commercial service: don't upload real case data.","Lançador de buscas por categoria. Serviço comercial novo: não envie dados de casos reais.","lim","https://osintjet.com/en/osint-search-tools/",""],
@@ -223,3 +224,24 @@ const LAUNCH = {
   "ip": "https://metrics.torproject.org/rs.html#search/{q}"
  }
 };
+
+/* Herramientas que necesitan servidor y se activan con la comunidad.
+   [nombre exacto en TOOLS, meta de estrellas, pestaña de Multi-OSINT Lite]. Para sumar una: agrega una fila y corre build.py. */
+const LOCKED = [
+ ["Maigret", 100, "alias"],
+ ["Consensus OSINT", 100, "alias"],
+ ["User Scanner", 100, "email"],
+ ["Sherlock", 1000, "alias"],
+ ["Blackbird", 1000, "alias"],
+ ["Mailcat", 1000, "alias"],
+ ["Linkook", 1000, "alias"],
+ ["GoSearch", 1000, "alias"],
+ ["PhoneInfoga", 1000, "phone"],
+ ["theHarvester", 1000, "domain"],
+ ["Subfinder", 1000, "domain"],
+ ["Amass", 1000, "domain"],
+ ["dnstwist", 1000, "domain"],
+ ["FinalRecon", 1000, "domain"],
+ ["TorBot", 1000, "onion"],
+ ["ExifTool", 1000, "image"]
+];

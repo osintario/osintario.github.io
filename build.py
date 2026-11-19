@@ -309,7 +309,7 @@ def home(lang):
     <div class="bar"><i id="stars-bar"></i></div>
     <div class="m-row"><span>{s("g_issues", lang)}</span><b><span id="issues">–</span> / 10</b></div>
     <div class="bar"><i id="issues-bar"></i></div>
-    <p class="note">{s("g_note", lang)}</p>
+    <p class="note">{s("g_note", lang)} · <a href="{TOOLSP[lang]}#comunidad">{LS["home"][LANGS.index(lang)]}</a></p>
   </div>
 </div></section>
 
@@ -335,6 +335,20 @@ def home(lang):
 </html>
 '''
     return h
+
+LS = {
+    "tag": ("Con la comunidad", "With the community", "Com a comunidade"),
+    "h": ("Herramientas que se destraban con tus estrellas", "Tools your stars will unlock", "Ferramentas que as suas estrelas vão desbloquear"),
+    "p": ("Estas herramientas necesitan un servidor para funcionar y hoy, como proyecto independiente, no podemos cubrir ese costo. Cada ⭐ en GitHub nos acerca a activarlas aquí mismo, gratis y para todos. Más adelante abriremos la posibilidad de apoyar el proyecto con donaciones para seguir sumando.",
+          "These tools need a server to run and, as an independent project, we cannot cover that cost yet. Every ⭐ on GitHub brings us closer to switching them on right here, free for everyone. Later on we will open donations so the project can keep growing.",
+          "Estas ferramentas precisam de um servidor para funcionar e, como projeto independente, ainda não conseguimos cobrir esse custo. Cada ⭐ no GitHub aproxima-nos de as ativar aqui mesmo, grátis e para todos. Mais adiante abriremos a possibilidade de apoiar o projeto com donativos."),
+    "m1": ("Meta 1 · 100 ⭐", "Goal 1 · 100 ⭐", "Meta 1 · 100 ⭐"),
+    "m1p": ("Barrido de alias en miles de sitios y emails registrados.", "Username sweep across thousands of sites and registered emails.", "Varredura de alias em milhares de sites e emails registados."),
+    "m2": ("Meta 2 · 1.000 ⭐", "Goal 2 · 1,000 ⭐", "Meta 2 · 1.000 ⭐"),
+    "m2p": ("Todo el resto: subdominios, teléfono, typosquatting, dark web y metadatos completos.", "Everything else: subdomains, phone, typosquatting, dark web and full metadata.", "Todo o resto: subdomínios, telefone, typosquatting, dark web e metadados completos."),
+    "cta": ("Dejar mi ⭐ en 30 segundos", "Leave my ⭐ in 30 seconds", "Deixar a minha ⭐ em 30 segundos"),
+    "home": ("Qué se destraba con 100 y 1.000 ⭐", "What 100 and 1,000 ⭐ unlock", "O que 100 e 1.000 ⭐ desbloqueiam"),
+}
 
 
 def tools(lang):
@@ -369,6 +383,16 @@ def tools(lang):
       <div id="t-out"></div>
     </section>
   </div>
+  <section class="unlock" id="comunidad">
+    <span class="tag">{LS["tag"][LANGS.index(lang)]}</span>
+    <h2>{LS["h"][LANGS.index(lang)]}</h2>
+    <p>{LS["p"][LANGS.index(lang)]}</p>
+    <div class="goals">
+      <div class="goalcard" data-goal="100"><h3>{LS["m1"][LANGS.index(lang)]}</h3><p>{LS["m1p"][LANGS.index(lang)]}</p><div class="bar"><i></i></div><p class="cnt"><b class="st">–</b> / 100</p><ul class="lk"></ul></div>
+      <div class="goalcard" data-goal="1000"><h3>{LS["m2"][LANGS.index(lang)]}</h3><p>{LS["m2p"][LANGS.index(lang)]}</p><div class="bar"><i></i></div><p class="cnt"><b class="st">–</b> / 1000</p><ul class="lk"></ul></div>
+    </div>
+    <p><a class="go cta-star" href="{STARP[lang]}">{LS["cta"][LANGS.index(lang)]}</a></p>
+  </section>
 </main>
 <footer><div class="wrap">
   {s("tfoot", lang)} · <a href="{HOME[lang]}">OSINTario</a> · Federico Dosio, {s("foot2", lang)} · <a href="{GH}/issues/new?template=sugerir-herramienta.yml" rel="noopener noreferrer" target="_blank">{s("improve", lang)}</a>
@@ -436,9 +460,10 @@ def dirlinks():
     """Genera dirlinks.js para Multi-OSINT Lite a partir de TOOLS y LAUNCH de directory.js."""
     src = open("directory.js", encoding="utf-8").read()
     launch = json.loads(re.search(r"const LAUNCH = (\{[\s\S]*?\n\});", src).group(1))
-    rows = {}
-    for m in re.finditer(r'^\["([a-z]+)","((?:[^"\\]|\\.)*)",(?:"(?:[^"\\]|\\.)*",){3}"([a-z]+)","(?:[^"\\]|\\.)*","([lp]*)"\]', src, re.M):
-        rows[m.group(2)] = (m.group(3), m.group(4))
+    rows, descs = {}, {}
+    for m in re.finditer(r'^\["([a-z]+)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","([a-z]+)","(?:[^"\\]|\\.)*","([lp]*)"\]', src, re.M):
+        rows[m.group(2)] = (m.group(6), m.group(7))
+        descs[m.group(2)] = [json.loads('"' + m.group(k) + '"') for k in (3, 4, 5)]
     out = []
     for name, kinds in launch.items():
         if name not in rows:
@@ -446,7 +471,13 @@ def dirlinks():
         st, acc = rows[name]
         if st != "no":
             out.append([name, acc, kinds])
-    open("dirlinks.js", "w", encoding="utf-8").write("/* Generado por build.py desde directory.js (LAUNCH). No editar a mano. */\nconst DIRLINKS = " + json.dumps(out, ensure_ascii=False) + ";\n")
+    locked = json.loads(re.search(r"const LOCKED = (\[[\s\S]*?\n\]);", src).group(1))
+    lk = []
+    for name, goal, tab in locked:
+        if name not in descs:
+            raise SystemExit(f"LOCKED: '{name}' no está en TOOLS")
+        lk.append([name, goal, tab, descs[name]])
+    open("dirlinks.js", "w", encoding="utf-8").write("/* Generado por build.py desde directory.js (LAUNCH y LOCKED). No editar a mano. */\nconst DIRLINKS = " + json.dumps(out, ensure_ascii=False) + ";\nconst DIRLOCKED = " + json.dumps(lk, ensure_ascii=False) + ";\n")
     return len(out)
 
 
@@ -469,7 +500,7 @@ if __name__ == "__main__":
 def readme():
     """Regenera README.md desde directory.js (descripciones en español)."""
     src = open("directory.js", encoding="utf-8").read()
-    tools = json.loads(re.sub(r",\s*\]$", "]", src[src.index("const TOOLS = [") + 14: src.rindex("];") + 1].strip()))
+    tools = json.loads(re.sub(r",\s*\]$", "]", src[src.index("const TOOLS = [") + 14: src.index("\n];", src.index("const TOOLS = [")) + 2].strip()))
     cats = json.loads("{" + re.sub(r"(\w+):", r'"\1":', src[src.index("const CATS = {") + 14: src.index("};")]).rstrip().rstrip(",") + "}")
     st = {"ok": "✅ Activa", "lim": "🟡 Con límites", "risk": "⚠️ Con precaución", "no": "❌ Descartada"}
     acc = {"l": "🔑 registro", "p": "💳 pago"}
