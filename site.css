@@ -98,3 +98,7 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);font-size:13px;color
 .goalcard .lk li{opacity:.75}
 .cta-star{display:inline-block;text-decoration:none;font:600 15px var(--body);padding:10px 18px;border-radius:4px;background:var(--accent);color:var(--accent-ink)}
 .privacy.ethics{border-left:4px solid var(--warn);margin-top:10px}
+header.top .wrap{height:auto;min-height:60px;row-gap:0;flex-wrap:wrap}
+nav.main{flex-wrap:nowrap;align-items:center;white-space:nowrap}
+@media (max-width:1400px){header.top .tag.opt{display:none}}
+@media (max-width:820px){header.top .wrap{gap:12px}.lang{margin-left:auto}nav.main{order:3;flex-basis:100%;margin-left:0;overflow-x:auto;padding:0 0 10px;gap:16px;scrollbar-width:none}nav.main a.cta{padding:4px 10px;order:-1}}

@@ -22,7 +22,7 @@
 <header class="top"><div class="wrap">
   <a class="logo" href="en.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
   <span class="tag opt">Open sources, with method</span>
-  <nav class="main" aria-label="Secciones"><a href="#directorio">Directory</a><a class="opt" href="#metodo">Method</a><a class="opt" href="#kits">Kits</a><a class="opt" href="#sobre">About me</a><a class="cta" href="tools-en.html">Multi-OSINT Lite</a></nav>
+  <nav class="main" aria-label="Secciones"><a href="#directorio">Directory</a><a href="safe-install.html">Safe install</a><a href="#pro">Lite & Pro</a><a class="opt" href="#metodo">Method</a><a class="opt" href="#sobre">About me</a><a href="star.html">⭐ Support</a><a class="cta" href="tools-en.html">Multi-OSINT Lite</a></nav>
   <nav class="lang" aria-label="Idioma / Language"><a href="index.html" hreflang="es" lang="es" aria-current="false">ES</a><a href="en.html" hreflang="en" lang="en" aria-current="true">EN</a><a href="pt.html" hreflang="pt" lang="pt" aria-current="false">PT</a></nav>
 </div></header>
 <main id="inicio">
@@ -40,6 +40,12 @@
     <div><span>Last review</span><b id="count-date">–</b></div>
   </div>
 </div>
+
+<section id="empezar"><div class="wrap">
+  <span class="tag">Start here</span>
+  <h2>What you can do on OSINTario</h2>
+  <div class="toolgrid start"><a class="tool" href="#directorio"><b>Find the right tool</b><span>Hand-reviewed directory: what each tool does, whether it still works and if it needs a login or payment.</span><em>Browse the directory →</em></a><a class="tool" href="tools-en.html"><b>Investigate a data point now</b><span>Multi-OSINT Lite queries several sources from your browser. Free, no sign-up.</span><em>Open Multi-OSINT Lite →</em></a><a class="tool" href="safe-install.html"><b>Install without risk</b><span>If a tool must be installed, follow the guide: virtual machine, isolated environments and per-tool steps.</span><em>Read the guide →</em></a><a class="tool" href="star.html"><b>Unlock more with your ⭐</b><span>At 100 stars the username sweep across thousands of sites goes live. It takes 30 seconds.</span><em>Leave my ⭐ →</em></a></div>
+</div></section>
 
 <section id="herramientas"><div class="wrap">
   <span class="tag">01 · Free tools</span>
@@ -81,20 +87,21 @@
 </div></section>
 
 <section id="pro"><div class="wrap">
-  <div class="pro">
-    <div>
-      <span class="tag">05 · Coming soon</span>
-      <h2>Multi-OSINT Pro</h2>
-      <p class="lede">For those who need more: automated searches across thousands of sites, full reports and support on tailored investigations. We're testing it with a small group of investigators.</p>
-      <ul><li>Unified search by username, email, phone, domain, image or company.</li><li>Results grouped by category.</li><li>Exportable report with archived evidence and a hash for every capture.</li><li>Tailored investigations with paid sources, quoted in advance.</li></ul>
+  <span class="tag">05 · Lite, community and Pro</span>
+  <h2>What is free today, what the community unlocks and what Pro will be</h2>
+  <p class="lede">OSINTario has three stages. The first one already works. The other two depend on being able to pay for a server, which is why the star goals exist.</p>
+  <div class="etapas">
+    <div class="etapa now"><span class="k">Available today · free</span><h3>Multi-OSINT Lite</h3><p>Runs in your browser, no sign-up and no server: what you search never passes through OSINTario.</p><ul><li>Domain, IP, username, email, phone, .onion site, image and dorks.</li><li>Report with source, confidence level and SHA-256 hash.</li><li>Limit: it can only query sources that accept requests from a browser.</li></ul>
+      <a class="btn" href="tools-en.html">Use Multi-OSINT Lite</a></div>
+    <div class="etapa"><span class="k">Unlocked by stars · free</span><h3>Server-side tools</h3><p>Sherlock, Maigret or theHarvester cannot run in a browser: they need a server, and today the project cannot pay for one. Stars are the signal to switch it on.</p><ul><li>At 100 ⭐: username sweep across thousands of sites and registered emails.</li><li>At 1,000 ⭐: subdomains, phone, typosquatting, dark web and full metadata.</li><li>It will stay free: donations will open later to keep the server running.</li></ul>
+      <div class="m-row"><span>Stars</span><b><span id="stars2">–</span> / 100</b></div><div class="bar"><i id="stars2-bar"></i></div>
+      <div class="ctas"><a class="btn" href="star.html">Give a ⭐ on GitHub</a><a class="btn ghost" href="tools-en.html#comunidad">See what gets unlocked</a></div></div>
+    <div class="etapa later"><span class="k">Later · no date yet</span><h3>Multi-OSINT Pro</h3><p>For professional work: everything in a single search, a full report and tailored investigations. It is not available yet; it will come after the community goals.</p><ul><li>Unified search by username, email, phone, domain, image or company.</li><li>Results grouped by category.</li><li>Exportable report with archived evidence and a hash for every capture.</li><li>Tailored investigations with paid sources, quoted in advance.</li></ul>
       <p class="no">How investigated people are protected: access only with verified identity, a declared purpose for each search and an audit log. Private individuals' profiles are never sold to anonymous users.</p>
-    </div>
-    <div class="wait">
-      <p>The waitlist works with your GitHub account. It's public: no email or phone needed.</p>
-      <a class="join" href="https://github.com/osintario/osintario.github.io/issues/new?template=lista-espera.yml" target="_blank" rel="noopener noreferrer">Join the waitlist</a>
-      <p><a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">Know a tool that's missing? Suggest it here.</a></p>
-    </div>
+      <p class="small">The waitlist works with your GitHub account. It's public: no email or phone needed.</p>
+      <a class="btn ghost" href="https://github.com/osintario/osintario.github.io/issues/new?template=lista-espera.yml" target="_blank" rel="noopener noreferrer">Join the waitlist</a></div>
   </div>
+  <p class="small"><a href="https://github.com/osintario/osintario.github.io/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">Know a tool that's missing? Suggest it here.</a></p>
 </div></section>
 
 <section id="apoyo"><div class="wrap goal">
@@ -127,7 +134,7 @@
 
 <footer><div class="wrap">
   <div><b>Responsible use.</b> This directory links to third-party services with no affiliation. Investigating a person requires a lawful purpose and compliance with GDPR and your country's data protection law. Services change: always verify at the source.</div>
-  <div>OSINTario · Federico Dosio<br>IFA professor at IUPFA</div>
+  <div>OSINTario · Federico Dosio<br>IFA professor at IUPFA<nav class="footnav" aria-label="OSINTario"><a href="en.html#directorio">Directory</a><a href="tools-en.html">Multi-OSINT Lite</a><a href="safe-install.html">Safe install</a><a href="star.html">Leave a ⭐</a></nav></div>
 </div></footer>
 <script src="directory.js"></script>
 <script src="home.js"></script>

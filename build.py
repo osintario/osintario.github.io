@@ -165,6 +165,78 @@ def s(key, lang):
     return STR[key][LANGS.index(lang)]
 
 
+# Flujo de entrada, planes (Lite / comunidad / Pro) y navegación. Tuplas (ES, EN, PT).
+FS = {
+    "nav_guide": ("Instalación segura", "Safe install", "Instalação segura"),
+    "nav_plans": ("Lite y Pro", "Lite & Pro", "Lite e Pro"),
+    "nav_star": ("⭐ Apoyar", "⭐ Support", "⭐ Apoiar"),
+    "start_tag": ("Empieza aquí", "Start here", "Comece aqui"),
+    "start_h": ("Qué puedes hacer en OSINTario", "What you can do on OSINTario", "O que você pode fazer no OSINTario"),
+    "start": (
+        ["Encontrar la herramienta|Directorio revisado a mano: qué hace cada una, si sigue activa y si pide registro o pago.|Ver el directorio",
+         "Investigar un dato ahora|Multi-OSINT Lite consulta varias fuentes desde tu navegador. Gratis y sin registro.|Abrir Multi-OSINT Lite",
+         "Instalar sin riesgos|Si la herramienta se instala, sigue la guía: máquina virtual, entornos aislados y pasos por herramienta.|Ver la guía",
+         "Destrabar más con tu ⭐|Con 100 estrellas se activa el barrido de alias en miles de sitios. Toma 30 segundos.|Dejar mi ⭐"],
+        ["Find the right tool|Hand-reviewed directory: what each tool does, whether it still works and if it needs a login or payment.|Browse the directory",
+         "Investigate a data point now|Multi-OSINT Lite queries several sources from your browser. Free, no sign-up.|Open Multi-OSINT Lite",
+         "Install without risk|If a tool must be installed, follow the guide: virtual machine, isolated environments and per-tool steps.|Read the guide",
+         "Unlock more with your ⭐|At 100 stars the username sweep across thousands of sites goes live. It takes 30 seconds.|Leave my ⭐"],
+        ["Encontrar a ferramenta|Diretório revisado à mão: o que cada uma faz, se ainda funciona e se pede cadastro ou pagamento.|Ver o diretório",
+         "Investigar um dado agora|O Multi-OSINT Lite consulta várias fontes pelo navegador. Grátis e sem cadastro.|Abrir o Multi-OSINT Lite",
+         "Instalar sem riscos|Se a ferramenta é instalada, siga o guia: máquina virtual, ambientes isolados e passos por ferramenta.|Ver o guia",
+         "Desbloquear mais com sua ⭐|Com 100 estrelas ativa-se a varredura de apelidos em milhares de sites. Leva 30 segundos.|Deixar minha ⭐"]),
+    "plans_tag": ("05 · Lite, comunidad y Pro", "05 · Lite, community and Pro", "05 · Lite, comunidade e Pro"),
+    "plans_h": ("Qué es gratis hoy, qué se activa con la comunidad y qué será Pro", "What is free today, what the community unlocks and what Pro will be", "O que é grátis hoje, o que a comunidade ativa e o que será o Pro"),
+    "plans_p": ("OSINTario tiene tres etapas. La primera ya funciona. Las otras dos dependen de poder pagar un servidor, y por eso existen las metas de estrellas.",
+                "OSINTario has three stages. The first one already works. The other two depend on being able to pay for a server, which is why the star goals exist.",
+                "O OSINTario tem três etapas. A primeira já funciona. As outras duas dependem de poder pagar um servidor, e por isso existem as metas de estrelas."),
+    "p1_k": ("Disponible hoy · gratis", "Available today · free", "Disponível hoje · grátis"),
+    "p1_h": ("Multi-OSINT Lite", "Multi-OSINT Lite", "Multi-OSINT Lite"),
+    "p1_p": ("Corre en tu navegador, sin registro y sin servidor: lo que buscas no pasa por OSINTario.",
+             "Runs in your browser, no sign-up and no server: what you search never passes through OSINTario.",
+             "Roda no seu navegador, sem cadastro e sem servidor: o que você busca não passa pelo OSINTario."),
+    "p1_li": ("Dominio, IP, alias, email, teléfono, sitio .onion, imagen y dorks.;Informe con fuente, nivel de confianza y hash SHA-256.;Límite: solo puede consultar fuentes que aceptan pedidos desde un navegador.",
+              "Domain, IP, username, email, phone, .onion site, image and dorks.;Report with source, confidence level and SHA-256 hash.;Limit: it can only query sources that accept requests from a browser.",
+              "Domínio, IP, apelido, email, telefone, site .onion, imagem e dorks.;Relatório com fonte, nível de confiança e hash SHA-256.;Limite: só consulta fontes que aceitam pedidos a partir de um navegador."),
+    "p1_b": ("Usar Multi-OSINT Lite", "Use Multi-OSINT Lite", "Usar o Multi-OSINT Lite"),
+    "p2_k": ("Se activa con estrellas · gratis", "Unlocked by stars · free", "Ativa-se com estrelas · grátis"),
+    "p2_h": ("Herramientas con servidor", "Server-side tools", "Ferramentas com servidor"),
+    "p2_p": ("Sherlock, Maigret o theHarvester no pueden correr en un navegador: necesitan un servidor, y hoy el proyecto no puede pagarlo. Las estrellas son la señal para activarlo.",
+             "Sherlock, Maigret or theHarvester cannot run in a browser: they need a server, and today the project cannot pay for one. Stars are the signal to switch it on.",
+             "Sherlock, Maigret ou theHarvester não rodam num navegador: precisam de um servidor, e hoje o projeto não consegue pagá-lo. As estrelas são o sinal para ativá-lo."),
+    "p2_li": ("Con 100 ⭐: barrido de alias en miles de sitios y emails registrados.;Con 1.000 ⭐: subdominios, teléfono, typosquatting, dark web y metadatos completos.;Seguirá siendo gratis: más adelante se abrirán donaciones para sostener el servidor.",
+              "At 100 ⭐: username sweep across thousands of sites and registered emails.;At 1,000 ⭐: subdomains, phone, typosquatting, dark web and full metadata.;It will stay free: donations will open later to keep the server running.",
+              "Com 100 ⭐: varredura de apelidos em milhares de sites e emails registrados.;Com 1.000 ⭐: subdomínios, telefone, typosquatting, dark web e metadados completos.;Continuará grátis: mais adiante serão abertas doações para manter o servidor."),
+    "p2_b": ("Ver qué se destraba", "See what gets unlocked", "Ver o que é desbloqueado"),
+    "p3_k": ("Más adelante · sin fecha", "Later · no date yet", "Mais adiante · sem data"),
+    "p3_h": ("Multi-OSINT Pro", "Multi-OSINT Pro", "Multi-OSINT Pro"),
+    "p3_p": ("Para trabajo profesional: todo en una sola búsqueda, informe completo e investigación a medida. Todavía no está disponible; llegará después de las metas de la comunidad.",
+             "For professional work: everything in a single search, a full report and tailored investigations. It is not available yet; it will come after the community goals.",
+             "Para trabalho profissional: tudo numa só busca, relatório completo e investigação sob medida. Ainda não está disponível; chegará depois das metas da comunidade."),
+    "foot_nav": ("Directorio|Multi-OSINT Lite|Instalación segura|Dejar una ⭐", "Directory|Multi-OSINT Lite|Safe install|Leave a ⭐", "Diretório|Multi-OSINT Lite|Instalação segura|Deixar uma ⭐"),
+    "lite_what": ("<b>¿Qué es «Lite»?</b> La versión gratuita que corre solo en tu navegador. Las herramientas que necesitan servidor se activan con las estrellas de la comunidad: <a href=\"#comunidad\">mira cuáles y cuánto falta</a>.",
+                  "<b>What is “Lite”?</b> The free version that runs only in your browser. Tools that need a server are unlocked by community stars: <a href=\"#comunidad\">see which ones and how far we are</a>.",
+                  "<b>O que é «Lite»?</b> A versão gratuita que roda só no seu navegador. As ferramentas que precisam de servidor ativam-se com as estrelas da comunidade: <a href=\"#comunidad\">veja quais e quanto falta</a>."),
+}
+
+
+def f(key, lang):
+    return FS[key][LANGS.index(lang)]
+
+
+def nav_links(lang, home_page=False):
+    pre = "" if home_page else HOME[lang]
+    return (f'<a href="{pre}#directorio">{s("nav_dir", lang)}</a><a href="{GUIDEP[lang]}">{f("nav_guide", lang)}</a>'
+            f'<a href="{pre}#pro">{f("nav_plans", lang)}</a><a class="opt" href="{pre}#metodo">{s("nav_met", lang)}</a>'
+            f'<a class="opt" href="{pre}#sobre">{s("nav_about", lang)}</a><a href="{STARP[lang]}">{f("nav_star", lang)}</a>')
+
+
+def foot_nav(lang):
+    a, b, c, d = f("foot_nav", lang).split("|")
+    return (f'<nav class="footnav" aria-label="OSINTario"><a href="{HOME[lang]}#directorio">{a}</a><a href="{TOOLSP[lang]}">{b}</a>'
+            f'<a href="{GUIDEP[lang]}">{c}</a><a href="{STARP[lang]}">{d}</a></nav>')
+
+
 def lang_switch(lang, pages):
     names = {"es": "ES", "en": "EN", "pt": "PT"}
     return '<nav class="lang" aria-label="Idioma / Language">' + "".join(
@@ -216,7 +288,10 @@ def home(lang):
           "affiliation": {"@type": "CollegeOrUniversity", "name": "Instituto Universitario de la Policía Federal Argentina (IUPFA)"},
           "sameAs": ["https://www.linkedin.com/in/dosiofederico/"]}}
     h += f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n</head>\n<body>\n'
-    links = f'<a href="#directorio">{s("nav_dir", lang)}</a><a class="opt" href="#metodo">{s("nav_met", lang)}</a><a class="opt" href="#kits">{s("nav_kits", lang)}</a><a class="opt" href="#sobre">{s("nav_about", lang)}</a>'
+    links = nav_links(lang, True)
+    start_to = ["#directorio", tp, GUIDEP[lang], STARP[lang]]
+    start = "".join(f'<a class="tool" href="{u}"><b>{a}</b><span>{b}</span><em>{c} →</em></a>' for u, (a, b, c) in zip(start_to, (x.split("|") for x in f("start", lang))))
+    li = lambda k: "".join(f"<li>{x}</li>" for x in f(k, lang).split(";"))
     h += header(lang, links, tp, "Multi-OSINT Lite", HOME)
     cards = "".join(f'<a class="tool" href="{tp}#{k}"><b>{s(t, lang)}</b><span>{s(t + "_d", lang)}</span><em>{s(n, lang)}</em></a>'
                     for k, t, n in [("domain", "t_domain", "n_dom"), ("ip", "t_ip", "n_ip"), ("alias", "t_alias", "n_alias"), ("email", "t_email", "n_email"),
@@ -245,6 +320,12 @@ def home(lang):
     <div><span>{s("l_date", lang)}</span><b id="count-date">–</b></div>
   </div>
 </div>
+
+<section id="empezar"><div class="wrap">
+  <span class="tag">{f("start_tag", lang)}</span>
+  <h2>{f("start_h", lang)}</h2>
+  <div class="toolgrid start">{start}</div>
+</div></section>
 
 <section id="herramientas"><div class="wrap">
   <span class="tag">{s("s1_tag", lang)}</span>
@@ -286,20 +367,21 @@ def home(lang):
 </div></section>
 
 <section id="pro"><div class="wrap">
-  <div class="pro">
-    <div>
-      <span class="tag">{s("s5_tag", lang)}</span>
-      <h2>Multi-OSINT Pro</h2>
-      <p class="lede">{s("s5_p", lang)}</p>
-      <ul>{pro_li}</ul>
+  <span class="tag">{f("plans_tag", lang)}</span>
+  <h2>{f("plans_h", lang)}</h2>
+  <p class="lede">{f("plans_p", lang)}</p>
+  <div class="etapas">
+    <div class="etapa now"><span class="k">{f("p1_k", lang)}</span><h3>{f("p1_h", lang)}</h3><p>{f("p1_p", lang)}</p><ul>{li("p1_li")}</ul>
+      <a class="btn" href="{tp}">{f("p1_b", lang)}</a></div>
+    <div class="etapa"><span class="k">{f("p2_k", lang)}</span><h3>{f("p2_h", lang)}</h3><p>{f("p2_p", lang)}</p><ul>{li("p2_li")}</ul>
+      <div class="m-row"><span>{s("g_stars", lang)}</span><b><span id="stars2">–</span> / 100</b></div><div class="bar"><i id="stars2-bar"></i></div>
+      <div class="ctas"><a class="btn" href="{STARP[lang]}">{s("g_star", lang)}</a><a class="btn ghost" href="{tp}#comunidad">{f("p2_b", lang)}</a></div></div>
+    <div class="etapa later"><span class="k">{f("p3_k", lang)}</span><h3>{f("p3_h", lang)}</h3><p>{f("p3_p", lang)}</p><ul>{pro_li}</ul>
       <p class="no">{s("pro_no", lang)}</p>
-    </div>
-    <div class="wait">
-      <p>{s("wait_p", lang)}</p>
-      <a class="join" href="{GH}/issues/new?template=lista-espera.yml" target="_blank" rel="noopener noreferrer">{s("wait_b", lang)}</a>
-      <p><a href="{GH}/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">{s("suggest", lang)}</a></p>
-    </div>
+      <p class="small">{s("wait_p", lang)}</p>
+      <a class="btn ghost" href="{GH}/issues/new?template=lista-espera.yml" target="_blank" rel="noopener noreferrer">{s("wait_b", lang)}</a></div>
   </div>
+  <p class="small"><a href="{GH}/issues/new?template=sugerir-herramienta.yml" target="_blank" rel="noopener noreferrer">{s("suggest", lang)}</a></p>
 </div></section>
 
 <section id="apoyo"><div class="wrap goal">
@@ -332,7 +414,7 @@ def home(lang):
 
 <footer><div class="wrap">
   <div>{s("foot", lang)}</div>
-  <div>OSINTario · Federico Dosio<br>{s("foot2", lang)}</div>
+  <div>OSINTario · Federico Dosio<br>{s("foot2", lang)}{foot_nav(lang)}</div>
 </div></footer>
 <script src="directory.js"></script>
 <script src="home.js"></script>
@@ -359,7 +441,7 @@ LS = {
 def tools(lang):
     csp = "default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https:; base-uri 'none'; form-action 'none'"
     h = head(lang, s("tools_title", lang), s("tools_desc", lang), TOOLSP[lang], TOOLSP, csp, "site.css") + "</head>\n<body>\n"
-    links = f'<a href="{HOME[lang]}#directorio">{s("nav_dir", lang)}</a><a class="opt" href="{HOME[lang]}#metodo">{s("nav_met", lang)}</a>'
+    links = nav_links(lang)
     h += header(lang, links, TOOLSP[lang], "Multi-OSINT Lite", TOOLSP).replace('class="cta"', 'class="cta" aria-current="page"')
     tabs = [("domain", "t_domain", "n_dom"), ("ip", "t_ip", "n_ip"), ("alias", "t_alias", "n_alias"), ("email", "t_email", "n_email"),
             ("phone", "t_phone", "n_phone"), ("onion", "t_onion", "n_onion"), ("image", "t_image", "n_img"), ("dorks", "t_dorks_s", "n_dork")]
@@ -371,6 +453,7 @@ def tools(lang):
     <span class="tag">{s("tools_tag", lang)}</span>
     <h1>Multi-OSINT Lite</h1>
     <p>{s("tools_p", lang)}</p>
+    <div class="privacy"><span aria-hidden="true">💡</span><span>{f("lite_what", lang)}</span></div>
     <div class="privacy"><span aria-hidden="true">🔒</span><span>{s("privacy", lang)}</span></div>
     <div class="privacy ethics" role="note"><span aria-hidden="true">⚖️</span><span>{s("ethics", lang)}</span></div>
   </section>
@@ -438,7 +521,7 @@ def star(lang):
     csp = "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'"
     og = {"es": "og-estrella.png", "en": "og-star.png", "pt": "og-estrela.png"}[lang]
     h = head(lang, t("title"), t("desc"), STARP[lang], STARP, csp, "home.css", og) + "</head>\n<body>\n"
-    h += header(lang, "", TOOLSP[lang], "Multi-OSINT Lite", STARP)
+    h += header(lang, nav_links(lang), TOOLSP[lang], "Multi-OSINT Lite", STARP)
     h += f"""<main id="main"><section><div class="wrap starpage">
   <div class="bigstar" aria-hidden="true">★</div>
   <h1>{t("title")}</h1>
@@ -494,6 +577,10 @@ GS = {
          "Sem root, salvo necessidade|Uma ferramenta que busca apelidos não precisa de sudo. Se pedir, pergunte-se por quê.",
          "Isole a rede e os dados|Rede em modo NAT, sem pastas compartilhadas nem área de transferência com seu computador. Use contas e chaves de API criadas só para investigar.",
          "Feche o caso limpo|Exporte a evidência com seu hash, anote versão e data da ferramenta e volte ao snapshot."]),
+    "how_h": ("Paso a paso de las 10 más usadas", "Step by step for the 10 most used", "Passo a passo das 10 mais usadas"),
+    "how_p": ("Comandos probados contra la documentación oficial de cada proyecto. Ejecuta todo dentro de tu máquina virtual.",
+              "Commands checked against each project's official documentation. Run everything inside your virtual machine.",
+              "Comandos conferidos com a documentação oficial de cada projeto. Execute tudo dentro da sua máquina virtual."),
     "types_h": ("Según el tipo de herramienta", "By type of tool", "Conforme o tipo de ferramenta"),
     "types": {
         "py": (("Python (pipx o entorno virtual)", "Python (pipx or virtual environment)", "Python (pipx ou ambiente virtual)"),
@@ -532,6 +619,48 @@ GS = {
     "nav": ("Instalación segura", "Safe install", "Instalação segura"),
 }
 
+
+# Instructivos por herramienta. La clave es el nombre exacto en TOOLS y debe figurar en GUIDED (directory.js).
+# Cada uno: (para qué sirve ES/EN/PT, comandos, aviso ES/EN/PT o None). Los comandos se traducen con CODE_TR.
+HOWTO = {
+    "Kali Linux": (("La base del laboratorio: una máquina virtual con cientos de herramientas ya instaladas. Empieza por aquí.",
+                    "The base of your lab: a virtual machine with hundreds of tools preinstalled. Start here.",
+                    "A base do laboratório: uma máquina virtual com centenas de ferramentas já instaladas. Comece por aqui."),
+                   "# 1. descarga la imagen para VirtualBox o VMware solo desde kali.org/get-kali (Virtual Machines)\n# 2. comprueba que el hash coincide con el publicado en la web\nsha256sum kali-linux-*-virtualbox-amd64.7z\n# 3. importa la VM, entra con kali / kali y cambia la clave\npasswd\n# 4. actualiza y toma un snapshot limpio\nsudo apt update && sudo apt full-upgrade -y",
+                   None),
+    "Sherlock": (("Busca un alias en cientos de redes sociales.", "Checks a username on hundreds of social networks.", "Busca um apelido em centenas de redes sociais."),
+                 "pipx install sherlock-project\nsherlock ALIAS\n\n# sin instalar nada, con Docker\ndocker run --rm -it sherlock/sherlock ALIAS",
+                 ("Un alias igual en dos redes es una hipótesis, no una identidad confirmada.", "The same username on two networks is a hypothesis, not a confirmed identity.", "O mesmo apelido em duas redes é uma hipótese, não uma identidade confirmada.")),
+    "Maigret": (("Busca un alias en miles de sitios y arma un informe con los datos de cada perfil.", "Checks a username on thousands of sites and builds a report with each profile's data.", "Busca um apelido em milhares de sites e monta um relatório com os dados de cada perfil."),
+                "pipx install maigret\nmaigret ALIAS --html\n\n# con Docker; el informe queda en ./informes\ndocker run --rm -v \"$PWD/informes:/app/reports\" soxoj/maigret:latest ALIAS --html",
+                None),
+    "theHarvester": (("Reúne subdominios, emails y hosts de un dominio desde fuentes públicas.", "Collects subdomains, emails and hosts for a domain from public sources.", "Reúne subdomínios, emails e hosts de um domínio a partir de fontes públicas."),
+                     "# en Kali ya viene instalado\ntheHarvester -d DOMINIO -b crtsh,certspotter\n\n# desde el repositorio (usa uv)\ngit clone https://github.com/laramies/theHarvester && cd theHarvester\nuv sync\nuv run theHarvester -d DOMINIO -b crtsh,certspotter",
+                     None),
+    "Subfinder": (("Enumera subdominios de forma pasiva: no toca el dominio investigado.", "Enumerates subdomains passively: it never touches the target domain.", "Enumera subdomínios de forma passiva: não toca o domínio investigado."),
+                  "go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest\nsubfinder -d DOMINIO -o subdominios.txt",
+                  None),
+    "Nuclei": (("Escanea un sitio con plantillas de vulnerabilidades conocidas.", "Scans a site with templates for known vulnerabilities.", "Escaneia um site com templates de vulnerabilidades conhecidas."),
+               "go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest\nnuclei -target https://TU-SITIO",
+               ("Es un escaneo activo: solo contra sistemas propios o con autorización escrita.", "This is an active scan: only against your own systems or with written authorization.", "É um escaneamento ativo: só contra sistemas próprios ou com autorização por escrito.")),
+    "Nmap": (("Descubre puertos abiertos y servicios.", "Discovers open ports and services.", "Descobre portas abertas e serviços."),
+             "sudo apt install nmap          # en Kali ya viene instalado\n# scanme.nmap.org es el equipo que Nmap ofrece para practicar\nnmap -sV scanme.nmap.org",
+             ("Es un escaneo activo: solo contra sistemas propios o con autorización escrita.", "This is an active scan: only against your own systems or with written authorization.", "É um escaneamento ativo: só contra sistemas próprios ou com autorização por escrito.")),
+    "ExifTool": (("Lee los metadatos de fotos y documentos: fecha, equipo, autor, GPS.", "Reads metadata from photos and documents: date, device, author, GPS.", "Lê os metadados de fotos e documentos: data, equipamento, autor, GPS."),
+                 "sudo apt install libimage-exiftool-perl\nexiftool ARCHIVO.jpg\n\n# trabaja siempre sobre una copia y guarda el hash del original\nsha256sum ARCHIVO.jpg",
+                 None),
+    "yt-dlp": (("Descarga un video con sus metadatos para preservarlo como evidencia.", "Downloads a video with its metadata to preserve it as evidence.", "Baixa um vídeo com seus metadados para preservá-lo como evidência."),
+               "pipx install \"yt-dlp[default]\"\nyt-dlp --write-info-json URL\nsha256sum *.mp4                # hash del archivo para la cadena de custodia",
+               None),
+    "Wireshark": (("Abre y analiza capturas de tráfico de red.", "Opens and analyzes network traffic captures.", "Abre e analisa capturas de tráfego de rede."),
+                  "sudo apt install wireshark     # en Kali ya viene instalado\nwireshark CAPTURA.pcap\n\n# para capturar sin ser root\nsudo usermod -aG wireshark $USER   # cierra sesión y vuelve a entrar",
+                  ("Captura solo tráfico de tu red o con autorización.", "Capture traffic only on your own network or with authorization.", "Capture tráfego só da sua rede ou com autorização.")),
+}
+
+
+def slug(name):
+    return "t-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
 CODE_TR = [
     ("# si está publicada en PyPI", "# if it is published on PyPI", "# se estiver publicada no PyPI"),
     ("# desde el repositorio", "# from the repository", "# a partir do repositório"),
@@ -543,6 +672,22 @@ CODE_TR = [
     ("# 1. snapshot de la VM", "# 1. snapshot the VM", "# 1. snapshot da VM"),
     ("# 2. en Kali muchas ya vienen en los repositorios oficiales", "# 2. on Kali many are already in the official repositories", "# 2. no Kali muitas já estão nos repositórios oficiais"),
     ("# 3. si solo hay instalador propio, léelo primero", "# 3. if there is only a custom installer, read it first", "# 3. se só houver instalador próprio, leia-o primeiro"),
+    ("# 1. descarga la imagen para VirtualBox o VMware solo desde kali.org/get-kali (Virtual Machines)", "# 1. download the VirtualBox or VMware image only from kali.org/get-kali (Virtual Machines)", "# 1. baixe a imagem para VirtualBox ou VMware só de kali.org/get-kali (Virtual Machines)"),
+    ("# 2. comprueba que el hash coincide con el publicado en la web", "# 2. check that the hash matches the one published on the site", "# 2. confira se o hash coincide com o publicado no site"),
+    ("# 3. importa la VM, entra con kali / kali y cambia la clave", "# 3. import the VM, log in with kali / kali and change the password", "# 3. importe a VM, entre com kali / kali e troque a senha"),
+    ("# 4. actualiza y toma un snapshot limpio", "# 4. update and take a clean snapshot", "# 4. atualize e tire um snapshot limpo"),
+    ("# sin instalar nada, con Docker", "# nothing to install, with Docker", "# sem instalar nada, com Docker"),
+    ("# con Docker; el informe queda en ./informes", "# with Docker; the report is saved in ./reports", "# com Docker; o relatório fica em ./relatorios"),
+    ("/informes:", "/reports:", "/relatorios:"),
+    ("# en Kali ya viene instalado", "# preinstalled on Kali", "# já vem instalado no Kali"),
+    ("# desde el repositorio (usa uv)", "# from the repository (uses uv)", "# a partir do repositório (usa uv)"),
+    ("# scanme.nmap.org es el equipo que Nmap ofrece para practicar", "# scanme.nmap.org is the host Nmap provides for practice", "# scanme.nmap.org é a máquina que o Nmap oferece para praticar"),
+    ("# trabaja siempre sobre una copia y guarda el hash del original", "# always work on a copy and keep the hash of the original", "# trabalhe sempre numa cópia e guarde o hash do original"),
+    ("# hash del archivo para la cadena de custodia", "# file hash for the chain of custody", "# hash do arquivo para a cadeia de custódia"),
+    ("# para capturar sin ser root", "# to capture without being root", "# para capturar sem ser root"),
+    ("# cierra sesión y vuelve a entrar", "# log out and back in", "# saia e entre de novo"),
+    ("subdominios.txt", "subdomains.txt", "subdominios.txt"), ("TU-SITIO", "YOUR-SITE", "SEU-SITE"), ("DOMINIO", "example.com", "exemplo.com"),
+    ("ARCHIVO", "FILE", "ARQUIVO"), ("CAPTURA", "CAPTURE", "CAPTURA"), ("ALIAS", "USERNAME", "APELIDO"),
     ("NOMBRE", "NAME", "NOME"), ("AUTOR", "AUTHOR", "AUTOR"), ("IMAGEN", "IMAGE", "IMAGEM"), ("/salida:", "/output:", "/saida:"), ("instalador.exe", "installer.exe", "instalador.exe"),
 ]
 
@@ -552,13 +697,21 @@ def guide(lang):
     t = lambda k: GS[k][i]
     csp = "default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'"
     h = head(lang, t("title") + " · OSINTario", t("desc"), GUIDEP[lang], GUIDEP, csp, "home.css") + "</head>\n<body>\n"
-    h += header(lang, f'<a href="{HOME[lang]}#directorio">{s("nav_dir", lang)}</a>', TOOLSP[lang], "Multi-OSINT Lite", GUIDEP)
+    h += header(lang, nav_links(lang), TOOLSP[lang], "Multi-OSINT Lite", GUIDEP)
     rules = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in (r.split("|", 1) for r in t("rules")))
     def code(c):
         for es, en, pt in CODE_TR:
             c = c.replace(es, (es, en, pt)[i])
         return html.escape(c)
     types = "".join(f'<article class="gtype" id="{k}"><h3>🧪 {v[0][i]}</h3><p>{v[1][i]}</p><pre><code>{code(v[2])}</code></pre></article>' for k, v in GS["types"].items())
+    src = open("directory.js", encoding="utf-8").read()
+    guided = json.loads(re.search(r"const GUIDED = (\[[^\]]*\]);", src).group(1))
+    if sorted(guided) != sorted(HOWTO):
+        raise SystemExit("GUIDED (directory.js) y HOWTO (build.py) no coinciden")
+    urls = dict(re.findall(r'^\["[a-z]+","((?:[^"\\]|\\.)*)",.*?,"(https?://[^"]+)"', src, re.M))
+    hows = "".join(f'<article class="gtype" id="{slug(n)}"><h3>{html.escape(n)}</h3><p>{v[0][i]} <a href="{urls[n]}" target="_blank" rel="noopener noreferrer">{("Sitio oficial", "Official site", "Site oficial")[i]} ↗</a></p><pre><code>{code(v[1])}</code></pre>'
+                   + (f'<p class="warn">⚠️ {v[2][i]}</p>' if v[2] else "") + "</article>" for n, v in HOWTO.items())
+    toc = "".join(f'<a class="chip" href="#{slug(n)}">{html.escape(n)}</a>' for n in HOWTO)
     return h + f"""<main id="main"><section><div class="wrap guide">
   <span class="tag">OSINTario</span>
   <h1>{t("title")}</h1>
@@ -566,6 +719,10 @@ def guide(lang):
   <p class="ethics" role="note"><span aria-hidden="true">⚖️</span> <span>{t("legal")}</span></p>
   <h2>{t("rules_h")}</h2>
   <ol class="steps">{rules}</ol>
+  <h2 id="paso-a-paso">{t("how_h")}</h2>
+  <p class="lede">{t("how_p")}</p>
+  <div class="chips">{toc}</div>
+  {hows}
   <h2>{t("types_h")}</h2>
   {types}
   <p class="note">{t("note")}</p>

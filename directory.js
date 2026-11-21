@@ -272,6 +272,9 @@ const LAUNCH = {
  }
 };
 
+/* Herramientas con instructivo propio en la guía de instalación segura (el contenido está en HOWTO de build.py). */
+const GUIDED = ["Kali Linux", "Sherlock", "Maigret", "theHarvester", "Subfinder", "Nuclei", "Nmap", "ExifTool", "yt-dlp", "Wireshark"];
+
 /* Herramientas que necesitan servidor y se activan con la comunidad.
    [nombre exacto en TOOLS, meta de estrellas, pestaña de Multi-OSINT Lite]. Para sumar una: agrega una fila y corre build.py. */
 const LOCKED = [
