@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 133 · **Última revisión:** 2026-11-19
+**Herramientas:** 134 · **Última revisión:** 2026-11-21
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.
 
@@ -95,6 +95,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Consensus OSINT](https://github.com/OSINT-Experts-Society/Consensus-OSINT) | Une 19 proyectos (Maigret, WhatsMyName, Holehe y otros) en una sola terminal: 7.700+ sitios para alias, 200+ chequeos de email, deduplicados y revisados cada semana. Informes en HTML, JSON y PDF. Incluye sitios de citas y adultos: úsalo solo con finalidad legítima. | ✅ Activa | libre |
 | [User Scanner](https://github.com/kaifcodec/user-scanner) | Alias y email en una sola CLI: 2.500+ plataformas y 200+ sitios con chequeo de email. | ✅ Activa | libre |
 | [GoSearch](https://github.com/ibnaleem/gosearch) | Clon de Sherlock en Go, rápido y concurrente; cruza el alias con credenciales filtradas de Hudson Rock. | ✅ Activa | libre |
+| [Mr.Holmes](https://github.com/Lucksi/Mr.Holmes) | CLI (Linux, Windows, Termux) que busca un alias en cientos de sitios y suma consultas de teléfono, dominio e IP; GPL-3.0. El instalador pide sudo: úsalo en una VM. | ⚠️ Con precaución | libre |
 | [Marple](https://github.com/soxoj/marple) | Junta enlaces a perfiles de un alias consultando 10+ buscadores (Google, Bing, DuckDuckGo…). | ✅ Activa | libre |
 | [Linkook](https://github.com/JackJuly/linkook) | Encuentra cuentas vinculadas entre sí y emails asociados a partir de un alias; exporta el grafo a Neo4j. | ✅ Activa | libre |
 | [Mailcat](https://github.com/sharsil/mailcat) | Descubre direcciones de email existentes a partir de un alias en 20+ proveedores de correo. | ✅ Activa | libre |
@@ -131,7 +132,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Google Lens](https://lens.google) | Búsqueda visual y de objetos. | ✅ Activa | libre |
 | [Yandex Images](https://yandex.com/images) | Búsqueda inversa fuerte en rostros y lugares. | ✅ Activa | libre |
 | [InVID-WeVerify](https://weverify.eu/verification-plugin/) | Verificación de videos y fotogramas. | ✅ Activa | libre |
-| [FOCA](https://github.com/ElevenPaths/FOCA) | Metadatos en documentos de una organización. Sin cambios desde 2022, solo Windows. | 🟡 Con límites | libre |
+| [FOCA](https://github.com/ElevenPaths/FOCA) | Metadatos en documentos de una organización. Sin cambios desde 2021, solo Windows. | 🟡 Con límites | libre |
 | [Hunchly](https://www.hunch.ly) | Captura y registro automático de la investigación. | 🟡 Con límites | 💳 pago |
 | [SingleFile](https://github.com/gildas-lormeau/SingleFile) | Extensión que guarda una página web completa en un solo archivo HTML. Útil para preservar evidencia. | ✅ Activa | libre |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | Archivo web propio: guarda URLs en HTML, PDF, captura y WARC en tu servidor. | ✅ Activa | libre |
@@ -194,7 +195,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [DarkSherlock](https://github.com/banaxou/dark-sherlock) | Busca un alias en más de 40 foros de la dark web. Proyecto pequeño: pruébalo aislado. | 🟡 Con límites | libre |
 | [TheDevilsEye](https://github.com/rlyonheart/thedevilseye) | Busca enlaces .onion desde la terminal sin usar Tor. | 🟡 Con límites | libre |
 | [OnionSearch](https://github.com/megadose/OnionSearch) | Scraper de buscadores .onion. Sin cambios desde 2024. | 🟡 Con límites | libre |
-| Onioff | Inspector de URLs .onion. Abandonado desde 2022. | ❌ Descartada | libre |
+| Onioff | Inspector de URLs .onion. Abandonado desde 2019. | ❌ Descartada | libre |
 | [Dark Web Scraper (Apify)](https://apify.com/epcsht/darkweb-scraper) | Rastrea un sitio .onion buscando wallets, claves y contactos. | 🟡 Con límites | 🔑 registro 💳 pago |
 | The Hidden Wiki | Directorio lleno de estafas y contenido ilegal. Usa Ahmia. | ❌ Descartada | libre |
 
