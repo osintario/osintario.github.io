@@ -578,9 +578,9 @@ GS = {
          "Isole a rede e os dados|Rede em modo NAT, sem pastas compartilhadas nem área de transferência com seu computador. Use contas e chaves de API criadas só para investigar.",
          "Feche o caso limpo|Exporte a evidência com seu hash, anote versão e data da ferramenta e volte ao snapshot."]),
     "how_h": ("Paso a paso de las 10 más usadas", "Step by step for the 10 most used", "Passo a passo das 10 mais usadas"),
-    "how_p": ("Comandos probados contra la documentación oficial de cada proyecto. Ejecuta todo dentro de tu máquina virtual.",
-              "Commands checked against each project's official documentation. Run everything inside your virtual machine.",
-              "Comandos conferidos com a documentação oficial de cada projeto. Execute tudo dentro da sua máquina virtual."),
+    "how_p": ("Cada instructivo indica si OSINTario ya probó la instalación y cuándo. Ejecuta todo dentro de tu máquina virtual; si un paso falla, avísanos con un Issue.",
+              "Each guide says whether OSINTario has tested the installation and when. Run everything inside your virtual machine; if a step fails, tell us with an Issue.",
+              "Cada guia indica se o OSINTario já testou a instalação e quando. Execute tudo dentro da sua máquina virtual; se um passo falhar, avise-nos com uma Issue."),
     "types_h": ("Según el tipo de herramienta", "By type of tool", "Conforme o tipo de ferramenta"),
     "types": {
         "py": (("Python (pipx o entorno virtual)", "Python (pipx or virtual environment)", "Python (pipx ou ambiente virtual)"),
@@ -657,6 +657,11 @@ HOWTO = {
                   ("Captura solo tráfico de tu red o con autorización.", "Capture traffic only on your own network or with authorization.", "Capture tráfego só da sua rede ou com autorização.")),
 }
 
+# Herramientas cuya instalación se probó de punta a punta (fecha de la última prueba). Las demás se muestran como pendientes.
+TESTED = {"Sherlock": "2026-11-21", "Maigret": "2026-11-21", "theHarvester": "2026-11-21", "Nmap": "2026-11-21", "ExifTool": "2026-11-21", "yt-dlp": "2026-11-21", "Wireshark": "2026-11-21"}
+TEST_OK = ("✅ Instalación probada por OSINTario el", "✅ Installation tested by OSINTario on", "✅ Instalação testada pelo OSINTario em")
+TEST_NO = ("🕓 Comandos tomados de la documentación oficial; OSINTario aún no probó esta instalación.", "🕓 Commands taken from the official documentation; OSINTario has not tested this installation yet.", "🕓 Comandos tirados da documentação oficial; o OSINTario ainda não testou esta instalação.")
+
 
 def slug(name):
     return "t-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
@@ -710,7 +715,7 @@ def guide(lang):
         raise SystemExit("GUIDED (directory.js) y HOWTO (build.py) no coinciden")
     urls = dict(re.findall(r'^\["[a-z]+","((?:[^"\\]|\\.)*)",.*?,"(https?://[^"]+)"', src, re.M))
     hows = "".join(f'<article class="gtype" id="{slug(n)}"><h3>{html.escape(n)}</h3><p>{v[0][i]} <a href="{urls[n]}" target="_blank" rel="noopener noreferrer">{("Sitio oficial", "Official site", "Site oficial")[i]} ↗</a></p><pre><code>{code(v[1])}</code></pre>'
-                   + (f'<p class="warn">⚠️ {v[2][i]}</p>' if v[2] else "") + "</article>" for n, v in HOWTO.items())
+                   + (f'<p class="warn">⚠️ {v[2][i]}</p>' if v[2] else "") + f'<p class="warn">{TEST_OK[i] + " " + TESTED[n] if n in TESTED else TEST_NO[i]}</p></article>' for n, v in HOWTO.items())
     toc = "".join(f'<a class="chip" href="#{slug(n)}">{html.escape(n)}</a>' for n in HOWTO)
     return h + f"""<main id="main"><section><div class="wrap guide">
   <span class="tag">OSINTario</span>
