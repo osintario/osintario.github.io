@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Instalación segura de herramientas OSINT y de ciberseguridad · OSINTario</title>
+<meta name="description" content="Cómo instalar herramientas de terminal sin poner en riesgo tu equipo: máquina virtual, entornos aislados y qué revisar antes de ejecutar.">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Instalación segura de herramientas OSINT y de ciberseguridad · OSINTario"><meta property="og:description" content="Cómo instalar herramientas de terminal sin poner en riesgo tu equipo: máquina virtual, entornos aislados y qué revisar antes de ejecutar.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/instalacion-segura.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://osintario.github.io/instalacion-segura.html">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/instalacion-segura.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/safe-install.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/instalacao-segura.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/instalacion-segura.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <span class="tag opt">Fuentes abiertas, con método</span>
+  <nav class="main" aria-label="Secciones"><a href="index.html#directorio">Directorio</a><a class="cta" href="herramientas.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="instalacion-segura.html" hreflang="es" lang="es" aria-current="true">ES</a><a href="safe-install.html" hreflang="en" lang="en" aria-current="false">EN</a><a href="instalacao-segura.html" hreflang="pt" lang="pt" aria-current="false">PT</a></nav>
+</div></header><main id="main"><section><div class="wrap guide">
+  <span class="tag">OSINTario</span>
+  <h1>Instalación segura de herramientas OSINT y de ciberseguridad</h1>
+  <p class="lede">Muchas herramientas del directorio no se usan desde la web: se instalan. Son código de terceros que OSINTario revisa pero no audita línea por línea. Esta guía explica cómo instalarlas sin exponer tu equipo ni tus datos. Cada ficha del directorio con la etiqueta 🧪 lleva a su sección.</p>
+  <p class="ethics" role="note"><span aria-hidden="true">⚖️</span> <span><b>Instalar no es tener permiso.</b> Escanear, explotar o interceptar sistemas ajenos sin autorización es delito en la mayoría de los países. Practica en tu propio laboratorio.</span></p>
+  <h2>7 reglas que valen para todas</h2>
+  <ol class="steps"><li><b>Usa una máquina virtual</b><span>VirtualBox, VMware o UTM con Kali o Debian. Nunca instales en el equipo donde tienes tu correo, tu banco o expedientes reales.</span></li><li><b>Toma un snapshot antes</b><span>Si algo sale mal, vuelves al estado limpio en un minuto.</span></li><li><b>Lee antes de ejecutar</b><span>Abre install.sh y requirements.txt. Desconfía de «curl … | sudo bash» y de binarios sin código fuente.</span></li><li><b>Descarga del origen oficial</b><span>El repositorio o sitio del autor, no un espejo ni un enlace de un comentario. Verifica el hash o la firma si se publica.</span></li><li><b>Sin root salvo que haga falta</b><span>Una herramienta que busca alias no necesita sudo. Si lo pide, pregúntate por qué.</span></li><li><b>Aísla la red y los datos</b><span>Red en modo NAT, sin carpetas compartidas ni portapapeles con tu equipo. Usa cuentas y claves API creadas solo para investigar.</span></li><li><b>Cierra el caso limpio</b><span>Exporta la evidencia con su hash, anota versión y fecha de la herramienta y vuelve al snapshot.</span></li></ol>
+  <h2>Según el tipo de herramienta</h2>
+  <article class="gtype" id="py"><h3>🧪 Python (pipx o entorno virtual)</h3><p>Cada herramienta en su propio entorno, así sus dependencias no tocan el sistema. Nunca uses «sudo pip».</p><pre><code># si está publicada en PyPI
+pipx install NOMBRE
+
+# desde el repositorio
+git clone https://github.com/AUTOR/REPO &amp;&amp; cd REPO
+python3 -m venv .venv &amp;&amp; source .venv/bin/activate
+cat requirements.txt        # revisa qué instala
+pip install -r requirements.txt</code></pre></article><article class="gtype" id="go"><h3>🧪 Go (binario único)</h3><p>Se compila a un solo archivo sin dependencias. Instala desde el código o baja el binario de «Releases» y compara su checksum.</p><pre><code>go install github.com/AUTOR/REPO/cmd/NOMBRE@latest
+
+# o binario publicado
+sha256sum NOMBRE_linux_amd64.zip   # compara con checksums.txt</code></pre></article><article class="gtype" id="docker"><h3>🧪 Docker (contenedor)</h3><p>Usa la imagen oficial con una versión fija. No montes tu carpeta personal ni uses «--privileged».</p><pre><code>docker run --rm -it -v &quot;$PWD/salida:/data&quot; AUTOR/IMAGEN:VERSION
+
+# servicios con varios contenedores
+docker compose up -d      # lee antes el docker-compose.yml</code></pre></article><article class="gtype" id="vm"><h3>🧪 Solo en máquina virtual</h3><p>El instalador pide sudo, toca el sistema o la herramienta es ofensiva (explotación, contraseñas, Wi-Fi). Úsala en una VM desechable y solo contra sistemas propios o con autorización escrita. Para Wi-Fi necesitas un adaptador USB conectado a la VM.</p><pre><code># 1. snapshot de la VM
+# 2. en Kali muchas ya vienen en los repositorios oficiales
+sudo apt update &amp;&amp; sudo apt install NOMBRE
+
+# 3. si solo hay instalador propio, léelo primero
+git clone https://github.com/AUTOR/REPO &amp;&amp; cd REPO
+less install.sh</code></pre></article><article class="gtype" id="app"><h3>🧪 Instalador oficial</h3><p>Programa de escritorio o paquete del proyecto. Descárgalo solo del sitio oficial y verifica la firma o el hash publicado.</p><pre><code>sha256sum instalador.exe      # Linux / macOS
+Get-FileHash instalador.exe    # Windows PowerShell</code></pre></article>
+  <p class="note">Esta guía es general: mejora con cada revisión. Si una herramienta necesita pasos propios, se indica en su ficha.</p>
+  <p><a class="btn ghost" href="index.html#directorio">Volver al directorio</a></p>
+</div></section></main>
+<footer><div class="wrap"><div><b>Uso responsable.</b> Este directorio enlaza a servicios de terceros, sin afiliación. Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Los servicios cambian: verifica siempre en la fuente.</div><div>OSINTario · Federico Dosio</div></div></footer>
+</body>
+</html>

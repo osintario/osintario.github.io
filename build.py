@@ -4,13 +4,14 @@
 Uso: python3 build.py   (escribe index.html, en.html, pt.html, herramientas.html, tools-en.html, ferramentas.html)
 El contenido del directorio vive en directory.js; los textos de las páginas, en STR (abajo).
 """
-import json
+import html, json
 import re
 
 LANGS = ["es", "en", "pt"]
 HOME = {"es": "index.html", "en": "en.html", "pt": "pt.html"}
 TOOLSP = {"es": "herramientas.html", "en": "tools-en.html", "pt": "ferramentas.html"}
 STARP = {"es": "estrella.html", "en": "star.html", "pt": "estrela.html"}
+GUIDEP = {"es": "instalacion-segura.html", "en": "safe-install.html", "pt": "instalacao-segura.html"}
 LOCALE = {"es": "es_ES", "en": "en_US", "pt": "pt_PT"}
 BASE = "https://osintario.github.io/"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -65,9 +66,9 @@ STR = {
  "st_ok": ("Activas", "Active", "Ativas"), "st_lim": ("Con límites", "Limited", "Com limites"), "st_risk": ("Con precaución", "Use with caution", "Com cautela"), "st_no": ("Descartadas", "Discarded", "Descartadas"),
  "access": ("Acceso", "Access", "Acesso"), "ac_free": ("Libre, sin registro", "Free, no login", "Livre, sem cadastro"),
  "ac_l": ("Requiere registro", "Login required", "Requer cadastro"), "ac_p": ("De pago / funciones pagas", "Paid / paid features", "Pago / recursos pagos"),
- "legend": ("Registro: necesitas crear una cuenta (gratis) para usarla. Pago: la herramienta o sus funciones útiles cuestan dinero. Nunca uses tu cuenta personal para investigar.",
-            "Login: you need a (free) account to use it. Paid: the tool or its useful features cost money. Never investigate with your personal account.",
-            "Cadastro: é preciso criar uma conta (grátis) para usar. Pago: a ferramenta ou seus recursos úteis custam dinheiro. Nunca investigue com sua conta pessoal."),
+ "legend": ("Registro: necesitas crear una cuenta (gratis) para usarla. Pago: la herramienta o sus funciones útiles cuestan dinero. Nunca uses tu cuenta personal para investigar. 🧪 La herramienta se instala: sigue la <a href=\"instalacion-segura.html\">guía de instalación segura</a>.",
+            "Login: you need a (free) account to use it. Paid: the tool or its useful features cost money. Never investigate with your personal account. 🧪 The tool must be installed: follow the <a href=\"safe-install.html\">safe installation guide</a>.",
+            "Cadastro: é preciso criar uma conta (grátis) para usar. Pago: a ferramenta ou seus recursos úteis custam dinheiro. Nunca investigue com sua conta pessoal. 🧪 A ferramenta é instalada: siga o <a href=\"instalacao-segura.html\">guia de instalação segura</a>."),
  "s3_tag": ("03 · Método", "03 · Method", "03 · Método"),
  "s3_h": ("El ciclo de una investigación", "The investigation cycle", "O ciclo de uma investigação"),
  "s3_p": ("Las herramientas cambian cada mes. El método es lo que hace que un informe resista la revisión de otra persona.", "Tools change every month. Method is what makes a report survive someone else's review.", "As ferramentas mudam todo mês. O método é o que faz um relatório resistir à revisão de outra pessoa."),
@@ -461,12 +462,127 @@ def star(lang):
     return h
 
 
+# Guía de instalación segura (ES / EN / PT). Cada ficha con 9.º campo en directory.js enlaza a su sección (#py, #go, #docker, #vm, #app).
+GS = {
+    "title": ("Instalación segura de herramientas OSINT y de ciberseguridad", "Safe installation of OSINT and cybersecurity tools", "Instalação segura de ferramentas OSINT e de cibersegurança"),
+    "desc": ("Cómo instalar herramientas de terminal sin poner en riesgo tu equipo: máquina virtual, entornos aislados y qué revisar antes de ejecutar.",
+             "How to install command-line tools without putting your computer at risk: virtual machine, isolated environments and what to check before running.",
+             "Como instalar ferramentas de terminal sem pôr seu computador em risco: máquina virtual, ambientes isolados e o que revisar antes de executar."),
+    "lede": ("Muchas herramientas del directorio no se usan desde la web: se instalan. Son código de terceros que OSINTario revisa pero no audita línea por línea. Esta guía explica cómo instalarlas sin exponer tu equipo ni tus datos. Cada ficha del directorio con la etiqueta 🧪 lleva a su sección.",
+             "Many tools in the directory are not used from the web: you install them. They are third-party code that OSINTario reviews but does not audit line by line. This guide explains how to install them without exposing your computer or your data. Each directory card with the 🧪 label links to its section.",
+             "Muitas ferramentas do diretório não são usadas pela web: são instaladas. São código de terceiros que o OSINTario revisa, mas não audita linha por linha. Este guia explica como instalá-las sem expor seu computador nem seus dados. Cada ficha do diretório com a etiqueta 🧪 leva à sua seção."),
+    "rules_h": ("7 reglas que valen para todas", "7 rules that apply to all of them", "7 regras que valem para todas"),
+    "rules": (
+        ["Usa una máquina virtual|VirtualBox, VMware o UTM con Kali o Debian. Nunca instales en el equipo donde tienes tu correo, tu banco o expedientes reales.",
+         "Toma un snapshot antes|Si algo sale mal, vuelves al estado limpio en un minuto.",
+         "Lee antes de ejecutar|Abre install.sh y requirements.txt. Desconfía de «curl … | sudo bash» y de binarios sin código fuente.",
+         "Descarga del origen oficial|El repositorio o sitio del autor, no un espejo ni un enlace de un comentario. Verifica el hash o la firma si se publica.",
+         "Sin root salvo que haga falta|Una herramienta que busca alias no necesita sudo. Si lo pide, pregúntate por qué.",
+         "Aísla la red y los datos|Red en modo NAT, sin carpetas compartidas ni portapapeles con tu equipo. Usa cuentas y claves API creadas solo para investigar.",
+         "Cierra el caso limpio|Exporta la evidencia con su hash, anota versión y fecha de la herramienta y vuelve al snapshot."],
+        ["Use a virtual machine|VirtualBox, VMware or UTM with Kali or Debian. Never install on the computer that holds your email, banking or real case files.",
+         "Take a snapshot first|If something goes wrong, you are back to a clean state in a minute.",
+         "Read before you run|Open install.sh and requirements.txt. Be wary of “curl … | sudo bash” and of binaries without source code.",
+         "Download from the official source|The author's repository or site, not a mirror or a link in a comment. Verify the hash or signature if one is published.",
+         "No root unless needed|A username search tool does not need sudo. If it asks for it, ask yourself why.",
+         "Isolate network and data|NAT networking, no shared folders or clipboard with your host. Use accounts and API keys created only for investigations.",
+         "Close the case cleanly|Export the evidence with its hash, note the tool version and date, and roll back to the snapshot."],
+        ["Use uma máquina virtual|VirtualBox, VMware ou UTM com Kali ou Debian. Nunca instale no computador onde estão seu email, seu banco ou processos reais.",
+         "Tire um snapshot antes|Se algo der errado, você volta ao estado limpo em um minuto.",
+         "Leia antes de executar|Abra install.sh e requirements.txt. Desconfie de «curl … | sudo bash» e de binários sem código-fonte.",
+         "Baixe da origem oficial|O repositório ou site do autor, não um espelho nem um link de comentário. Verifique o hash ou a assinatura se houver.",
+         "Sem root, salvo necessidade|Uma ferramenta que busca apelidos não precisa de sudo. Se pedir, pergunte-se por quê.",
+         "Isole a rede e os dados|Rede em modo NAT, sem pastas compartilhadas nem área de transferência com seu computador. Use contas e chaves de API criadas só para investigar.",
+         "Feche o caso limpo|Exporte a evidência com seu hash, anote versão e data da ferramenta e volte ao snapshot."]),
+    "types_h": ("Según el tipo de herramienta", "By type of tool", "Conforme o tipo de ferramenta"),
+    "types": {
+        "py": (("Python (pipx o entorno virtual)", "Python (pipx or virtual environment)", "Python (pipx ou ambiente virtual)"),
+               ("Cada herramienta en su propio entorno, así sus dependencias no tocan el sistema. Nunca uses «sudo pip».",
+                "Each tool in its own environment, so its dependencies never touch the system. Never use “sudo pip”.",
+                "Cada ferramenta no seu próprio ambiente, assim as dependências não tocam o sistema. Nunca use «sudo pip»."),
+               "# si está publicada en PyPI\npipx install NOMBRE\n\n# desde el repositorio\ngit clone https://github.com/AUTOR/REPO && cd REPO\npython3 -m venv .venv && source .venv/bin/activate\ncat requirements.txt        # revisa qué instala\npip install -r requirements.txt"),
+        "go": (("Go (binario único)", "Go (single binary)", "Go (binário único)"),
+               ("Se compila a un solo archivo sin dependencias. Instala desde el código o baja el binario de «Releases» y compara su checksum.",
+                "Compiles to a single file with no dependencies. Install from source or download the binary from “Releases” and compare its checksum.",
+                "Compila para um único arquivo sem dependências. Instale pelo código ou baixe o binário em «Releases» e compare o checksum."),
+               "go install github.com/AUTOR/REPO/cmd/NOMBRE@latest\n\n# o binario publicado\nsha256sum NOMBRE_linux_amd64.zip   # compara con checksums.txt"),
+        "docker": (("Docker (contenedor)", "Docker (container)", "Docker (contêiner)"),
+                   ("Usa la imagen oficial con una versión fija. No montes tu carpeta personal ni uses «--privileged».",
+                    "Use the official image pinned to a version. Do not mount your home folder or use “--privileged”.",
+                    "Use a imagem oficial com versão fixa. Não monte sua pasta pessoal nem use «--privileged»."),
+                   "docker run --rm -it -v \"$PWD/salida:/data\" AUTOR/IMAGEN:VERSION\n\n# servicios con varios contenedores\ndocker compose up -d      # lee antes el docker-compose.yml"),
+        "vm": (("Solo en máquina virtual", "Virtual machine only", "Só em máquina virtual"),
+               ("El instalador pide sudo, toca el sistema o la herramienta es ofensiva (explotación, contraseñas, Wi-Fi). Úsala en una VM desechable y solo contra sistemas propios o con autorización escrita. Para Wi-Fi necesitas un adaptador USB conectado a la VM.",
+                "The installer needs sudo, changes the system, or the tool is offensive (exploitation, passwords, Wi-Fi). Use a disposable VM and only against your own systems or with written authorization. For Wi-Fi you need a USB adapter attached to the VM.",
+                "O instalador pede sudo, altera o sistema ou a ferramenta é ofensiva (exploração, senhas, Wi-Fi). Use numa VM descartável e só contra sistemas próprios ou com autorização por escrito. Para Wi-Fi é preciso um adaptador USB ligado à VM."),
+               "# 1. snapshot de la VM\n# 2. en Kali muchas ya vienen en los repositorios oficiales\nsudo apt update && sudo apt install NOMBRE\n\n# 3. si solo hay instalador propio, léelo primero\ngit clone https://github.com/AUTOR/REPO && cd REPO\nless install.sh"),
+        "app": (("Instalador oficial", "Official installer", "Instalador oficial"),
+                ("Programa de escritorio o paquete del proyecto. Descárgalo solo del sitio oficial y verifica la firma o el hash publicado.",
+                 "Desktop program or project package. Download it only from the official site and verify the published signature or hash.",
+                 "Programa de desktop ou pacote do projeto. Baixe só do site oficial e verifique a assinatura ou o hash publicado."),
+                "sha256sum instalador.exe      # Linux / macOS\nGet-FileHash instalador.exe    # Windows PowerShell"),
+    },
+    "legal": ("<b>Instalar no es tener permiso.</b> Escanear, explotar o interceptar sistemas ajenos sin autorización es delito en la mayoría de los países. Practica en tu propio laboratorio.",
+              "<b>Installing is not permission.</b> Scanning, exploiting or intercepting systems you do not own without authorization is a crime in most countries. Practice in your own lab.",
+              "<b>Instalar não é ter permissão.</b> Escanear, explorar ou interceptar sistemas alheios sem autorização é crime na maioria dos países. Pratique no seu próprio laboratório."),
+    "note": ("Esta guía es general: mejora con cada revisión. Si una herramienta necesita pasos propios, se indica en su ficha.",
+             "This guide is general and improves with each review. If a tool needs steps of its own, its card says so.",
+             "Este guia é geral e melhora a cada revisão. Se uma ferramenta precisar de passos próprios, a ficha indica."),
+    "back": ("Volver al directorio", "Back to the directory", "Voltar ao diretório"),
+    "nav": ("Instalación segura", "Safe install", "Instalação segura"),
+}
+
+CODE_TR = [
+    ("# si está publicada en PyPI", "# if it is published on PyPI", "# se estiver publicada no PyPI"),
+    ("# desde el repositorio", "# from the repository", "# a partir do repositório"),
+    ("# revisa qué instala", "# check what it installs", "# veja o que instala"),
+    ("# o binario publicado", "# or the published binary", "# ou o binário publicado"),
+    ("# compara con checksums.txt", "# compare with checksums.txt", "# compare com checksums.txt"),
+    ("# servicios con varios contenedores", "# multi-container services", "# serviços com vários contêineres"),
+    ("# lee antes el docker-compose.yml", "# read docker-compose.yml first", "# leia antes o docker-compose.yml"),
+    ("# 1. snapshot de la VM", "# 1. snapshot the VM", "# 1. snapshot da VM"),
+    ("# 2. en Kali muchas ya vienen en los repositorios oficiales", "# 2. on Kali many are already in the official repositories", "# 2. no Kali muitas já estão nos repositórios oficiais"),
+    ("# 3. si solo hay instalador propio, léelo primero", "# 3. if there is only a custom installer, read it first", "# 3. se só houver instalador próprio, leia-o primeiro"),
+    ("NOMBRE", "NAME", "NOME"), ("AUTOR", "AUTHOR", "AUTOR"), ("IMAGEN", "IMAGE", "IMAGEM"), ("/salida:", "/output:", "/saida:"), ("instalador.exe", "installer.exe", "instalador.exe"),
+]
+
+
+def guide(lang):
+    i = LANGS.index(lang)
+    t = lambda k: GS[k][i]
+    csp = "default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    h = head(lang, t("title") + " · OSINTario", t("desc"), GUIDEP[lang], GUIDEP, csp, "home.css") + "</head>\n<body>\n"
+    h += header(lang, f'<a href="{HOME[lang]}#directorio">{s("nav_dir", lang)}</a>', TOOLSP[lang], "Multi-OSINT Lite", GUIDEP)
+    rules = "".join(f"<li><b>{a}</b><span>{b}</span></li>" for a, b in (r.split("|", 1) for r in t("rules")))
+    def code(c):
+        for es, en, pt in CODE_TR:
+            c = c.replace(es, (es, en, pt)[i])
+        return html.escape(c)
+    types = "".join(f'<article class="gtype" id="{k}"><h3>🧪 {v[0][i]}</h3><p>{v[1][i]}</p><pre><code>{code(v[2])}</code></pre></article>' for k, v in GS["types"].items())
+    return h + f"""<main id="main"><section><div class="wrap guide">
+  <span class="tag">OSINTario</span>
+  <h1>{t("title")}</h1>
+  <p class="lede">{t("lede")}</p>
+  <p class="ethics" role="note"><span aria-hidden="true">⚖️</span> <span>{t("legal")}</span></p>
+  <h2>{t("rules_h")}</h2>
+  <ol class="steps">{rules}</ol>
+  <h2>{t("types_h")}</h2>
+  {types}
+  <p class="note">{t("note")}</p>
+  <p><a class="btn ghost" href="{HOME[lang]}#directorio">{t("back")}</a></p>
+</div></section></main>
+<footer><div class="wrap"><div>{s("foot", lang)}</div><div>OSINTario · Federico Dosio</div></div></footer>
+</body>
+</html>
+"""
+
+
 def dirlinks():
     """Genera dirlinks.js para Multi-OSINT Lite a partir de TOOLS y LAUNCH de directory.js."""
     src = open("directory.js", encoding="utf-8").read()
     launch = json.loads(re.search(r"const LAUNCH = (\{[\s\S]*?\n\});", src).group(1))
     rows, descs = {}, {}
-    for m in re.finditer(r'^\["([a-z]+)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","([a-z]+)","(?:[^"\\]|\\.)*","([lp]*)"\]', src, re.M):
+    for m in re.finditer(r'^\["([a-z]+)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","((?:[^"\\]|\\.)*)","([a-z]+)","(?:[^"\\]|\\.)*","([lp]*)"(?:,"[a-z]*")?\]', src, re.M):
         rows[m.group(2)] = (m.group(6), m.group(7))
         descs[m.group(2)] = [json.loads('"' + m.group(k) + '"') for k in (3, 4, 5)]
     out = []
@@ -491,14 +607,15 @@ if __name__ == "__main__":
         open(HOME[lang], "w", encoding="utf-8").write(home(lang))
         open(TOOLSP[lang], "w", encoding="utf-8").write(tools(lang))
         open(STARP[lang], "w", encoding="utf-8").write(star(lang))
+        open(GUIDEP[lang], "w", encoding="utf-8").write(guide(lang))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for pages in (HOME, TOOLSP, STARP):
+    for pages in (HOME, TOOLSP, STARP, GUIDEP):
         for l in LANGS:
             alts = "".join(f'<xhtml:link rel="alternate" hreflang="{x}" href="{BASE}{pages[x]}"/>' for x in LANGS)
             sm.append(f"  <url><loc>{BASE}{pages[l]}</loc>{alts}</url>")
     sm.append("</urlset>")
     open("sitemap.xml", "w").write("\n".join(sm) + "\n")
-    print("OK: 9 páginas y sitemap")
+    print("OK: 12 páginas y sitemap")
     print(f"dirlinks.js: {dirlinks()} herramientas del directorio con atajo")
 
 
@@ -509,6 +626,7 @@ def readme():
     cats = json.loads("{" + re.sub(r"(\w+):", r'"\1":', src[src.index("const CATS = {") + 14: src.index("};")]).rstrip().rstrip(",") + "}")
     st = {"ok": "✅ Activa", "lim": "🟡 Con límites", "risk": "⚠️ Con precaución", "no": "❌ Descartada"}
     acc = {"l": "🔑 registro", "p": "💳 pago"}
+    ins = {"py": "🧪 Python", "go": "🧪 Go", "docker": "🧪 Docker", "vm": "🧪 solo en VM", "app": "🧪 instalador oficial"}
     out = ["# OSINTario", "",
            "Directorio de herramientas OSINT revisado a mano, en **español, inglés y portugués**: qué hace cada una, si sigue activa, si pide registro o pago y cuándo usarla con cuidado.", "",
            f"🌐 [Español]({BASE}) · [English]({BASE}en.html) · [Português]({BASE}pt.html) · Mantenido por Federico Dosio, profesor de Investigación con Fuentes Abiertas (IFA) en el Instituto Universitario de la Policía Federal Argentina (IUPFA).", "",
@@ -523,18 +641,18 @@ def readme():
            "Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocimiento facial) están marcadas ⚠️ y cada una explica su riesgo y cuándo está justificado usarla.", "",
            "> *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*", "",
            f"**Herramientas:** {len(tools)} · **Última revisión:** {re.search(r'REVIEWED = \"([^\"]+)\"', src).group(1)}", "",
-           "Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas.", ""]
+           "Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](" + BASE + "instalacion-segura.html).", ""]
     for key, names in cats.items():
         rows = [t for t in tools if t[0] == key]
         if not rows:
             continue
-        out += [f"## {names[0]}", "", "| Herramienta | Uso | Estado | Acceso |", "|---|---|---|---|"]
+        out += [f"## {names[0]}", "", "| Herramienta | Uso | Estado | Acceso | Instalación |", "|---|---|---|---|---|"]
         for t in rows:
             name = t[1] if t[5] == "no" else f"[{t[1]}]({t[6]})"
-            out.append(f"| {name} | {t[2]} | {st[t[5]]} | {' '.join(acc[c] for c in t[7]) or 'libre'} |")
+            out.append(f"| {name} | {t[2]} | {st[t[5]]} | {' '.join(acc[c] for c in t[7]) or 'libre'} | {ins.get(t[8], '') if len(t) > 8 else ''} |")
         out.append("")
     out += ["## Uso responsable", "", "Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación.", "",
-            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 9 páginas, `dirlinks.js`, el sitemap y este README.", "",
+            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 12 páginas, `dirlinks.js`, el sitemap y este README.", "",
             "## Licencia", "", "Contenido bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)."]
     open("README.md", "w", encoding="utf-8").write("\n".join(out) + "\n")
 
