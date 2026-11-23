@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 169 · **Última revisión:** 2026-11-23
+**Herramientas:** 192 · **Última revisión:** 2026-11-23
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -37,6 +37,9 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Awesome OSINT Arsenal](https://github.com/rawfilejson/awesome-osint-arsenal) | Más de 100 herramientas con instalador en un comando. | ✅ Activa | libre |  |
 | [OSINTJet Quick Search](https://osintjet.com/en/osint-search-tools/) | Lanzador de búsquedas por categoría. Servicio comercial nuevo: no subas datos de casos reales. | 🟡 Con límites | libre |  |
 | [OSINT Navigator](https://indicator.media) | Buscador de más de 7.500 herramientas OSINT. | ✅ Activa | libre |  |
+| [Cyber Detective (cipher387)](https://cipher387.github.io/) | Página central de @cyb_detective: colección de 800+ herramientas, mapa mundial de herramientas por país, cajas de herramientas para dominio, IP y teléfono, dorks y APIs para OSINT. | ✅ Activa | libre |  |
+| [Public APIs](https://github.com/public-apis/public-apis) | Lista enorme de APIs gratuitas por tema; la sección de seguridad sirve para armar consultas propias (dispositivos expuestos, CVE, riesgo de email, dominios). | ✅ Activa | libre |  |
+| [OSINT Journo: listas por país](https://github.com/Ghongha007?tab=repositories) | Registros públicos y datos abiertos de India, China y Rusia (empresas, tribunales, gasto público, sanciones), con fecha de verificación de cada enlace. Excluye búsquedas de personas. Muy nuevas (nov-2026). | ✅ Activa | libre |  |
 
 ## Infraestructura
 
@@ -50,6 +53,9 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Grayhat Warfare](https://grayhatwarfare.com) | Buckets de almacenamiento en la nube abiertos. | 🟡 Con límites | 🔑 registro 💳 pago |  |
 | [Wappalyzer](https://www.wappalyzer.com) | Tecnologías que usa un sitio web. | ✅ Activa | libre |  |
 | [BuiltWith](https://builtwith.com) | Tecnologías y relaciones entre sitios. | ✅ Activa | libre |  |
+| [IVRE](https://github.com/ivre/ivre) | Framework propio de reconocimiento de red, tipo Shodan autoalojado: importa escaneos (Nmap, Masscan, Zeek) y datos pasivos para buscarlos. GPL-3.0. | ✅ Activa | libre | 🧪 Docker |
+| [FullHunt](https://fullhunt.io) | Superficie de ataque expuesta de un dominio: subdominios, puertos y tecnologías. Búsquedas gratis limitadas con registro. | ✅ Activa | 🔑 registro 💳 pago |  |
+| [ONYPHE](https://www.onyphe.io) | Motor de búsqueda de equipos y servicios expuestos en Internet, con datos de amenazas. Plan gratuito limitado con registro. | ✅ Activa | 🔑 registro 💳 pago |  |
 
 ## Dominios y DNS
 
@@ -77,6 +83,9 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [OpenCTI](https://github.com/OpenCTI-Platform/opencti) | Plataforma abierta para organizar y relacionar inteligencia de amenazas (STIX). | ✅ Activa | libre | 🧪 Docker |
 | [CTILookUp](https://www.ctilookup.com) | Enriquecimiento de IPs, dominios, URLs y emails. | 🟡 Con límites | 🔑 registro |  |
 | [Hudson Rock Cavalier](https://www.hudsonrock.com/free-tools) | Comprueba si un email o dominio aparece en infecciones de infostealers. | ✅ Activa | libre |  |
+| [Pulsedive](https://pulsedive.com) | Inteligencia de amenazas gratuita: reputación de IP, dominios y URL con enriquecimiento y fuentes. Registro para más consultas. | ✅ Activa | 🔑 registro |  |
+| [Vulners](https://vulners.com) | Buscador de vulnerabilidades: CVE, exploits públicos y boletines de fabricantes en un solo lugar. Registro para la API. | ✅ Activa | 🔑 registro |  |
+| [Agentic Attack Detections](https://github.com/ThreatDefence/agentic-attack-detections) | Reglas de detección, consultas de caza e IOC contra marcos de ataque con agentes de IA (ARTEX, PentAGI, HexStrike…) para Sigma, Sentinel, Splunk, Elastic, Zeek, Suricata y YARA. MIT, muy nuevo. | ✅ Activa | libre |  |
 
 ## Código y secretos
 
@@ -86,6 +95,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [TruffleHog](https://github.com/trufflesecurity/trufflehog) | Encuentra y verifica credenciales filtradas. | ✅ Activa | libre | 🧪 Go |
 | [grep.app](https://grep.app) | Búsqueda en código público de GitHub. | ✅ Activa | libre |  |
 | [GHunt](https://github.com/mxrch/GHunt) | Investigación de cuentas de Google. Usa una cuenta de investigación. | ⚠️ Con precaución | 🔑 registro | 🧪 Python |
+| [PublicWWW](https://publicwww.com) | Busca código fuente de páginas web: quién usa un mismo script, ID de Analytics o firma. Resultados gratis limitados; el resto es pago. | ✅ Activa | 💳 pago |  |
 
 ## Personas
 
@@ -116,6 +126,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Buscadores de personas de EE. UU.](https://www.whitepages.com) | PeekYou, Whitepages, TruePeopleSearch: poco útiles fuera de EE. UU. y con datos viejos. | ⚠️ Con precaución | 💳 pago |  |
 | [Tookie-OSINT](https://github.com/alfredredbird/tookie-osint) | Busca un alias en cientos de sitios desde la terminal (Linux, Windows, Termux); MIT. Instálalo con pip en un entorno virtual, no con el script que pide sudo. | ✅ Activa | libre | 🧪 Python |
 | [Unavatar](https://unavatar.io) | Muestra la foto de perfil pública asociada a un alias, email o dominio en decenas de plataformas (GitHub, X, YouTube, Gravatar…). Código abierto (MIT); gratis con límite diario, plan pago para más. | ✅ Activa | 💳 pago |  |
+| [Enola](https://github.com/TheYahya/enola) | Busca un alias en cientos de sitios desde la terminal, al estilo Sherlock pero en Go. MIT. | ✅ Activa | libre | 🧪 Go |
+| [HackUnderway CLI](https://github.com/HackUnderway/hackunderway-cli) | Consola en Python con 7 módulos (alias, X, TikTok, Instagram, email, teléfono, dominio) e informes TXT/PDF. El cliente es MIT, pero cada consulta usa créditos pagos de la API de Hack Underway. | ✅ Activa | 🔑 registro 💳 pago | 🧪 Python |
 
 ## Brechas
 
@@ -125,6 +137,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Intelligence X](https://intelx.io) | Archivo de filtraciones, pastes y darknet. | 🟡 Con límites | 🔑 registro 💳 pago |  |
 | [DeHashed](https://dehashed.com) | Búsqueda en bases filtradas. Solo con autorización y finalidad defensiva. | ⚠️ Con precaución | 🔑 registro 💳 pago |  |
 | [Vendor History](https://vendorhistory.com) | ¿Hackearon a un proveedor? Avisos de brechas ante fiscales de EE. UU., reportes a la SEC, fallas explotadas (CISA) y reclamos de ransomware de 255 proveedores de software, cada uno con su fuente. Gratis y sin registro. | ✅ Activa | libre |  |
+| [Have I Been Zuckered](https://haveibeenzuckered.com) | Comprueba si un número de teléfono está en la filtración de 533 millones de cuentas de Facebook (2021). Gratis; usa k-anonimato. | ✅ Activa | libre |  |
 
 ## Imágenes y video
 
@@ -153,6 +166,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [MarineTraffic](https://www.marinetraffic.com) | Posición de buques. | 🟡 Con límites | 💳 pago |  |
 | [ACLED](https://acleddata.com) | Datos de conflictos y protestas georreferenciados. | ✅ Activa | 🔑 registro |  |
 | [Violations Watch](https://violationswatch.org/) | Registro abierto y diario de presuntas violaciones de derechos humanos y derecho humanitario, con enlaces a las fuentes. Son pistas sin verificar, no hallazgos. | ✅ Activa | libre |  |
+| [WiGLE](https://wigle.net) | Mapa mundial de redes Wi-Fi, torres celulares y Bluetooth relevadas por voluntarios: sirve para ubicar un SSID. Registro para búsquedas avanzadas. | ✅ Activa | 🔑 registro |  |
+| [ShadowBroker](https://github.com/bigbodycobain/shadowbroker) | Mapa en tiempo real autoalojado que junta 60+ fuentes: aviones, barcos, satélites, conflictos, interferencia GPS y más. AGPL-3.0. Incluye cámaras y escáneres de radio policiales: revisa la ley local; varias capas piden claves API. | ⚠️ Con precaución | libre | 🧪 Docker |
 
 ## Telegram
 
@@ -164,6 +179,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Lyzem](https://lyzem.com) | Búsqueda de canales, grupos, bots y mensajes. | 🟡 Con límites | libre |  |
 | [4CAT](https://github.com/digitalmethodsinitiative/4cat) | Captura y análisis de datos sociales, incluido Telegram. | 🟡 Con límites | 🔑 registro | 🧪 Docker |
 | Mapas de usuarios cercanos | Telegram retiró la función en 2024 y su uso es rastreo de personas. | ❌ Descartada | libre |  |
+| [Telegram Phone Number Checker](https://github.com/bellingcat/telegram-phone-number-checker) | Herramienta de Bellingcat que comprueba si un número tiene cuenta de Telegram y muestra su alias e ID públicos. Necesita tu propia cuenta y API de Telegram. MIT. | ✅ Activa | 🔑 registro | 🧪 Python |
 
 ## Redes sociales
 
@@ -182,6 +198,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [OpenSanctions](https://www.opensanctions.org) | Sanciones y personas expuestas políticamente. | ✅ Activa | libre |  |
 | [CourtListener](https://www.courtlistener.com) | Expedientes judiciales de EE. UU. | ✅ Activa | libre |  |
 | [Lacis](https://github.com/c4seus/lacis) | Mapea empresas francesas, sus directivos y domicilios en un grafo con fuente (SIRENE, RNE, BODACC) y marca señales como domiciliación masiva o empresas fénix. App de escritorio, GPL-3.0, interfaz en francés; versión 0.y, muy nueva. | ✅ Activa | libre | 🧪 instalador oficial |
+| [Metagoofil](https://github.com/opsdisk/metagoofil) | Busca documentos públicos de una organización (PDF, DOC, XLS) y extrae sus metadatos: autores, usuarios y software. GPL-3.0. | ✅ Activa | libre | 🧪 Python |
 
 ## Dark web
 
@@ -221,6 +238,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [CyberChef](https://gchq.github.io/CyberChef/) | Decodifica, convierte y analiza datos en el navegador (Base64, hashes, fechas, XOR…). | ✅ Activa | libre |  |
 | [Digital Forensics Lab](https://github.com/frankwxu/digital-forensics-lab) | Laboratorios prácticos gratuitos de forense digital (disco, memoria, red, móviles) con imágenes de evidencia y guías paso a paso; Universidad de Baltimore, Apache 2.0. | ✅ Activa | libre | 🧪 solo en VM |
 | [Hopline](https://forensicworks.github.io/hopline/) | Rastreo de Bitcoin en el navegador: sigue el dinero transacción por transacción, marca patrones con su motivo, cruza listas de sanciones y ransomware y genera un informe verificable. Sin instalar ni servidor propio; Apache 2.0. | ✅ Activa | libre |  |
+| [MVT (Mobile Verification Toolkit)](https://github.com/mvt-project/mvt) | De Amnesty International: busca rastros de spyware como Pegasus en copias de seguridad y volcados de Android e iPhone. | ✅ Activa | libre | 🧪 Python |
+| [Ghidra](https://github.com/NationalSecurityAgency/ghidra) | Suite de ingeniería inversa de la NSA, gratuita y Apache 2.0: desensambla y descompila binarios para analizar malware. | ✅ Activa | libre | 🧪 instalador oficial |
 
 ## Apps de citas (RGPD)
 
@@ -261,6 +280,10 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Suricata](https://github.com/OISF/suricata) | Motor defensivo de detección de intrusiones (IDS/IPS) y monitoreo de red. | ✅ Activa | libre | 🧪 solo en VM |
 | [Binwalk](https://github.com/ReFirmLabs/binwalk) | Analiza y extrae imágenes de firmware (routers, cámaras, IoT). | ✅ Activa | libre | 🧪 solo en VM |
 | [BlueTeam-Tools](https://github.com/A-poc/BlueTeam-Tools) | Colección de 70+ herramientas defensivas: caza de amenazas, monitoreo, análisis de malware, forense y respuesta a incidentes. Sin licencia declarada. | ✅ Activa | libre |  |
+| [Kismet](https://github.com/kismetwireless/kismet) | Detector pasivo de redes Wi-Fi, Bluetooth y otras señales de radio; también sirve como sensor de intrusiones inalámbricas. | ✅ Activa | libre | 🧪 instalador oficial |
+| [Wifite2](https://github.com/derv82/wifite2) | Automatiza auditorías Wi-Fi (WPA, WPS) usando Aircrack-ng y otras. Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
+| [Airgeddon](https://github.com/v1s1t0r1sh3r3/airgeddon) | Menú en Bash para auditar redes inalámbricas (handshakes, WPS, portales falsos). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
+| [hcxdumptool](https://github.com/ZerBea/hcxdumptool) | Captura tráfico Wi-Fi para pruebas de seguridad de WPA/WPA2 (junto con hcxtools y Hashcat). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 
 ## Frameworks, IA y automatización
 
