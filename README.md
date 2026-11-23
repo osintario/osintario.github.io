@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 192 · **Última revisión:** 2026-11-23
+**Herramientas:** 195 · **Última revisión:** 2026-11-23
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -284,6 +284,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Wifite2](https://github.com/derv82/wifite2) | Automatiza auditorías Wi-Fi (WPA, WPS) usando Aircrack-ng y otras. Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 | [Airgeddon](https://github.com/v1s1t0r1sh3r3/airgeddon) | Menú en Bash para auditar redes inalámbricas (handshakes, WPS, portales falsos). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 | [hcxdumptool](https://github.com/ZerBea/hcxdumptool) | Captura tráfico Wi-Fi para pruebas de seguridad de WPA/WPA2 (junto con hcxtools y Hashcat). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
+| [RedRoot](https://github.com/agampreet-singh/RedRoot) | Framework ofensivo en Python (MIT) con 30+ módulos: phishing, backdoor, DoS, Wi-Fi. El módulo Bluetooth que roba contactos y SMS no es público: en el repo solo muestra «MODULE LOCKED». Solo en laboratorio propio. | ⚠️ Con precaución | libre | 🧪 solo en VM |
+| [DarkFly-Tool](https://github.com/Ranginang67/DarkFly-Tool) | Menú de Termux que instala 500+ herramientas. Abandonado desde 2019 (Python 2), con código ofuscado que no se puede revisar y 7 herramientas de spam de SMS. No recomendado. | ⚠️ Con precaución | libre |  |
 
 ## Frameworks, IA y automatización
 
@@ -302,6 +304,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [OsintHunter](https://github.com/letox4/OsintHunter) | Plataforma local con 49 módulos (alias, email, teléfono, dominio, IP) que arma un grafo con puntaje de confianza e informes; MIT. Proyecto nuevo: ejecútalo desde el código en una VM, no desde el .exe. | ⚠️ Con precaución | libre | 🧪 solo en VM |
 | [SIGIT](https://github.com/termuxhackers-id/SIGIT) | Kit de terminal: alias en 100+ plataformas, teléfono, email, DNS/WHOIS, subdominios, geolocalización de IP y cabeceras HTTP; dominio público. | ✅ Activa | libre | 🧪 Python |
 | [Pip-Intel](https://github.com/emrekybs/Pip-Intel) | Reúne varias utilidades OSINT (email, teléfono, alias, IP, subdominios) en un solo script. Sin cambios desde may-2024. | 🟡 Con límites | libre | 🧪 Python |
+| [ARTEMIS](https://github.com/Stanford-Trinity/ARTEMIS) | Agentes de IA autónomos de Stanford (Apache 2.0) que buscan y explotan vulnerabilidades. El alcance solo se indica en el prompt, sin bloqueo técnico; necesita claves pagas de LLM. Usar solo en laboratorio propio. | ⚠️ Con precaución | 💳 pago | 🧪 solo en VM |
 
 ## Uso responsable
 

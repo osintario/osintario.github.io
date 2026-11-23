@@ -11,6 +11,7 @@
   let cat = ALL;
   const rows = TOOLS.map((t) => ({ c: t[0], cat: CATS[t[0]][L], n: t[1], d: t[2 + L], s: t[5], u: t[6], a: t[7] || "", i: t[8] || "" }));
   const GD = typeof GUIDED === "undefined" ? [] : GUIDED;
+  const AN = typeof ANALYZED === "undefined" ? [] : ANALYZED;
   const slug = (n) => "t-" + n.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const GP = ["instalacion-segura.html", "safe-install.html", "instalacao-segura.html"][L];
   const INS = { py: "Python", go: "Go", docker: "Docker", vm: tr("solo en VM", "VM only", "só em VM"), app: tr("instalador oficial", "official installer", "instalador oficial") };
@@ -38,7 +39,7 @@
       const link = r.s === "no" ? '<span class="note">' + tr("No enlazada", "Not linked", "Sem link") + "</span>" :
         '<a class="go" href="' + esc(r.u) + '" target="_blank" rel="noopener noreferrer">' + tr("Abrir", "Open", "Abrir") + "</a>";
       return '<article class="card s-' + r.s + '"><h3>' + esc(r.n) + '<span class="pill ' + s[1] + '">' + s[0] + "</span></h3><p>" + esc(r.d) + "</p>" +
-        ((badges || (r.i && r.s !== "no") || (LA[r.n] && r.s !== "no")) ? '<div class="badges">' + badges + (r.i && r.s !== "no" ? '<a class="acc ins" href="' + GP + "#" + (GD.includes(r.n) ? slug(r.n) : r.i) + '" title="' + tr("Guía de instalación segura", "Safe installation guide", "Guia de instalação segura") + '">🧪 ' + (GD.includes(r.n) ? tr("Paso a paso", "Step by step", "Passo a passo") + " · " : "") + INS[r.i] + "</a>" : "") + (LA[r.n] && r.s !== "no" ? '<a class="acc live" href="' + TP + "#" + Object.keys(LA[r.n])[0] + '">⚡ ' + tr("Se abre desde Multi-OSINT Lite", "Opens from Multi-OSINT Lite", "Abre a partir do Multi-OSINT Lite") + "</a>" : "") + "</div>" : "") + '<div class="meta"><span class="tag">' + esc(r.cat) + "</span>" + link + "</div></article>";
+        ((badges || AN.includes(r.n) || (r.i && r.s !== "no") || (LA[r.n] && r.s !== "no")) ? '<div class="badges">' + badges + (AN.includes(r.n) ? '<a class="acc ins" href="' + GP + "#" + slug(r.n) + '">⚠️ ' + tr("Análisis de riesgo de OSINTario", "OSINTario risk analysis", "Análise de risco do OSINTario") + "</a>" : (r.i && r.s !== "no" ? '<a class="acc ins" href="' + GP + "#" + (GD.includes(r.n) ? slug(r.n) : r.i) + '" title="' + tr("Guía de instalación segura", "Safe installation guide", "Guia de instalação segura") + '">🧪 ' + (GD.includes(r.n) ? tr("Paso a paso", "Step by step", "Passo a passo") + " · " : "") + INS[r.i] + "</a>" : "")) + (LA[r.n] && r.s !== "no" ? '<a class="acc live" href="' + TP + "#" + Object.keys(LA[r.n])[0] + '">⚡ ' + tr("Se abre desde Multi-OSINT Lite", "Opens from Multi-OSINT Lite", "Abre a partir do Multi-OSINT Lite") + "</a>" : "") + "</div>" : "") + '<div class="meta"><span class="tag">' + esc(r.cat) + "</span>" + link + "</div></article>";
     }).join("") : '<div class="empty">' + tr("No hay herramientas con esos filtros. Prueba con otra categoría o borra la búsqueda.", "No tools match these filters. Try another category or clear the search.", "Nenhuma ferramenta com esses filtros. Tente outra categoria ou limpe a busca.") + "</div>";
   }
   $("#q").addEventListener("input", render); $("#st").addEventListener("change", render); $("#ac").addEventListener("change", render);

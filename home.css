@@ -189,3 +189,8 @@ header.top .wrap{height:auto;min-height:60px;row-gap:0;flex-wrap:wrap}
 nav.main{flex-wrap:nowrap;align-items:center;white-space:nowrap}
 @media (max-width:1400px){header.top .tag.opt{display:none}}
 @media (max-width:820px){header.top .wrap{gap:12px}.lang{margin-left:auto}nav.main{order:3;flex-basis:100%;margin-left:0;overflow-x:auto;padding:0 0 10px;gap:16px;scrollbar-width:none}nav.main a.cta{padding:4px 10px;order:-1}}
+
+/* Capturas del análisis de riesgo (guía de instalación segura) */
+.gfig{margin:12px 0}
+.gfig img{display:block;max-width:100%;height:auto;border-radius:8px;border:1px solid rgba(127,127,127,.25)}
+.gfig figcaption{margin-top:6px}

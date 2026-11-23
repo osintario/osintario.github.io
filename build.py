@@ -663,6 +663,85 @@ TEST_OK = ("✅ Instalación probada por OSINTario el", "✅ Installation tested
 TEST_NO = ("🕓 Comandos tomados de la documentación oficial; OSINTario aún no probó esta instalación.", "🕓 Commands taken from the official documentation; OSINTario has not tested this installation yet.", "🕓 Comandos tirados da documentação oficial; o OSINTario ainda não testou esta instalação.")
 
 
+# Herramientas de riesgo analizadas por OSINTario (decisión de Federico, 23-nov): no se instalan ni se ejecutan;
+# se analizan en un contenedor aislado, se muestran con su riesgo y con el enlace real (no a copias ni a estafas).
+# Cada una: nombre exacto en TOOLS, veredicto, qué es, hallazgos (lista), imagen propia, enlaces de terceros [(texto, url)].
+RISK = {
+    "ARTEMIS": (
+        ("Riesgo alto: agentes de IA que atacan solos", "High risk: AI agents that attack on their own", "Risco alto: agentes de IA que atacam sozinhos"),
+        ("Motor de Stanford (proyecto Trinity, Apache 2.0) que lanza varios agentes de IA en paralelo para encontrar y explotar vulnerabilidades. Se presentó en un paper de ICLR 2026 que lo comparó con pentesters humanos.",
+         "Stanford engine (Trinity project, Apache 2.0) that launches several AI agents in parallel to find and exploit vulnerabilities. It was presented in an ICLR 2026 paper that compared it with human pentesters.",
+         "Motor de Stanford (projeto Trinity, Apache 2.0) que lança vários agentes de IA em paralelo para encontrar e explorar vulnerabilidades. Foi apresentado num artigo do ICLR 2026 que o comparou com pentesters humanos."),
+        (["El alcance (qué se puede atacar) solo se le escribe al modelo en el prompt: en el código no encontramos ningún bloqueo técnico que impida salir de ese alcance.",
+          "Los agentes corren con acceso a la red activado y ejecutan comandos reales de Kali.",
+          "Necesita claves pagas de OpenAI u OpenRouter; cada prueba consume créditos.",
+          "Último commit: 31-dic-2025. Es un proyecto de investigación, no un producto mantenido."],
+         ["The scope (what may be attacked) is only written to the model in the prompt: we found no technical block in the code that stops it from leaving that scope.",
+          "The agents run with network access enabled and execute real Kali commands.",
+          "It needs paid OpenAI or OpenRouter keys; every test spends credits.",
+          "Last commit: 31 Dec 2025. It is a research project, not a maintained product."],
+         ["O escopo (o que pode ser atacado) só é escrito ao modelo no prompt: não encontrámos no código nenhum bloqueio técnico que impeça sair desse escopo.",
+          "Os agentes correm com acesso à rede ativado e executam comandos reais do Kali.",
+          "Precisa de chaves pagas da OpenAI ou OpenRouter; cada teste consome créditos.",
+          "Último commit: 31-dez-2025. É um projeto de pesquisa, não um produto mantido."]),
+        "riesgo-artemis.png",
+        [("Paper (arXiv 2512.09882)", "https://arxiv.org/abs/2512.09882")],
+    ),
+    "RedRoot": (
+        ("Riesgo alto: framework ofensivo; el módulo del reel no es público", "High risk: offensive framework; the module in the reel is not public", "Risco alto: framework ofensivo; o módulo do reel não é público"),
+        ("Framework ofensivo en Python (MIT, 2026) de Agampreet Singh con más de 30 módulos: phishing, backdoor, DoS, desautenticación Wi-Fi, inyección SQL y otros. Se hizo conocido por un reel que extrae contactos y SMS de un Android por Bluetooth.",
+         "Offensive Python framework (MIT, 2026) by Agampreet Singh with 30+ modules: phishing, backdoor, DoS, Wi-Fi deauthentication, SQL injection and more. It became known through a reel that pulls contacts and SMS from an Android phone over Bluetooth.",
+         "Framework ofensivo em Python (MIT, 2026) de Agampreet Singh com mais de 30 módulos: phishing, backdoor, DoS, desautenticação Wi-Fi, injeção SQL e outros. Ficou conhecido por um reel que extrai contactos e SMS de um Android por Bluetooth."),
+        (["El módulo Bluetooth público (redrootbluesnarf) no extrae nada: solo muestra «MODULE LOCKED» y pide contactar al autor. Lo ejecutamos en un contenedor aislado (48 líneas, solo imprime texto): la captura es real.",
+          "El mensaje «Logging attempt... Done» es decorativo: el código no registra nada.",
+          "Según su autor, el ataque no usa ninguna falla: depende de que la víctima acepte el emparejamiento y el acceso a contactos y mensajes. La defensa es no aceptar dispositivos desconocidos.",
+          "El instalador instala bettercap con apt y 15 paquetes de Python sin fijar versiones."],
+         ["The public Bluetooth module (redrootbluesnarf) extracts nothing: it only shows “MODULE LOCKED” and asks you to contact the author. We ran it in an isolated container (48 lines, only prints text): the screenshot is real.",
+          "The “Logging attempt... Done” message is decorative: the code logs nothing.",
+          "According to its author, the attack uses no flaw: it relies on the victim accepting the pairing and the access to contacts and messages. The defence is not to accept unknown devices.",
+          "The installer installs bettercap with apt and 15 Python packages without pinned versions."],
+         ["O módulo Bluetooth público (redrootbluesnarf) não extrai nada: só mostra «MODULE LOCKED» e pede para contactar o autor. Executámo-lo num contentor isolado (48 linhas, só imprime texto): a captura é real.",
+          "A mensagem «Logging attempt... Done» é decorativa: o código não regista nada.",
+          "Segundo o autor, o ataque não usa nenhuma falha: depende de a vítima aceitar o emparelhamento e o acesso a contactos e mensagens. A defesa é não aceitar dispositivos desconhecidos.",
+          "O instalador instala o bettercap com apt e 15 pacotes de Python sem versões fixas."]),
+        "riesgo-redroot.png",
+        [("Reel del autor (Instagram)", "https://www.instagram.com/reel/DgCzw-Pz9Qq/")],
+    ),
+    "DarkFly-Tool": (
+        ("No recomendado: abandonado, ofuscado e incluye spam de SMS", "Not recommended: abandoned, obfuscated and includes SMS spam", "Não recomendado: abandonado, ofuscado e inclui spam de SMS"),
+        ("Menú para Termux que promete instalar más de 500 herramientas eligiendo un número. Muy compartido en redes y blogs.",
+         "Termux menu that promises to install 500+ tools by picking a number. Widely shared on social media and blogs.",
+         "Menu para Termux que promete instalar mais de 500 ferramentas escolhendo um número. Muito partilhado em redes e blogs."),
+        (["Abandonado desde 2019 y escrito para Python 2, que ya no tiene soporte. Su propio README dice que en Linux no funciona.",
+          "El código principal está ofuscado: bytecode de Python 2 cifrado con una tabla de sustitución dentro de archivos ocultos (.module/files). No se puede revisar qué instala ni de dónde.",
+          "El instalador ejecuta comandos leídos de esos archivos ocultos, entre ellos «rm -rf» sobre carpetas del sistema de Termux.",
+          "Incluye 7 herramientas de spam de SMS que abusan de los formularios de código (OTP) de empresas de Indonesia (KFC, Telkomsel, Tokopedia, Matahari, JD.id) para bombardear un número. Usarlas contra alguien es acoso.",
+          "No lo instalamos ni lo ejecutamos: solo análisis estático del repositorio."],
+         ["Abandoned since 2019 and written for Python 2, which is no longer supported. Its own README says it does not work on Linux.",
+          "The main code is obfuscated: Python 2 bytecode encrypted with a substitution table inside hidden files (.module/files). There is no way to review what it installs or from where.",
+          "The installer runs commands read from those hidden files, including “rm -rf” on Termux system folders.",
+          "It ships 7 SMS spam tools that abuse the one-time-code (OTP) forms of Indonesian companies (KFC, Telkomsel, Tokopedia, Matahari, JD.id) to flood a phone number. Using them against someone is harassment.",
+          "We did not install or run it: static analysis of the repository only."],
+         ["Abandonado desde 2019 e escrito para Python 2, que já não tem suporte. O próprio README diz que no Linux não funciona.",
+          "O código principal está ofuscado: bytecode de Python 2 cifrado com uma tabela de substituição dentro de ficheiros ocultos (.module/files). Não é possível rever o que instala nem de onde.",
+          "O instalador executa comandos lidos desses ficheiros ocultos, entre eles «rm -rf» sobre pastas do sistema do Termux.",
+          "Inclui 7 ferramentas de spam de SMS que abusam dos formulários de código (OTP) de empresas da Indonésia (KFC, Telkomsel, Tokopedia, Matahari, JD.id) para bombardear um número. Usá-las contra alguém é assédio.",
+          "Não o instalámos nem executámos: só análise estática do repositório."]),
+        "riesgo-darkfly.png",
+        [("Cómo se ve funcionando (artículo de terceros en DEV)", "https://dev.to/terminaltools/darkfly-tool-for-termux-install-542-ethical-hacking-tools-easily-5edi")],
+    ),
+}
+RISK_T = {
+    "h": ("Herramientas de riesgo analizadas", "Risky tools we analysed", "Ferramentas de risco analisadas"),
+    "p": ("No decidimos por ti si las usas: las mostramos con lo que encontramos y con su enlace real, para que no termines en una copia falsa o en una estafa. Las analizamos en un contenedor aislado, sin instalarlas. Si decides probarlas, hazlo en una máquina virtual desechable y bajo tu responsabilidad.",
+          "We do not decide for you whether to use them: we show them with what we found and with their real link, so you do not end up on a fake copy or a scam. We analysed them in an isolated container without installing them. If you decide to try them, do it in a disposable virtual machine and at your own risk.",
+          "Não decidimos por você se as usa: mostramo-las com o que encontrámos e com o link real, para não acabar numa cópia falsa ou num golpe. Analisámo-las num contentor isolado, sem as instalar. Se decidir testá-las, faça-o numa máquina virtual descartável e sob sua responsabilidade."),
+    "found": ("Qué encontramos (23-nov-2026)", "What we found (23 Nov 2026)", "O que encontrámos (23-nov-2026)"),
+    "repo": ("Repositorio real", "Real repository", "Repositório real"),
+    "alt": ("Captura del análisis de OSINTario", "Screenshot of OSINTario's analysis", "Captura da análise do OSINTario"),
+}
+
+
 def slug(name):
     return "t-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
@@ -717,6 +796,17 @@ def guide(lang):
     hows = "".join(f'<article class="gtype" id="{slug(n)}"><h3>{html.escape(n)}</h3><p>{v[0][i]} <a href="{urls[n]}" target="_blank" rel="noopener noreferrer">{("Sitio oficial", "Official site", "Site oficial")[i]} ↗</a></p><pre><code>{code(v[1])}</code></pre>'
                    + (f'<p class="warn">⚠️ {v[2][i]}</p>' if v[2] else "") + f'<p class="warn">{TEST_OK[i] + " " + TESTED[n] if n in TESTED else TEST_NO[i]}</p></article>' for n, v in HOWTO.items())
     toc = "".join(f'<a class="chip" href="#{slug(n)}">{html.escape(n)}</a>' for n in HOWTO)
+    analyzed = json.loads(re.search(r"const ANALYZED = (\[[^\]]*\]);", src).group(1))
+    if sorted(analyzed) != sorted(RISK):
+        raise SystemExit("ANALYZED (directory.js) y RISK (build.py) no coinciden")
+    for n in RISK:
+        if n not in urls:
+            raise SystemExit(f"RISK: '{n}' no está en TOOLS")
+    risks = "".join(f'<article class="gtype" id="{slug(n)}"><h3>⚠️ {html.escape(n)}</h3><p class="warn"><b>{v[0][i]}</b></p><p>{v[1][i]}</p>'
+                    f'<p><b>{RISK_T["found"][i]}</b></p><ul>' + "".join(f"<li>{html.escape(x)}</li>" for x in v[2][i]) + '</ul>'
+                    f'<figure class="gfig"><img src="{v[3]}" alt="{RISK_T["alt"][i]}: {html.escape(n)}" loading="lazy"><figcaption class="note">{RISK_T["alt"][i]}</figcaption></figure>'
+                    f'<p><a href="{urls[n]}" target="_blank" rel="noopener noreferrer">{RISK_T["repo"][i]} ↗</a>' + "".join(f' · <a href="{u}" target="_blank" rel="noopener noreferrer">{html.escape(tx)} ↗</a>' for tx, u in v[4]) + '</p></article>'
+                    for n, v in RISK.items())
     return h + f"""<main id="main"><section><div class="wrap guide">
   <span class="tag">OSINTario</span>
   <h1>{t("title")}</h1>
@@ -728,6 +818,9 @@ def guide(lang):
   <p class="lede">{t("how_p")}</p>
   <div class="chips">{toc}</div>
   {hows}
+  <h2 id="riesgo">{RISK_T["h"][i]}</h2>
+  <p class="lede">{RISK_T["p"][i]}</p>
+  {risks}
   <h2>{t("types_h")}</h2>
   {types}
   <p class="note">{t("note")}</p>
