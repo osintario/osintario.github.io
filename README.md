@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 165 · **Última revisión:** 2026-11-21
+**Herramientas:** 169 · **Última revisión:** 2026-11-23
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -115,6 +115,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Proton keyserver](https://api.protonmail.ch/pks/lookup?op=index&search=ejemplo@proton.me) | Comprueba si un email tiene clave pública de Proton (indica cuenta Proton). | ✅ Activa | libre |  |
 | [Buscadores de personas de EE. UU.](https://www.whitepages.com) | PeekYou, Whitepages, TruePeopleSearch: poco útiles fuera de EE. UU. y con datos viejos. | ⚠️ Con precaución | 💳 pago |  |
 | [Tookie-OSINT](https://github.com/alfredredbird/tookie-osint) | Busca un alias en cientos de sitios desde la terminal (Linux, Windows, Termux); MIT. Instálalo con pip en un entorno virtual, no con el script que pide sudo. | ✅ Activa | libre | 🧪 Python |
+| [Unavatar](https://unavatar.io) | Muestra la foto de perfil pública asociada a un alias, email o dominio en decenas de plataformas (GitHub, X, YouTube, Gravatar…). Código abierto (MIT); gratis con límite diario, plan pago para más. | ✅ Activa | 💳 pago |  |
 
 ## Brechas
 
@@ -123,6 +124,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Have I Been Pwned](https://haveibeenpwned.com) | Comprueba si un email aparece en filtraciones conocidas. | ✅ Activa | libre |  |
 | [Intelligence X](https://intelx.io) | Archivo de filtraciones, pastes y darknet. | 🟡 Con límites | 🔑 registro 💳 pago |  |
 | [DeHashed](https://dehashed.com) | Búsqueda en bases filtradas. Solo con autorización y finalidad defensiva. | ⚠️ Con precaución | 🔑 registro 💳 pago |  |
+| [Vendor History](https://vendorhistory.com) | ¿Hackearon a un proveedor? Avisos de brechas ante fiscales de EE. UU., reportes a la SEC, fallas explotadas (CISA) y reclamos de ransomware de 255 proveedores de software, cada uno con su fuente. Gratis y sin registro. | ✅ Activa | libre |  |
 
 ## Imágenes y video
 
@@ -179,6 +181,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [OpenCorporates](https://opencorporates.com) | Registros mercantiles de todo el mundo. | ✅ Activa | libre |  |
 | [OpenSanctions](https://www.opensanctions.org) | Sanciones y personas expuestas políticamente. | ✅ Activa | libre |  |
 | [CourtListener](https://www.courtlistener.com) | Expedientes judiciales de EE. UU. | ✅ Activa | libre |  |
+| [Lacis](https://github.com/c4seus/lacis) | Mapea empresas francesas, sus directivos y domicilios en un grafo con fuente (SIRENE, RNE, BODACC) y marca señales como domiciliación masiva o empresas fénix. App de escritorio, GPL-3.0, interfaz en francés; versión 0.y, muy nueva. | ✅ Activa | libre | 🧪 instalador oficial |
 
 ## Dark web
 
@@ -217,6 +220,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [YARA](https://github.com/VirusTotal/yara) | Reglas para identificar y clasificar malware o archivos por patrones. | ✅ Activa | libre | 🧪 instalador oficial |
 | [CyberChef](https://gchq.github.io/CyberChef/) | Decodifica, convierte y analiza datos en el navegador (Base64, hashes, fechas, XOR…). | ✅ Activa | libre |  |
 | [Digital Forensics Lab](https://github.com/frankwxu/digital-forensics-lab) | Laboratorios prácticos gratuitos de forense digital (disco, memoria, red, móviles) con imágenes de evidencia y guías paso a paso; Universidad de Baltimore, Apache 2.0. | ✅ Activa | libre | 🧪 solo en VM |
+| [Hopline](https://forensicworks.github.io/hopline/) | Rastreo de Bitcoin en el navegador: sigue el dinero transacción por transacción, marca patrones con su motivo, cruza listas de sanciones y ransomware y genera un informe verificable. Sin instalar ni servidor propio; Apache 2.0. | ✅ Activa | libre |  |
 
 ## Apps de citas (RGPD)
 
