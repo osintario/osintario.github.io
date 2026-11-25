@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 195 · **Última revisión:** 2026-11-23
+**Herramientas:** 195 · **Última revisión:** 2026-11-25
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -284,7 +284,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Wifite2](https://github.com/derv82/wifite2) | Automatiza auditorías Wi-Fi (WPA, WPS) usando Aircrack-ng y otras. Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 | [Airgeddon](https://github.com/v1s1t0r1sh3r3/airgeddon) | Menú en Bash para auditar redes inalámbricas (handshakes, WPS, portales falsos). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 | [hcxdumptool](https://github.com/ZerBea/hcxdumptool) | Captura tráfico Wi-Fi para pruebas de seguridad de WPA/WPA2 (junto con hcxtools y Hashcat). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
-| [RedRoot](https://github.com/agampreet-singh/RedRoot) | Framework ofensivo en Python (MIT) con 30+ módulos: phishing, backdoor, DoS, Wi-Fi. El módulo Bluetooth que roba contactos y SMS no es público: en el repo solo muestra «MODULE LOCKED». Solo en laboratorio propio. | ⚠️ Con precaución | libre | 🧪 solo en VM |
+| [RedRoot](https://github.com/agampreet-singh) | Repo retirado de GitHub (404 desde el 25-nov-2026); se conserva el análisis. Framework ofensivo en Python (MIT) con 30+ módulos: phishing, backdoor, DoS, Wi-Fi. El módulo Bluetooth que roba contactos y SMS no es público: en el repo solo muestra «MODULE LOCKED». Solo en laboratorio propio. | ⚠️ Con precaución | libre | 🧪 solo en VM |
 | [DarkFly-Tool](https://github.com/Ranginang67/DarkFly-Tool) | Menú de Termux que instala 500+ herramientas. Abandonado desde 2019 (Python 2), con código ofuscado que no se puede revisar y 7 herramientas de spam de SMS. No recomendado. | ⚠️ Con precaución | libre |  |
 
 ## Frameworks, IA y automatización
