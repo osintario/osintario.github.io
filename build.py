@@ -144,6 +144,18 @@ STR = {
  "tools_p": ("Escribe un dato y la herramienta consulta varias fuentes abiertas a la vez, ordena lo que encuentra y te entrega un informe con fuente, nivel de confianza y hash SHA-256 para tu evidencia.",
              "Type one data point and the tool queries several open sources at once, sorts what it finds and gives you a report with source, confidence level and SHA-256 hash for your evidence.",
              "Digite um dado e a ferramenta consulta várias fontes abertas ao mesmo tempo, organiza o que encontra e entrega um relatório com fonte, nível de confiança e hash SHA-256 para sua evidência."),
+    "sp_tag": ("Patrocinadas", "Sponsored", "Patrocinadas"),
+    "sp_h": ("Herramientas patrocinadas", "Sponsored tools", "Ferramentas patrocinadas"),
+    "sp_p": ("Algunos proveedores apoyan a OSINTario. Su apoyo no compra un lugar ni una buena reseña: cada herramienta patrocinada pasa la misma revisión que el resto y su ficha dice lo que encontramos al usarla, sea bueno o malo.",
+             "Some vendors support OSINTario. Their support does not buy a place or a good review: every sponsored tool goes through the same review as the rest, and its entry says what we found when using it, good or bad.",
+             "Alguns fornecedores apoiam o OSINTario. O apoio não compra um lugar nem uma boa avaliação: cada ferramenta patrocinada passa pela mesma revisão que as demais e a ficha diz o que encontramos ao usá-la, seja bom ou mau."),
+    "sp_rules": ("<li><b>Mismos criterios.</b> Tiene que estar activa, ser verificable y no servir para doxxing, acoso ni acceso sin autorización.</li><li><b>Acceso de prueba.</b> El proveedor nos da una clave o cuenta para probarla con casos reales; sin prueba no hay evaluación.</li><li><b>Evaluación independiente.</b> Publicamos lo que obtuvimos, con límites y fallas incluidos. El proveedor no la revisa antes ni la cambia.</li><li><b>Difusión.</b> Pedimos que el proveedor comparta nuestra evaluación cuando la publiquemos.</li><li><b>Etiqueta visible.</b> Las fichas llevan 🤝 Patrocinada. Si la herramienta deja de cumplir, se quita la etiqueta y se corrige la ficha.</li>",
+                 "<li><b>Same criteria.</b> It must be active, verifiable and not usable for doxxing, harassment or unauthorized access.</li><li><b>Test access.</b> The vendor gives us a key or account to test it on real cases; no test, no review.</li><li><b>Independent review.</b> We publish what we got, limits and failures included. The vendor does not review or change it beforehand.</li><li><b>Sharing.</b> We ask the vendor to share our review once it is published.</li><li><b>Visible label.</b> Entries carry 🤝 Sponsored. If the tool stops meeting the criteria, the label is removed and the entry corrected.</li>",
+                 "<li><b>Mesmos critérios.</b> Tem de estar ativa, ser verificável e não servir para doxxing, assédio nem acesso sem autorização.</li><li><b>Acesso de teste.</b> O fornecedor dá-nos uma chave ou conta para testá-la com casos reais; sem teste não há avaliação.</li><li><b>Avaliação independente.</b> Publicamos o que obtivemos, com limites e falhas incluídos. O fornecedor não a revê antes nem a altera.</li><li><b>Divulgação.</b> Pedimos que o fornecedor partilhe a nossa avaliação quando a publicarmos.</li><li><b>Etiqueta visível.</b> As fichas levam 🤝 Patrocinada. Se a ferramenta deixar de cumprir, a etiqueta é retirada e a ficha corrigida.</li>"),
+    "sp_none": ("Todavía no hay herramientas patrocinadas.", "There are no sponsored tools yet.", "Ainda não há ferramentas patrocinadas."),
+    "sp_cta": ("¿Tienes una herramienta OSINT? <a href=\"https://github.com/osintario/osintario.github.io/issues/new/choose\" target=\"_blank\" rel=\"noopener noreferrer\">Propónla en un Issue</a> y aclara si eres el proveedor.",
+               "Do you have an OSINT tool? <a href=\"https://github.com/osintario/osintario.github.io/issues/new/choose\" target=\"_blank\" rel=\"noopener noreferrer\">Propose it in an Issue</a> and say if you are the vendor.",
+               "Tem uma ferramenta OSINT? <a href=\"https://github.com/osintario/osintario.github.io/issues/new/choose\" target=\"_blank\" rel=\"noopener noreferrer\">Proponha-a numa Issue</a> e diga se é o fornecedor."),
     "ethics": ("<b>Uso ético y legal.</b> OSINTario es una guía para investigar con fuentes abiertas, no un permiso. Cada búsqueda sobre una persona necesita una finalidad legítima y base legal (RGPD y leyes locales). No lo uses para acosar, vigilar a parejas o exparejas, exponer datos personales ni acceder a sistemas sin autorización. Quien busca es responsable de lo que hace con la información.",
                "<b>Ethical and lawful use.</b> OSINTario is a guide to open-source investigation, not a permission slip. Every search about a person needs a legitimate purpose and a legal basis (GDPR and local laws). Do not use it to harass, monitor partners or exes, expose personal data or access systems without authorisation. Whoever searches is responsible for what they do with the information.",
                "<b>Uso ético e legal.</b> O OSINTario é um guia para investigar com fontes abertas, não uma autorização. Cada pesquisa sobre uma pessoa precisa de uma finalidade legítima e base legal (RGPD e leis locais). Não o use para assediar, vigiar parceiros ou ex-parceiros, expor dados pessoais nem aceder a sistemas sem autorização. Quem pesquisa é responsável pelo que faz com a informação."),
@@ -350,6 +362,15 @@ def home(lang):
   <p class="legend">{s("legend", lang)}</p>
   <div class="chips" id="chips" role="group"></div>
   <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="patrocinadas"><div class="wrap">
+  <span class="tag">🤝 {s("sp_tag", lang)}</span>
+  <h2>{s("sp_h", lang)}</h2>
+  <p class="lede">{s("sp_p", lang)}</p>
+  <ul class="sp-rules">{s("sp_rules", lang)}</ul>
+  <ul class="sp-list" id="sp-list" data-none="{s("sp_none", lang)}"></ul>
+  <p class="legend">{s("sp_cta", lang)}</p>
 </div></section>
 
 <section id="metodo"><div class="wrap">
@@ -799,6 +820,10 @@ def guide(lang):
     hows = "".join(f'<article class="gtype" id="{slug(n)}"><h3>{html.escape(n)}</h3><p>{v[0][i]} <a href="{urls[n]}" target="_blank" rel="noopener noreferrer">{("Sitio oficial", "Official site", "Site oficial")[i]} ↗</a></p><pre><code>{code(v[1])}</code></pre>'
                    + (f'<p class="warn">⚠️ {v[2][i]}</p>' if v[2] else "") + f'<p class="warn">{TEST_OK[i] + " " + TESTED[n] if n in TESTED else TEST_NO[i]}</p></article>' for n, v in HOWTO.items())
     toc = "".join(f'<a class="chip" href="#{slug(n)}">{html.escape(n)}</a>' for n in HOWTO)
+    sponsors = re.search(r"const SPONSORS = (\{.*?\});", src, re.S).group(1)
+    for sn in re.findall(r'"([^"]+)"\s*:\s*\{', sponsors):
+        if sn not in {t[1] for t in json.loads(re.sub(r",\s*\]$", "]", src[src.index("const TOOLS = [") + 14: src.index("\n];", src.index("const TOOLS = [")) + 2].strip()))}:
+            raise SystemExit(f"SPONSORS: {sn} no existe en TOOLS")
     analyzed = json.loads(re.search(r"const ANALYZED = (\[[^\]]*\]);", src).group(1))
     if sorted(analyzed) != sorted(RISK):
         raise SystemExit("ANALYZED (directory.js) y RISK (build.py) no coinciden")
@@ -909,7 +934,8 @@ def readme():
             name = t[1] if t[5] == "no" else f"[{t[1]}]({t[6]})"
             out.append(f"| {name} | {t[2]} | {st[t[5]]} | {' '.join(acc[c] for c in t[7]) or 'libre'} | {ins.get(t[8], '') if len(t) > 8 else ''} |")
         out.append("")
-    out += ["## Uso responsable", "", "Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación.", "",
+    out += ["## Uso responsable", "", "Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación, salvo las herramientas marcadas 🤝 Patrocinada en el sitio.", "",
+            "## 🤝 Herramientas patrocinadas", "", "Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](" + BASE + "#patrocinadas).", "",
             "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 12 páginas, `dirlinks.js`, el sitemap y este README.", "",
             "## Licencia", "", "Contenido bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)."]
     open("README.md", "w", encoding="utf-8").write("\n".join(out) + "\n")

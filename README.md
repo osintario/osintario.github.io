@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 195 · **Última revisión:** 2026-11-25
+**Herramientas:** 201 · **Última revisión:** 2026-11-25
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -117,6 +117,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Epieos](https://epieos.com) | Búsqueda inversa de email y teléfono (cuentas de Google, Skype y otras). Búsquedas gratis limitadas. | ✅ Activa | 🔑 registro 💳 pago |  |
 | [OSINT Industries](https://www.osint.industries) | Búsqueda de email, teléfono y alias en cientos de módulos. De pago. | ✅ Activa | 🔑 registro 💳 pago |  |
 | [Maigret](https://github.com/soxoj/maigret) | Dossier por usuario en miles de sitios. | ✅ Activa | libre | 🧪 Python |
+| [Snoop](https://github.com/snooppr/snoop) | Busca un alias en miles de sitios, fuerte en webs rusas y de la CEI. Licencia propietaria: solo uso personal; la versión gratis trae unas 15 veces menos sitios y la completa es paga. | 🟡 Con límites | 💳 pago | 🧪 Python |
 | [WhatsMyName](https://whatsmyname.app) | Dataset de sitios para buscar usuarios. Archivado en nov-2026: ya no se actualiza. | 🟡 Con límites | libre |  |
 | [Holehe](https://github.com/megadose/holehe) | Qué sitios tienen registrado un email. Sin mantenimiento desde 2024. | 🟡 Con límites | libre | 🧪 Python |
 | [Hunter.io](https://hunter.io) | Emails corporativos asociados a un dominio. | ✅ Activa | 🔑 registro 💳 pago |  |
@@ -136,6 +137,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Have I Been Pwned](https://haveibeenpwned.com) | Comprueba si un email aparece en filtraciones conocidas. | ✅ Activa | libre |  |
 | [Intelligence X](https://intelx.io) | Archivo de filtraciones, pastes y darknet. | 🟡 Con límites | 🔑 registro 💳 pago |  |
 | [DeHashed](https://dehashed.com) | Búsqueda en bases filtradas. Solo con autorización y finalidad defensiva. | ⚠️ Con precaución | 🔑 registro 💳 pago |  |
+| [Library of Leaks](https://search.libraryofleaks.org/) | Buscador de DDoSecrets sobre millones de documentos filtrados de interés público. Contiene datos personales: solo para periodismo o investigación con base legal (RGPD). | ⚠️ Con precaución | libre |  |
 | [Vendor History](https://vendorhistory.com) | ¿Hackearon a un proveedor? Avisos de brechas ante fiscales de EE. UU., reportes a la SEC, fallas explotadas (CISA) y reclamos de ransomware de 255 proveedores de software, cada uno con su fuente. Gratis y sin registro. | ✅ Activa | libre |  |
 | [Have I Been Zuckered](https://haveibeenzuckered.com) | Comprueba si un número de teléfono está en la filtración de 533 millones de cuentas de Facebook (2021). Gratis; usa k-anonimato. | ✅ Activa | libre |  |
 
@@ -154,6 +156,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | Archivo web propio: guarda URLs en HTML, PDF, captura y WARC en tu servidor. | ✅ Activa | libre | 🧪 Docker |
 | Clearview AI | Reconocimiento facial. Incompatible con el RGPD en la UE. | ❌ Descartada | 💳 pago |  |
 | [yt-dlp](https://github.com/yt-dlp/yt-dlp) | Descarga video y audio de miles de sitios (YouTube, X, TikTok…) para preservar evidencia antes de que la borren. Respeta derechos de autor y términos de uso. | ✅ Activa | libre | 🧪 Python |
+| [Reverse Video Search (MaxIntel)](https://maxintel.org/video-reverse-search.html) | Extrae fotogramas clave de un video, lee el texto en pantalla (OCR) y los lleva a la búsqueda inversa de imágenes; también ubica una captura dentro del video. Todo corre en tu navegador, sin subir el archivo. | ✅ Activa | libre |  |
 
 ## GEOINT y transporte
 
@@ -216,6 +219,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Whiteintel](https://whiteintel.io) | Comprueba la exposición de un dominio o email en la dark web. | 🟡 Con límites | 🔑 registro 💳 pago |  |
 | [ALEPH Open Search](https://open-search.aleph-networks.eu/en) | Busca datos de tu organización en millones de sitios de la dark y deep web. | 🟡 Con límites | libre |  |
 | [TorBot](https://github.com/DedSecInside/TorBot) | Crawler OSINT para la dark web (requiere Tor). | ✅ Activa | libre | 🧪 Python |
+| [TorCrawl.py](https://github.com/MikeMeliz/TorCrawl.py) | Crawler en Python (GPL-3.0) que recorre sitios .onion a través de Tor y guarda su contenido. Úsalo dentro de una VM. | ✅ Activa | libre | 🧪 Python |
+| [deepdarkCTI](https://github.com/fastfire/deepdarkCTI) | Lista curada (GPL-3.0) de fuentes de inteligencia de amenazas: foros, mercados, sitios de ransomware y canales de Telegram. Enlaza a sitios criminales: ábrelos solo en una VM y sin interactuar. | ⚠️ Con precaución | libre |  |
 | [Darkus](https://github.com/Lucksi/Darkus) | Busca una palabra en varios buscadores de la deep y dark web. | ✅ Activa | libre | 🧪 Python |
 | [DarkSherlock](https://github.com/banaxou/dark-sherlock) | Busca un alias en más de 40 foros de la dark web. Proyecto pequeño: pruébalo aislado. | 🟡 Con límites | libre | 🧪 Python |
 | [TheDevilsEye](https://github.com/rlyonheart/thedevilseye) | Busca enlaces .onion desde la terminal sin usar Tor. | 🟡 Con límites | libre | 🧪 Python |
@@ -260,6 +265,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 |---|---|---|---|---|
 | [Kali Linux](https://www.kali.org/get-kali/) | Distribución Linux con cientos de herramientas de seguridad ya instaladas. La forma más simple de tener un laboratorio: descarga la imagen oficial para máquina virtual. | ✅ Activa | libre | 🧪 solo en VM |
 | [Nmap](https://nmap.org/) | Descubre equipos, puertos abiertos y servicios en una red. Solo en sistemas propios o con autorización escrita. | ✅ Activa | libre | 🧪 instalador oficial |
+| [Naabu](https://github.com/projectdiscovery/naabu) | Escáner de puertos rápido en Go (ProjectDiscovery, MIT); su modo pasivo usa Shodan InternetDB sin tocar el objetivo. Solo en sistemas propios o con autorización escrita. | ✅ Activa | libre | 🧪 Go |
 | [Wireshark](https://www.wireshark.org/) | Captura y analiza tráfico de red paquete por paquete; también abre capturas (pcap) de un caso forense. | ✅ Activa | libre | 🧪 instalador oficial |
 | [Burp Suite](https://portswigger.net/burp/communitydownload) | Proxy para interceptar y probar aplicaciones web. La edición Community es gratis; la Professional es paga. Solo en sistemas propios o con autorización escrita. | ✅ Activa | 💳 pago | 🧪 instalador oficial |
 | [OWASP ZAP](https://www.zaproxy.org/) | Proxy y escáner de vulnerabilidades web, gratuito y de código abierto. Solo en sistemas propios o con autorización escrita. | ✅ Activa | libre | 🧪 instalador oficial |
@@ -308,7 +314,11 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 
 ## Uso responsable
 
-Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación.
+Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación, salvo las herramientas marcadas 🤝 Patrocinada en el sitio.
+
+## 🤝 Herramientas patrocinadas
+
+Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](https://osintario.github.io/#patrocinadas).
 
 ## Cómo se actualiza
 

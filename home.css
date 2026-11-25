@@ -194,3 +194,9 @@ nav.main{flex-wrap:nowrap;align-items:center;white-space:nowrap}
 .gfig{margin:12px 0}
 .gfig img{display:block;max-width:100%;height:auto;border-radius:8px;border:1px solid rgba(127,127,127,.25)}
 .gfig figcaption{margin-top:6px}
+.sp-rules{max-width:90ch;margin:14px 0;padding-left:20px;line-height:1.6}
+.sp-rules li{margin:4px 0}
+.sp-list{list-style:none;padding:0;margin:14px 0}
+.sp-list li{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--ok,#2a7);border-radius:6px;padding:10px 14px;margin:8px 0}
+.sp-list li.none{border-left-color:var(--line);color:var(--muted,#666)}
+.acc.sp{text-decoration:none}
