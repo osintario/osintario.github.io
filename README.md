@@ -318,11 +318,11 @@ Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la 
 
 ## 🤝 Herramientas patrocinadas
 
-Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](https://osintario.github.io/#patrocinadas).
+Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](https://osintario.github.io/#patrocinadas). Formato de evaluación: [evaluación de ejemplo con ExifTool](https://osintario.github.io/evaluacion-ejemplo.html).
 
 ## Cómo se actualiza
 
-El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 12 páginas, `dirlinks.js`, el sitemap y este README.
+El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 15 páginas, `dirlinks.js`, el sitemap y este README.
 
 ## Licencia
 

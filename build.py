@@ -6,6 +6,7 @@ El contenido del directorio vive en directory.js; los textos de las páginas, en
 """
 import html, json
 import re
+from evals import EVALP, T as ET, EX
 
 LANGS = ["es", "en", "pt"]
 HOME = {"es": "index.html", "en": "en.html", "pt": "pt.html"}
@@ -152,6 +153,7 @@ STR = {
     "sp_rules": ("<li><b>Mismos criterios.</b> Tiene que estar activa, ser verificable y no servir para doxxing, acoso ni acceso sin autorización.</li><li><b>Acceso de prueba.</b> El proveedor nos da una clave o cuenta para probarla con casos reales; sin prueba no hay evaluación.</li><li><b>Evaluación independiente.</b> Publicamos lo que obtuvimos, con límites y fallas incluidos. El proveedor no la revisa antes ni la cambia.</li><li><b>Difusión.</b> Pedimos que el proveedor comparta nuestra evaluación cuando la publiquemos.</li><li><b>Etiqueta visible.</b> Las fichas llevan 🤝 Patrocinada. Si la herramienta deja de cumplir, se quita la etiqueta y se corrige la ficha.</li>",
                  "<li><b>Same criteria.</b> It must be active, verifiable and not usable for doxxing, harassment or unauthorized access.</li><li><b>Test access.</b> The vendor gives us a key or account to test it on real cases; no test, no review.</li><li><b>Independent review.</b> We publish what we got, limits and failures included. The vendor does not review or change it beforehand.</li><li><b>Sharing.</b> We ask the vendor to share our review once it is published.</li><li><b>Visible label.</b> Entries carry 🤝 Sponsored. If the tool stops meeting the criteria, the label is removed and the entry corrected.</li>",
                  "<li><b>Mesmos critérios.</b> Tem de estar ativa, ser verificável e não servir para doxxing, assédio nem acesso sem autorização.</li><li><b>Acesso de teste.</b> O fornecedor dá-nos uma chave ou conta para testá-la com casos reais; sem teste não há avaliação.</li><li><b>Avaliação independente.</b> Publicamos o que obtivemos, com limites e falhas incluídos. O fornecedor não a revê antes nem a altera.</li><li><b>Divulgação.</b> Pedimos que o fornecedor partilhe a nossa avaliação quando a publicarmos.</li><li><b>Etiqueta visível.</b> As fichas levam 🤝 Patrocinada. Se a ferramenta deixar de cumprir, a etiqueta é retirada e a ficha corrigida.</li>"),
+    "sp_ex": ("Ver una evaluación de ejemplo →", "See an example review →", "Ver uma avaliação de exemplo →"),
     "sp_none": ("Todavía no hay herramientas patrocinadas.", "There are no sponsored tools yet.", "Ainda não há ferramentas patrocinadas."),
     "sp_cta": ("¿Tienes una herramienta OSINT? <a href=\"https://github.com/osintario/osintario.github.io/issues/new/choose\" target=\"_blank\" rel=\"noopener noreferrer\">Propónla en un Issue</a> y aclara si eres el proveedor.",
                "Do you have an OSINT tool? <a href=\"https://github.com/osintario/osintario.github.io/issues/new/choose\" target=\"_blank\" rel=\"noopener noreferrer\">Propose it in an Issue</a> and say if you are the vendor.",
@@ -370,6 +372,7 @@ def home(lang):
   <p class="lede">{s("sp_p", lang)}</p>
   <ul class="sp-rules">{s("sp_rules", lang)}</ul>
   <ul class="sp-list" id="sp-list" data-none="{s("sp_none", lang)}"></ul>
+  <p><a class="btn ghost" href="{EVALP[lang]}">{s("sp_ex", lang)}</a></p>
   <p class="legend">{s("sp_cta", lang)}</p>
 </div></section>
 
@@ -860,6 +863,53 @@ def guide(lang):
 """
 
 
+def review(lang):
+    """Evaluación de ejemplo (formato de las herramientas patrocinadas). Contenido en evals.py."""
+    i = LANGS.index(lang)
+    t = lambda k: ET[k][i]
+    csp = "default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    h = head(lang, t("title") + " · OSINTario", t("desc"), EVALP[lang], EVALP, csp, "home.css") + "</head>\n<body>\n"
+    h += header(lang, nav_links(lang), TOOLSP[lang], "Multi-OSINT Lite", EVALP)
+    card = "".join(f"<dt>{a[i]}</dt><dd>{b[i]}</dd>" for a, b in EX["card"])
+    crit = "".join(f'<li><span class="ev-c">{a[i]}</span><span class="ev-s" aria-label="{n}/5">{"●" * n}{"○" * (5 - n)} <b>{n}</b></span><span class="ev-d">{d[i]}</span></li>' for a, n, d in EX["criteria"])
+    icon = {"ok": "✅", "warn": "⚠️", "bad": "❌"}
+    th = "".join(f"<th>{x}</th>" for x in ET["th"][i])
+    rows = "".join(f'<tr><td>{k}</td><td>{q[i]}</td><td><code>{html.escape(c)}</code></td><td>{icon[st]} {r[i]}</td><td>{w[i]}</td></tr>' for k, (q, c, st, r, w) in enumerate(EX["tests"], 1))
+    swot = "".join(f'<div class="ev-q ev-q{k}"><h3>{ET["swot"][i][k]}</h3><ul>' + "".join(f"<li>{x[i]}</li>" for x in EX["swot"][k]) + "</ul></div>" for k in range(4))
+    pros = "".join(f"<li>{x[i]}</li>" for x in EX["pros"]); cons = "".join(f"<li>{x[i]}</li>" for x in EX["cons"])
+    repro = "".join(f"<li>{x[3:]}</li>" for x in EX["repro"][i].split("\n"))
+    return h + f"""<main id="main"><section><div class="wrap guide evalp">
+  <span class="tag">🤝 {t("tag")}</span>
+  <h1>{t("title")}</h1>
+  <p class="ethics" role="note"><span aria-hidden="true">ℹ️</span> <span>{t("why")}</span></p>
+  <div class="ev-top">
+    <div class="gtype"><h3>{t("card_h")}</h3><dl class="ev-card">{card}</dl><p><a href="{EX["url"]}" target="_blank" rel="noopener noreferrer">{t("official")} ↗</a></p></div>
+    <div class="gtype ev-verdict"><h3>{t("verdict_h")}</h3><p class="ev-score">{EX["score"]}</p><p>{EX["verdict"][i]}</p></div>
+  </div>
+  <h2>{t("crit_h")}</h2>
+  <p class="lede">{t("crit_p")}</p>
+  <ul class="ev-crit">{crit}</ul>
+  <h2>{t("tests_h")}</h2>
+  <div class="ev-tw"><table class="ev-t"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div>
+  <h2>{t("swot_h")}</h2>
+  <div class="ev-swot">{swot}</div>
+  <h2>{t("pc_h")}</h2>
+  <div class="ev-pc"><div class="gtype"><h3>👍 {t("pros")}</h3><ul>{pros}</ul></div><div class="gtype"><h3>👎 {t("cons")}</h3><ul>{cons}</ul></div></div>
+  <h2>{t("repro_h")}</h2>
+  <ol class="ev-r">{repro}</ol>
+  <p><a class="btn" href="{EX["sample"]}" download>{t("sample")}</a></p>
+  <p class="note">SHA-256: <code>{EX["sample_sha"]}</code></p>
+  <pre class="ev-pre"><code>{html.escape(EX["cmds"])}</code></pre>
+  <h2>{t("sign_h")}</h2>
+  <p class="ethics" role="note"><span aria-hidden="true">✍️</span> <span>{EX["sign"][i]}</span></p>
+  <p><a class="btn ghost" href="{HOME[lang]}#patrocinadas">{t("back")}</a></p>
+</div></section></main>
+<footer><div class="wrap"><div>{s("foot", lang)}</div><div>OSINTario · Federico Dosio</div></div></footer>
+</body>
+</html>
+"""
+
+
 def dirlinks():
     """Genera dirlinks.js para Multi-OSINT Lite a partir de TOOLS y LAUNCH de directory.js."""
     src = open("directory.js", encoding="utf-8").read()
@@ -891,14 +941,15 @@ if __name__ == "__main__":
         open(TOOLSP[lang], "w", encoding="utf-8").write(tools(lang))
         open(STARP[lang], "w", encoding="utf-8").write(star(lang))
         open(GUIDEP[lang], "w", encoding="utf-8").write(guide(lang))
+        open(EVALP[lang], "w", encoding="utf-8").write(review(lang))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for pages in (HOME, TOOLSP, STARP, GUIDEP):
+    for pages in (HOME, TOOLSP, STARP, GUIDEP, EVALP):
         for l in LANGS:
             alts = "".join(f'<xhtml:link rel="alternate" hreflang="{x}" href="{BASE}{pages[x]}"/>' for x in LANGS)
             sm.append(f"  <url><loc>{BASE}{pages[l]}</loc>{alts}</url>")
     sm.append("</urlset>")
     open("sitemap.xml", "w").write("\n".join(sm) + "\n")
-    print("OK: 12 páginas y sitemap")
+    print("OK: 15 páginas y sitemap")
     print(f"dirlinks.js: {dirlinks()} herramientas del directorio con atajo")
 
 
@@ -935,8 +986,8 @@ def readme():
             out.append(f"| {name} | {t[2]} | {st[t[5]]} | {' '.join(acc[c] for c in t[7]) or 'libre'} | {ins.get(t[8], '') if len(t) > 8 else ''} |")
         out.append("")
     out += ["## Uso responsable", "", "Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación, salvo las herramientas marcadas 🤝 Patrocinada en el sitio.", "",
-            "## 🤝 Herramientas patrocinadas", "", "Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](" + BASE + "#patrocinadas).", "",
-            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 12 páginas, `dirlinks.js`, el sitemap y este README.", "",
+            "## 🤝 Herramientas patrocinadas", "", "Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](" + BASE + "#patrocinadas). Formato de evaluación: [evaluación de ejemplo con ExifTool](" + BASE + "evaluacion-ejemplo.html).", "",
+            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 15 páginas, `dirlinks.js`, el sitemap y este README.", "",
             "## Licencia", "", "Contenido bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)."]
     open("README.md", "w", encoding="utf-8").write("\n".join(out) + "\n")
 
