@@ -13,6 +13,7 @@ HOME = {"es": "index.html", "en": "en.html", "pt": "pt.html"}
 TOOLSP = {"es": "herramientas.html", "en": "tools-en.html", "pt": "ferramentas.html"}
 STARP = {"es": "estrella.html", "en": "star.html", "pt": "estrela.html"}
 GUIDEP = {"es": "instalacion-segura.html", "en": "safe-install.html", "pt": "instalacao-segura.html"}
+LABP = {"es": "laboratorio.html", "en": "lab.html", "pt": "lab-pt.html"}
 LOCALE = {"es": "es_ES", "en": "en_US", "pt": "pt_PT"}
 BASE = "https://osintario.github.io/"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -183,20 +184,25 @@ def s(key, lang):
 FS = {
     "nav_guide": ("Instalación segura", "Safe install", "Instalação segura"),
     "nav_plans": ("Lite y Pro", "Lite & Pro", "Lite e Pro"),
+    "nav_lab": ("🧪 Laboratorio", "🧪 Lab", "🧪 Laboratório"),
+    "l_goal": ("Meta de la comunidad", "Community goal", "Meta da comunidade"),
     "nav_star": ("⭐ Apoyar", "⭐ Support", "⭐ Apoiar"),
     "start_tag": ("Empieza aquí", "Start here", "Comece aqui"),
     "start_h": ("Qué puedes hacer en OSINTario", "What you can do on OSINTario", "O que você pode fazer no OSINTario"),
     "start": (
         ["Encontrar la herramienta|Directorio revisado a mano: qué hace cada una, si sigue activa y si pide registro o pago.|Ver el directorio",
          "Investigar un dato ahora|Multi-OSINT Lite consulta varias fuentes desde tu navegador. Gratis y sin registro.|Abrir Multi-OSINT Lite",
+         "Practicar en el laboratorio|ExifTool real dentro de tu navegador, con archivos de muestra y ejercicios guiados. Sin instalar nada.|Abrir el laboratorio",
          "Instalar sin riesgos|Si la herramienta se instala, sigue la guía: máquina virtual, entornos aislados y pasos por herramienta.|Ver la guía",
          "Destrabar más con tu ⭐|Con 100 estrellas se activa el barrido de alias en miles de sitios. Toma 30 segundos.|Dejar mi ⭐"],
         ["Find the right tool|Hand-reviewed directory: what each tool does, whether it still works and if it needs a login or payment.|Browse the directory",
          "Investigate a data point now|Multi-OSINT Lite queries several sources from your browser. Free, no sign-up.|Open Multi-OSINT Lite",
+         "Practice in the lab|Real ExifTool inside your browser, with sample files and guided exercises. Nothing to install.|Open the lab",
          "Install without risk|If a tool must be installed, follow the guide: virtual machine, isolated environments and per-tool steps.|Read the guide",
          "Unlock more with your ⭐|At 100 stars the username sweep across thousands of sites goes live. It takes 30 seconds.|Leave my ⭐"],
         ["Encontrar a ferramenta|Diretório revisado à mão: o que cada uma faz, se ainda funciona e se pede cadastro ou pagamento.|Ver o diretório",
          "Investigar um dado agora|O Multi-OSINT Lite consulta várias fontes pelo navegador. Grátis e sem cadastro.|Abrir o Multi-OSINT Lite",
+         "Praticar no laboratório|ExifTool real dentro do navegador, com arquivos de amostra e exercícios guiados. Sem instalar nada.|Abrir o laboratório",
          "Instalar sem riscos|Se a ferramenta é instalada, siga o guia: máquina virtual, ambientes isolados e passos por ferramenta.|Ver o guia",
          "Desbloquear mais com sua ⭐|Com 100 estrelas ativa-se a varredura de apelidos em milhares de sites. Leva 30 segundos.|Deixar minha ⭐"]),
     "plans_tag": ("05 · Lite, comunidad y Pro", "05 · Lite, community and Pro", "05 · Lite, comunidade e Pro"),
@@ -240,7 +246,7 @@ def f(key, lang):
 
 def nav_links(lang, home_page=False):
     pre = "" if home_page else HOME[lang]
-    return (f'<a href="{pre}#directorio">{s("nav_dir", lang)}</a><a href="{GUIDEP[lang]}">{f("nav_guide", lang)}</a>'
+    return (f'<a href="{pre}#directorio">{s("nav_dir", lang)}</a><a href="{GUIDEP[lang]}">{f("nav_guide", lang)}</a><a href="{LABP[lang]}">{f("nav_lab", lang)}</a>'
             f'<a href="{pre}#pro">{f("nav_plans", lang)}</a><a class="opt" href="{pre}#metodo">{s("nav_met", lang)}</a>'
             f'<a class="opt" href="{pre}#sobre">{s("nav_about", lang)}</a><a href="{STARP[lang]}">{f("nav_star", lang)}</a>')
 
@@ -303,7 +309,7 @@ def home(lang):
           "sameAs": ["https://www.linkedin.com/in/dosiofederico/"]}}
     h += f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n</head>\n<body>\n'
     links = nav_links(lang, True)
-    start_to = ["#directorio", tp, GUIDEP[lang], STARP[lang]]
+    start_to = ["#directorio", tp, LABP[lang], GUIDEP[lang], STARP[lang]]
     start = "".join(f'<a class="tool" href="{u}"><b>{a}</b><span>{b}</span><em>{c} →</em></a>' for u, (a, b, c) in zip(start_to, (x.split("|") for x in f("start", lang))))
     li = lambda k: "".join(f"<li>{x}</li>" for x in f(k, lang).split(";"))
     h += header(lang, links, tp, "Multi-OSINT Lite", HOME)
@@ -332,6 +338,7 @@ def home(lang):
     <div><span>{s("l_ok", lang)}</span><b id="count-ok">0</b></div>
     <div><span>{s("l_cat", lang)}</span><b id="count-cat">0</b></div>
     <div><span>{s("l_date", lang)}</span><b id="count-date">–</b></div>
+    <div class="stat-star"><span><a href="{STARP[lang]}">⭐ {f("l_goal", lang)}</a></span><b id="stars-hero">– / 100</b></div>
   </div>
 </div>
 
@@ -691,6 +698,52 @@ TEST_NO = ("🕓 Comandos tomados de la documentación oficial; OSINTario aún n
 # se analizan en un contenedor aislado, se muestran con su riesgo y con el enlace real (no a copias ni a estafas).
 # Cada una: nombre exacto en TOOLS, veredicto, qué es, hallazgos (lista), imagen propia, enlaces de terceros [(texto, url)].
 RISK = {
+    "Strix": (
+        ("Riesgo alto: el agente decide su propio alcance", "High risk: the agent sets its own scope", "Risco alto: o agente decide o seu próprio escopo"),
+        ("Herramienta de pentesting con agentes de IA (Apache 2.0, más de 77.000 estrellas, muy activa). Analiza código, apps web y APIs y trata de confirmar cada hallazgo con una prueba de concepto. Tiene versión gratis local y servicios pagos en la nube.",
+         "AI-agent pentesting tool (Apache 2.0, 77,000+ stars, very active). It analyzes code, web apps and APIs and tries to confirm every finding with a proof of concept. It has a free local version and paid cloud services.",
+         "Ferramenta de pentest com agentes de IA (Apache 2.0, mais de 77.000 estrelas, muito ativa). Analisa código, apps web e APIs e tenta confirmar cada achado com uma prova de conceito. Tem versão grátis local e serviços pagos na nuvem."),
+        (["El alcance es una herramienta más del agente (scope_rules): el propio modelo puede crear o cambiar la lista de destinos permitidos. No encontramos un bloqueo fijo que el agente no pueda tocar.",
+          "El contenedor de pruebas recibe permisos de red elevados (NET_ADMIN y NET_RAW, a veces SYS_ADMIN) y puede llegar a tu propio equipo por host.docker.internal.",
+          "Se instala con curl | bash, que descarga un binario sin verificar su huella. Mejor instalarlo con pipx y revisar la versión.",
+          "Envía telemetría por defecto (PostHog y Scarf: modelo, costo, cantidad y severidad de hallazgos; no vimos que envíe el objetivo). Se apaga con STRIX_TELEMETRY=0.",
+          "Necesita una clave de un proveedor de IA de pago: cada prueba consume créditos."],
+         ["Scope is just another agent tool (scope_rules): the model itself can create or change the list of allowed targets. We found no fixed block the agent cannot touch.",
+          "The test container gets elevated network permissions (NET_ADMIN and NET_RAW, sometimes SYS_ADMIN) and can reach your own computer through host.docker.internal.",
+          "It installs with curl | bash, which downloads a binary without checking its fingerprint. Better install it with pipx and check the version.",
+          "It sends telemetry by default (PostHog and Scarf: model, cost, number and severity of findings; we did not see it send the target). Turn it off with STRIX_TELEMETRY=0.",
+          "It needs a key from a paid AI provider: every test spends credits."],
+         ["O escopo é mais uma ferramenta do agente (scope_rules): o próprio modelo pode criar ou mudar a lista de alvos permitidos. Não encontrámos um bloqueio fixo que o agente não possa mexer.",
+          "O contentor de testes recebe permissões de rede elevadas (NET_ADMIN e NET_RAW, às vezes SYS_ADMIN) e pode chegar ao seu próprio computador por host.docker.internal.",
+          "Instala-se com curl | bash, que descarrega um binário sem verificar a sua impressão digital. Melhor instalá-lo com pipx e verificar a versão.",
+          "Envia telemetria por defeito (PostHog e Scarf: modelo, custo, quantidade e severidade de achados; não vimos que envie o alvo). Desliga-se com STRIX_TELEMETRY=0.",
+          "Precisa de uma chave de um fornecedor de IA pago: cada teste consome créditos."]),
+        "riesgo-strix.png",
+        [("Documentación oficial", "https://docs.strix.ai/")],
+    ),
+    "PentAGI": (
+        ("Riesgo alto: corre como root y el prompt le dice que todo está autorizado", "High risk: runs as root and the prompt tells it everything is authorized", "Risco alto: corre como root e o prompt diz-lhe que tudo está autorizado"),
+        ("Sistema de agentes de IA (MIT, con EULA adicional, más de 35.000 estrellas) que planifica y ejecuta pentests completos con herramientas de Kali dentro de Docker, con interfaz web, base de datos y memoria de casos.",
+         "AI agent system (MIT, with an additional EULA, 35,000+ stars) that plans and runs full pentests with Kali tools inside Docker, with a web interface, database and case memory.",
+         "Sistema de agentes de IA (MIT, com EULA adicional, mais de 35.000 estrelas) que planeia e executa pentests completos com ferramentas do Kali dentro do Docker, com interface web, base de dados e memória de casos."),
+        (["El servicio principal monta el socket de Docker del equipo y corre como root: en la práctica, quien controle PentAGI controla tu máquina.",
+          "Sus prompts le dicen al modelo que todas las acciones «están preautorizadas» y que no agregue advertencias: el único freno es lo que escribas en la tarea.",
+          "Usa imágenes :latest sin versión fija, así que lo que corre puede cambiar sin aviso.",
+          "El instalador recomendado es un binario descargado de pentagi.com.",
+          "Necesita claves de IA y de buscadores (algunas pagas) y envía tus datos a esos proveedores: revisa el RGPD antes de usarlo en un caso real."],
+         ["The main service mounts the host's Docker socket and runs as root: in practice, whoever controls PentAGI controls your machine.",
+          "Its prompts tell the model that all actions are “pre-authorized” and not to add warnings: the only brake is what you write in the task.",
+          "It uses :latest images without a pinned version, so what runs can change without notice.",
+          "The recommended installer is a binary downloaded from pentagi.com.",
+          "It needs AI and search keys (some paid) and sends your data to those providers: check the GDPR before using it on a real case."],
+         ["O serviço principal monta o socket do Docker do computador e corre como root: na prática, quem controlar o PentAGI controla a sua máquina.",
+          "Os seus prompts dizem ao modelo que todas as ações «estão pré-autorizadas» e que não acrescente avisos: o único travão é o que escrever na tarefa.",
+          "Usa imagens :latest sem versão fixa, por isso o que corre pode mudar sem aviso.",
+          "O instalador recomendado é um binário descarregado de pentagi.com.",
+          "Precisa de chaves de IA e de buscadores (algumas pagas) e envia os seus dados a esses fornecedores: reveja o RGPD antes de usá-lo num caso real."]),
+        "riesgo-pentagi.png",
+        [("EULA de PentAGI", "https://github.com/vxcontrol/pentagi/blob/main/EULA.md")],
+    ),
     "ARTEMIS": (
         ("Riesgo alto: agentes de IA que atacan solos", "High risk: AI agents that attack on their own", "Risco alto: agentes de IA que atacam sozinhos"),
         ("Motor de Stanford (proyecto Trinity, Apache 2.0) que lanza varios agentes de IA en paralelo para encontrar y explotar vulnerabilidades. Se presentó en un paper de ICLR 2026 que lo comparó con pentesters humanos.",
@@ -910,6 +963,92 @@ def review(lang):
 """
 
 
+LB = {
+    "title": ("Laboratorio OSINT en tu navegador", "OSINT lab in your browser", "Laboratório OSINT no navegador"),
+    "desc": ("Practica con ExifTool real dentro del navegador: archivos de muestra, ejercicios guiados y tus propios archivos, sin instalar nada y sin que salgan de tu equipo.",
+             "Practice with real ExifTool inside your browser: sample files, guided exercises and your own files, with nothing to install and nothing leaving your computer.",
+             "Pratique com o ExifTool real dentro do navegador: arquivos de amostra, exercícios guiados e os seus próprios arquivos, sem instalar nada e sem que saiam do seu computador."),
+    "lede": ("Herramientas reales compiladas a WebAssembly que corren dentro de tu navegador. No hay servidor ni conexión a terceros: los archivos que abras acá no salen de tu equipo. Hoy incluye ExifTool 13.42, la misma herramienta de nuestra <a href=\"{ev}\">evaluación de ejemplo</a>.",
+             "Real tools compiled to WebAssembly that run inside your browser. There is no server and no third-party connection: the files you open here never leave your computer. Today it includes ExifTool 13.42, the same tool as in our <a href=\"{ev}\">example review</a>.",
+             "Ferramentas reais compiladas para WebAssembly que correm dentro do navegador. Não há servidor nem ligação a terceiros: os arquivos que abrir aqui não saem do seu computador. Hoje inclui o ExifTool 13.42, a mesma ferramenta da nossa <a href=\"{ev}\">avaliação de exemplo</a>."),
+    "s1": ("1. Elige un archivo", "1. Choose a file", "1. Escolha um arquivo"),
+    "own": ("Tu archivo (no se sube a ningún lado)", "Your file (it is not uploaded anywhere)", "O seu arquivo (não é enviado a lado nenhum)"),
+    "samples": ("Muestras con datos ficticios:", "Samples with fictitious data:", "Amostras com dados fictícios:"),
+    "sm": (("Foto con GPS", "Foto re-guardada", "PNG disfrazado", "PDF"), ("Photo with GPS", "Re-saved photo", "Disguised PNG", "PDF"), ("Foto com GPS", "Foto regravada", "PNG disfarçado", "PDF")),
+    "none": ("Ningún archivo elegido", "No file chosen", "Nenhum arquivo escolhido"),
+    "s2": ("2. Ejecuta ExifTool", "2. Run ExifTool", "2. Execute o ExifTool"),
+    "presets": (("Todo", "GPS", "Cámara y fecha", "Autor del documento", "Tipo real del archivo", "JSON"), ("Everything", "GPS", "Camera and date", "Document author", "Real file type", "JSON"), ("Tudo", "GPS", "Câmara e data", "Autor do documento", "Tipo real do arquivo", "JSON")),
+    "run": ("Ejecutar", "Run", "Executar"), "clear": ("Limpiar", "Clear", "Limpar"),
+    "status": ("El motor (7,5 MB) se descarga la primera vez que ejecutas un comando y se verifica con su huella SHA-256.", "The engine (7.5 MB) downloads the first time you run a command and is checked against its SHA-256 fingerprint.", "O motor (7,5 MB) é descarregado na primeira vez que executa um comando e é verificado com a sua impressão SHA-256."),
+    "ex_h": ("Ejercicios guiados", "Guided exercises", "Exercícios guiados"),
+    "ex": ((("¿Dónde se tomó esta foto?", "Lee el GPS y ábrelo en el mapa. Pista: es un lugar muy conocido de Buenos Aires."),
+            ("¿La foto fue editada?", "Busca la miniatura incrustada. Si existe, extráela en tu equipo con <code>exiftool -b -ThumbnailImage</code> y compárala: si no coincide con la imagen, es una pista de edición."),
+            ("¿Qué pasó con los metadatos?", "Esta es la misma foto re-guardada, como cuando se sube a una red social. ¿Qué queda?"),
+            ("¿Es lo que dice ser?", "El archivo se llama .jpg. Mira el tipo real y la advertencia."),
+            ("¿Quién escribió el documento?", "Busca el autor y el programa que generó el PDF.")),
+           (("Where was this photo taken?", "Read the GPS and open it on the map. Hint: it is a famous spot in Buenos Aires."),
+            ("Was the photo edited?", "Look for the embedded thumbnail. If it exists, extract it on your computer with <code>exiftool -b -ThumbnailImage</code> and compare: if it does not match the image, that is a sign of editing."),
+            ("What happened to the metadata?", "This is the same photo re-saved, as when it is uploaded to social media. What is left?"),
+            ("Is it what it claims to be?", "The file is named .jpg. Check the real type and the warning."),
+            ("Who wrote the document?", "Find the author and the software that produced the PDF.")),
+           (("Onde foi tirada esta foto?", "Leia o GPS e abra-o no mapa. Pista: é um local muito conhecido de Buenos Aires."),
+            ("A foto foi editada?", "Procure a miniatura incorporada. Se existir, extraia-a no seu computador com <code>exiftool -b -ThumbnailImage</code> e compare: se não coincidir com a imagem, é uma pista de edição."),
+            ("O que aconteceu aos metadados?", "Esta é a mesma foto regravada, como quando é enviada a uma rede social. O que sobra?"),
+            ("É o que diz ser?", "O arquivo chama-se .jpg. Veja o tipo real e o aviso."),
+            ("Quem escreveu o documento?", "Procure o autor e o programa que gerou o PDF."))),
+    "try": ("Probar", "Try it", "Experimentar"),
+    "lesson": ("Recuerda: los metadatos son una pista, no una prueba. Se pueden borrar al subir un archivo y se pueden falsificar en segundos.", "Remember: metadata is a lead, not proof. It can be stripped on upload and forged in seconds.", "Lembre-se: os metadados são uma pista, não uma prova. Podem ser apagados ao enviar um arquivo e falsificados em segundos."),
+    "vm_h": ("¿Y una máquina virtual completa?", "What about a full virtual machine?", "E uma máquina virtual completa?"),
+    "vm_p": ("Un Linux completo dentro del navegador es posible (emuladores como v86), pero no tendría red: el navegador no permite conexiones directas, así que herramientas como Sherlock o Maigret no podrían consultar sitios. Por eso elegimos herramientas compiladas para el navegador, que funcionan de verdad sin red. Las herramientas que necesitan internet llegan con el servidor de la comunidad (metas de 100 y 1.000 ⭐), y más adelante, máquinas listas para investigar.",
+             "A full Linux inside the browser is possible (emulators like v86), but it would have no network: browsers do not allow direct connections, so tools like Sherlock or Maigret could not query sites. That is why we chose tools compiled for the browser, which really work offline. Tools that need the internet come with the community server (100 and 1,000 ⭐ goals), and later, ready-to-use investigation machines.",
+             "Um Linux completo dentro do navegador é possível (emuladores como o v86), mas não teria rede: o navegador não permite ligações diretas, por isso ferramentas como o Sherlock ou o Maigret não poderiam consultar sites. Por isso escolhemos ferramentas compiladas para o navegador, que funcionam de verdade sem rede. As ferramentas que precisam de internet chegam com o servidor da comunidade (metas de 100 e 1.000 ⭐) e, mais adiante, máquinas prontas para investigar."),
+    "goals": ("Ver las metas", "See the goals", "Ver as metas"),
+    "credits": ("Créditos: ExifTool de Phil Harvey (licencia de Perl); zeroperl y @uswriting/exiftool (Apache 2.0), que lo compilan a WebAssembly. Motor: zeroperl.wasm, SHA-256 a6ae97f1…3835e.",
+                "Credits: ExifTool by Phil Harvey (Perl licence); zeroperl and @uswriting/exiftool (Apache 2.0), which compile it to WebAssembly. Engine: zeroperl.wasm, SHA-256 a6ae97f1…3835e.",
+                "Créditos: ExifTool de Phil Harvey (licença do Perl); zeroperl e @uswriting/exiftool (Apache 2.0), que o compilam para WebAssembly. Motor: zeroperl.wasm, SHA-256 a6ae97f1…3835e."),
+}
+SAMPLES = ["muestra-exif-osintario.jpg", "lab-reguardada.jpg", "lab-disfrazado.jpg", "lab-informe.pdf"]
+PRESETS = ["-a -G1", "-n -GPSLatitude -GPSLongitude -GPSAltitude", "-Make -Model -DateTimeOriginal -OffsetTimeOriginal -Software", "-Author -Creator -Producer -Title -CreateDate -ModifyDate", "-validate -warning -FileType -FileTypeExtension -MIMEType", "-json -n"]
+EXERCISES = [("muestra-exif-osintario.jpg", "-n -GPSLatitude -GPSLongitude"), ("muestra-exif-osintario.jpg", "-ThumbnailImage -ImageSize"), ("lab-reguardada.jpg", "-GPSLatitude -Make -DateTimeOriginal -ThumbnailImage"), ("lab-disfrazado.jpg", "-validate -warning -FileType"), ("lab-informe.pdf", "-Author -Creator -Producer -Title -CreateDate")]
+
+
+def lab(lang):
+    i = LANGS.index(lang)
+    t = lambda k: LB[k][i]
+    csp = "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+    h = head(lang, t("title") + " · OSINTario", t("desc"), LABP[lang], LABP, csp, "home.css") + '<script type="module" src="lab.js"></script>\n</head>\n<body>\n'
+    h += header(lang, nav_links(lang), TOOLSP[lang], "Multi-OSINT Lite", LABP)
+    samples = "".join(f'<button type="button" class="chip" data-sample="{f}">{n}</button>' for f, n in zip(SAMPLES, t("sm")))
+    presets = "".join(f'<button type="button" class="chip" data-args="{a}">{n}</button>' for a, n in zip(PRESETS, t("presets")))
+    ex = "".join(f'<li><b>{q}</b> <span>{d}</span> <button type="button" class="chip" data-sample="{f}" data-args="{a}">▶ {t("try")}</button></li>' for (q, d), (f, a) in zip(t("ex"), EXERCISES))
+    return h + f"""<main id="main"><section><div class="wrap guide lab">
+  <span class="tag">🧪 OSINTario</span>
+  <h1>{t("title")}</h1>
+  <p class="lede">{t("lede").format(ev=EVALP[lang])}</p>
+  <div class="gtype">
+    <h3>{t("s1")}</h3>
+    <p><label class="btn ghost lab-pick">{t("own")}<input id="lab-input" type="file" hidden></label> <span class="note" id="lab-file">{t("none")}</span></p>
+    <p class="lab-row"><span class="note">{t("samples")}</span> {samples}</p>
+    <h3>{t("s2")}</h3>
+    <p class="lab-row">{presets}</p>
+    <form id="lab-form" class="lab-cmd"><span class="lab-prompt">$ exiftool</span><input id="lab-args" value="-a -G1" spellcheck="false" autocomplete="off" aria-label="exiftool"><button class="btn" type="submit">{t("run")}</button><button class="btn ghost" type="button" id="lab-clear">{t("clear")}</button></form>
+    <p class="note" id="lab-status">{t("status")}</p>
+    <div id="lab-out" class="lab-out" role="log" aria-live="polite"></div>
+  </div>
+  <h2>{t("ex_h")}</h2>
+  <ol class="lab-ex">{ex}</ol>
+  <p class="ethics" role="note"><span aria-hidden="true">💡</span> <span>{t("lesson")}</span></p>
+  <h2>{t("vm_h")}</h2>
+  <p class="lede">{t("vm_p")}</p>
+  <p><a class="btn ghost" href="{TOOLSP[lang]}#comunidad">{t("goals")}</a></p>
+  <p class="note">{t("credits")}</p>
+</div></section></main>
+<footer><div class="wrap"><div>{s("foot", lang)}</div><div>OSINTario · Federico Dosio</div></div></footer>
+</body>
+</html>
+"""
+
+
 def dirlinks():
     """Genera dirlinks.js para Multi-OSINT Lite a partir de TOOLS y LAUNCH de directory.js."""
     src = open("directory.js", encoding="utf-8").read()
@@ -942,14 +1081,15 @@ if __name__ == "__main__":
         open(STARP[lang], "w", encoding="utf-8").write(star(lang))
         open(GUIDEP[lang], "w", encoding="utf-8").write(guide(lang))
         open(EVALP[lang], "w", encoding="utf-8").write(review(lang))
+        open(LABP[lang], "w", encoding="utf-8").write(lab(lang))
     sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for pages in (HOME, TOOLSP, STARP, GUIDEP, EVALP):
+    for pages in (HOME, TOOLSP, STARP, GUIDEP, EVALP, LABP):
         for l in LANGS:
             alts = "".join(f'<xhtml:link rel="alternate" hreflang="{x}" href="{BASE}{pages[x]}"/>' for x in LANGS)
             sm.append(f"  <url><loc>{BASE}{pages[l]}</loc>{alts}</url>")
     sm.append("</urlset>")
     open("sitemap.xml", "w").write("\n".join(sm) + "\n")
-    print("OK: 15 páginas y sitemap")
+    print("OK: 18 páginas y sitemap")
     print(f"dirlinks.js: {dirlinks()} herramientas del directorio con atajo")
 
 
@@ -987,7 +1127,7 @@ def readme():
         out.append("")
     out += ["## Uso responsable", "", "Investigar a una persona requiere una finalidad lícita y respetar el RGPD y la ley de protección de datos de tu país. Este directorio enlaza a servicios de terceros sin afiliación, salvo las herramientas marcadas 🤝 Patrocinada en el sitio.", "",
             "## 🤝 Herramientas patrocinadas", "", "Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la evaluamos con casos reales y publicamos lo que obtuvimos, bueno o malo, sin revisión previa del proveedor; a cambio pedimos que compartan nuestra evaluación. El patrocinio no cambia los criterios de inclusión ni el estado de la ficha, y las fichas llevan la etiqueta 🤝 Patrocinada. Reglas completas: [osintario.github.io/#patrocinadas](" + BASE + "#patrocinadas). Formato de evaluación: [evaluación de ejemplo con ExifTool](" + BASE + "evaluacion-ejemplo.html).", "",
-            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 15 páginas, `dirlinks.js`, el sitemap y este README.", "",
+            "## Cómo se actualiza", "", "El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 18 páginas, `dirlinks.js`, el sitemap y este README.", "",
             "## Licencia", "", "Contenido bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es)."]
     open("README.md", "w", encoding="utf-8").write("\n".join(out) + "\n")
 

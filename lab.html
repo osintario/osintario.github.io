@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>OSINT lab in your browser · OSINTario</title>
+<meta name="description" content="Practice with real ExifTool inside your browser: sample files, guided exercises and your own files, with nothing to install and nothing leaving your computer.">
+<meta property="og:type" content="website"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="OSINT lab in your browser · OSINTario"><meta property="og:description" content="Practice with real ExifTool inside your browser: sample files, guided exercises and your own files, with nothing to install and nothing leaving your computer.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/lab.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://osintario.github.io/lab.html">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/laboratorio.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/lab.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/lab-pt.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/laboratorio.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+<script type="module" src="lab.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="en.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <span class="tag opt">Open sources, with method</span>
+  <nav class="main" aria-label="Secciones"><a href="en.html#directorio">Directory</a><a href="safe-install.html">Safe install</a><a href="lab.html">🧪 Lab</a><a href="en.html#pro">Lite & Pro</a><a class="opt" href="en.html#metodo">Method</a><a class="opt" href="en.html#sobre">About me</a><a href="star.html">⭐ Support</a><a class="cta" href="tools-en.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="laboratorio.html" hreflang="es" lang="es" aria-current="false">ES</a><a href="lab.html" hreflang="en" lang="en" aria-current="true">EN</a><a href="lab-pt.html" hreflang="pt" lang="pt" aria-current="false">PT</a></nav>
+</div></header><main id="main"><section><div class="wrap guide lab">
+  <span class="tag">🧪 OSINTario</span>
+  <h1>OSINT lab in your browser</h1>
+  <p class="lede">Real tools compiled to WebAssembly that run inside your browser. There is no server and no third-party connection: the files you open here never leave your computer. Today it includes ExifTool 13.42, the same tool as in our <a href="review-example.html">example review</a>.</p>
+  <div class="gtype">
+    <h3>1. Choose a file</h3>
+    <p><label class="btn ghost lab-pick">Your file (it is not uploaded anywhere)<input id="lab-input" type="file" hidden></label> <span class="note" id="lab-file">No file chosen</span></p>
+    <p class="lab-row"><span class="note">Samples with fictitious data:</span> <button type="button" class="chip" data-sample="muestra-exif-osintario.jpg">Photo with GPS</button><button type="button" class="chip" data-sample="lab-reguardada.jpg">Re-saved photo</button><button type="button" class="chip" data-sample="lab-disfrazado.jpg">Disguised PNG</button><button type="button" class="chip" data-sample="lab-informe.pdf">PDF</button></p>
+    <h3>2. Run ExifTool</h3>
+    <p class="lab-row"><button type="button" class="chip" data-args="-a -G1">Everything</button><button type="button" class="chip" data-args="-n -GPSLatitude -GPSLongitude -GPSAltitude">GPS</button><button type="button" class="chip" data-args="-Make -Model -DateTimeOriginal -OffsetTimeOriginal -Software">Camera and date</button><button type="button" class="chip" data-args="-Author -Creator -Producer -Title -CreateDate -ModifyDate">Document author</button><button type="button" class="chip" data-args="-validate -warning -FileType -FileTypeExtension -MIMEType">Real file type</button><button type="button" class="chip" data-args="-json -n">JSON</button></p>
+    <form id="lab-form" class="lab-cmd"><span class="lab-prompt">$ exiftool</span><input id="lab-args" value="-a -G1" spellcheck="false" autocomplete="off" aria-label="exiftool"><button class="btn" type="submit">Run</button><button class="btn ghost" type="button" id="lab-clear">Clear</button></form>
+    <p class="note" id="lab-status">The engine (7.5 MB) downloads the first time you run a command and is checked against its SHA-256 fingerprint.</p>
+    <div id="lab-out" class="lab-out" role="log" aria-live="polite"></div>
+  </div>
+  <h2>Guided exercises</h2>
+  <ol class="lab-ex"><li><b>Where was this photo taken?</b> <span>Read the GPS and open it on the map. Hint: it is a famous spot in Buenos Aires.</span> <button type="button" class="chip" data-sample="muestra-exif-osintario.jpg" data-args="-n -GPSLatitude -GPSLongitude">▶ Try it</button></li><li><b>Was the photo edited?</b> <span>Look for the embedded thumbnail. If it exists, extract it on your computer with <code>exiftool -b -ThumbnailImage</code> and compare: if it does not match the image, that is a sign of editing.</span> <button type="button" class="chip" data-sample="muestra-exif-osintario.jpg" data-args="-ThumbnailImage -ImageSize">▶ Try it</button></li><li><b>What happened to the metadata?</b> <span>This is the same photo re-saved, as when it is uploaded to social media. What is left?</span> <button type="button" class="chip" data-sample="lab-reguardada.jpg" data-args="-GPSLatitude -Make -DateTimeOriginal -ThumbnailImage">▶ Try it</button></li><li><b>Is it what it claims to be?</b> <span>The file is named .jpg. Check the real type and the warning.</span> <button type="button" class="chip" data-sample="lab-disfrazado.jpg" data-args="-validate -warning -FileType">▶ Try it</button></li><li><b>Who wrote the document?</b> <span>Find the author and the software that produced the PDF.</span> <button type="button" class="chip" data-sample="lab-informe.pdf" data-args="-Author -Creator -Producer -Title -CreateDate">▶ Try it</button></li></ol>
+  <p class="ethics" role="note"><span aria-hidden="true">💡</span> <span>Remember: metadata is a lead, not proof. It can be stripped on upload and forged in seconds.</span></p>
+  <h2>What about a full virtual machine?</h2>
+  <p class="lede">A full Linux inside the browser is possible (emulators like v86), but it would have no network: browsers do not allow direct connections, so tools like Sherlock or Maigret could not query sites. That is why we chose tools compiled for the browser, which really work offline. Tools that need the internet come with the community server (100 and 1,000 ⭐ goals), and later, ready-to-use investigation machines.</p>
+  <p><a class="btn ghost" href="tools-en.html#comunidad">See the goals</a></p>
+  <p class="note">Credits: ExifTool by Phil Harvey (Perl licence); zeroperl and @uswriting/exiftool (Apache 2.0), which compile it to WebAssembly. Engine: zeroperl.wasm, SHA-256 a6ae97f1…3835e.</p>
+</div></section></main>
+<footer><div class="wrap"><div><b>Responsible use.</b> This directory links to third-party services with no affiliation. Investigating a person requires a lawful purpose and compliance with GDPR and your country's data protection law. Services change: always verify at the source.</div><div>OSINTario · Federico Dosio</div></div></footer>
+</body>
+</html>

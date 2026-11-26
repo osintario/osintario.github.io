@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 201 · **Última revisión:** 2026-11-25
+**Herramientas:** 218 · **Última revisión:** 2026-11-26
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -48,6 +48,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Shodan](https://www.shodan.io) | Dispositivos y servicios expuestos a internet. | ✅ Activa | 🔑 registro 💳 pago |  |
 | [Censys](https://search.censys.io) | Activos expuestos y certificados TLS. | ✅ Activa | 🔑 registro |  |
 | [ZoomEye](https://www.zoomeye.ai) | Alternativa a Shodan para contrastar resultados. | ✅ Activa | 🔑 registro |  |
+| [FOFA](https://en.fofa.info/) | Buscador de equipos y servicios expuestos en internet, fuerte en Asia. Pide registro para usar filtros. | ✅ Activa | 🔑 registro |  |
+| [LeakIX](https://leakix.net/) | Indexa servicios mal configurados y datos expuestos por IP o dominio. Solo para defensa o con autorización. | ✅ Activa | 🔑 registro |  |
 | [Netlas](https://netlas.io) | Escaneo de internet y DNS histórico. | ✅ Activa | 🔑 registro |  |
 | [GreyNoise](https://viz.greynoise.io) | Distingue escaneo masivo de ataques dirigidos. | ✅ Activa | libre |  |
 | [Grayhat Warfare](https://grayhatwarfare.com) | Buckets de almacenamiento en la nube abiertos. | 🟡 Con límites | 🔑 registro 💳 pago |  |
@@ -94,6 +96,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Gitleaks](https://github.com/gitleaks/gitleaks) | Busca secretos expuestos en repositorios. | ✅ Activa | libre | 🧪 Go |
 | [TruffleHog](https://github.com/trufflesecurity/trufflehog) | Encuentra y verifica credenciales filtradas. | ✅ Activa | libre | 🧪 Go |
 | [grep.app](https://grep.app) | Búsqueda en código público de GitHub. | ✅ Activa | libre |  |
+| [searchcode](https://searchcode.com/) | Busca fragmentos de código en millones de proyectos públicos de varias plataformas. | ✅ Activa | libre |  |
 | [GHunt](https://github.com/mxrch/GHunt) | Investigación de cuentas de Google. Usa una cuenta de investigación. | ⚠️ Con precaución | 🔑 registro | 🧪 Python |
 | [PublicWWW](https://publicwww.com) | Busca código fuente de páginas web: quién usa un mismo script, ID de Analytics o firma. Resultados gratis limitados; el resto es pago. | ✅ Activa | 💳 pago |  |
 
@@ -152,6 +155,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [InVID-WeVerify](https://weverify.eu/verification-plugin/) | Verificación de videos y fotogramas. | ✅ Activa | libre |  |
 | [FOCA](https://github.com/ElevenPaths/FOCA) | Metadatos en documentos de una organización. Sin cambios desde 2021, solo Windows. | 🟡 Con límites | libre |  |
 | [Hunchly](https://www.hunch.ly) | Captura y registro automático de la investigación. | 🟡 Con límites | 💳 pago |  |
+| [WebPreserver](https://webpreserver.com/) | Extensión que captura páginas y redes sociales completas como evidencia con fecha y metadatos, en lote. De pago. | ✅ Activa | 💳 pago |  |
 | [SingleFile](https://github.com/gildas-lormeau/SingleFile) | Extensión que guarda una página web completa en un solo archivo HTML. Útil para preservar evidencia. | ✅ Activa | libre |  |
 | [ArchiveBox](https://github.com/ArchiveBox/ArchiveBox) | Archivo web propio: guarda URLs en HTML, PDF, captura y WARC en tu servidor. | ✅ Activa | libre | 🧪 Docker |
 | Clearview AI | Reconocimiento facial. Incompatible con el RGPD en la UE. | ❌ Descartada | 💳 pago |  |
@@ -171,6 +175,12 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Violations Watch](https://violationswatch.org/) | Registro abierto y diario de presuntas violaciones de derechos humanos y derecho humanitario, con enlaces a las fuentes. Son pistas sin verificar, no hallazgos. | ✅ Activa | libre |  |
 | [WiGLE](https://wigle.net) | Mapa mundial de redes Wi-Fi, torres celulares y Bluetooth relevadas por voluntarios: sirve para ubicar un SSID. Registro para búsquedas avanzadas. | ✅ Activa | 🔑 registro |  |
 | [ShadowBroker](https://github.com/bigbodycobain/shadowbroker) | Mapa en tiempo real autoalojado que junta 60+ fuentes: aviones, barcos, satélites, conflictos, interferencia GPS y más. AGPL-3.0. Incluye cámaras y escáneres de radio policiales: revisa la ley local; varias capas piden claves API. | ⚠️ Con precaución | libre | 🧪 Docker |
+| [YouTube Geofind](https://mattw.io/youtube-geofind/location) | Busca videos de YouTube geoetiquetados alrededor de un punto, con radio, fechas e idioma. Útil para verificar dónde y cuándo se filmó algo. | ✅ Activa | libre |  |
+| [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/map/) | Incendios y focos de calor activos detectados por satélite casi en tiempo real, con mapa y descarga de datos. | ✅ Activa | libre |  |
+| [WAQI (calidad del aire)](https://waqi.info/) | Calidad del aire en tiempo real de más de 10.000 estaciones del mundo. Sirve para contrastar humo, incendios o incidentes industriales. | ✅ Activa | libre |  |
+| [Ventusky](https://www.ventusky.com/) | Mapa meteorológico mundial con historial: viento, lluvia, nubes y temperatura por hora. Clave para verificar el clima de una foto o video. | ✅ Activa | libre |  |
+| [WorldCam (mapa de webcams)](https://worldcam.tv/map) | Mapa de cámaras públicas en vivo de lugares turísticos. Sirve para comparar un lugar con una imagen; no la uses para vigilar personas. | ✅ Activa | libre |  |
+| [MapIndex](https://mapindex.org/) | Buscador de más de 2,8 millones de mapas por ubicación o palabra clave, incluidos mapas históricos. | ✅ Activa | libre |  |
 
 ## Telegram
 
@@ -288,6 +298,7 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [BlueTeam-Tools](https://github.com/A-poc/BlueTeam-Tools) | Colección de 70+ herramientas defensivas: caza de amenazas, monitoreo, análisis de malware, forense y respuesta a incidentes. Sin licencia declarada. | ✅ Activa | libre |  |
 | [Kismet](https://github.com/kismetwireless/kismet) | Detector pasivo de redes Wi-Fi, Bluetooth y otras señales de radio; también sirve como sensor de intrusiones inalámbricas. | ✅ Activa | libre | 🧪 instalador oficial |
 | [Wifite2](https://github.com/derv82/wifite2) | Automatiza auditorías Wi-Fi (WPA, WPS) usando Aircrack-ng y otras. Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
+| [Wifit3](https://github.com/derv82/wifit3) | Sucesor de Wifite del mismo autor (GPL-2.0): auditoría Wi-Fi en Windows, Linux y macOS con un adaptador USB. Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre | 🧪 solo en VM |
 | [Airgeddon](https://github.com/v1s1t0r1sh3r3/airgeddon) | Menú en Bash para auditar redes inalámbricas (handshakes, WPS, portales falsos). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 | [hcxdumptool](https://github.com/ZerBea/hcxdumptool) | Captura tráfico Wi-Fi para pruebas de seguridad de WPA/WPA2 (junto con hcxtools y Hashcat). Solo en redes propias o con autorización escrita. | ⚠️ Con precaución | libre |  |
 | [RedRoot](https://github.com/agampreet-singh) | Repo retirado de GitHub (404 desde el 25-nov-2026); se conserva el análisis. Framework ofensivo en Python (MIT) con 30+ módulos: phishing, backdoor, DoS, Wi-Fi. El módulo Bluetooth que roba contactos y SMS no es público: en el repo solo muestra «MODULE LOCKED». Solo en laboratorio propio. | ⚠️ Con precaución | libre | 🧪 solo en VM |
@@ -301,6 +312,10 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [SpiderFoot](https://github.com/smicallef/spiderfoot) | Reconocimiento automatizado con más de 200 módulos. Sin cambios desde nov-2023: algunos módulos fallan. | 🟡 Con límites | libre | 🧪 Python |
 | [Recon-ng](https://github.com/lanmaster53/recon-ng) | Framework modular de reconocimiento. | ✅ Activa | libre | 🧪 Python |
 | [Maltego](https://www.maltego.com) | Grafos de relaciones entre entidades. | 🟡 Con límites | 🔑 registro 💳 pago | 🧪 instalador oficial |
+| [OSINT Case](https://osintcase.com/) | Espacio de trabajo de casos en el navegador, sin cuenta: sujetos, vínculos, mapa, línea de tiempo y evidencias con SHA-256 y cadena de custodia. GPL-3.0, proyecto nuevo. | ✅ Activa | libre |  |
+| [OSINTMapper](https://github.com/Geistnigma/OSINTMapper) | Cartografía colaborativa de investigaciones, autoalojada (MIT). Está en versión alfa: no la uses en un caso real sin copias propias. | 🟡 Con límites | libre | 🧪 Docker |
+| [Gephi](https://gephi.org/) | Visualiza y analiza redes de vínculos (personas, cuentas, dominios) importadas desde CSV. Libre y de escritorio. | ✅ Activa | libre | 🧪 instalador oficial |
+| [Cytoscape](https://cytoscape.org/) | Análisis de redes de código abierto con complementos; útil para grafos grandes de relaciones. | ✅ Activa | libre | 🧪 instalador oficial |
 | [Awesome OSINT MCP servers](https://start.me/p/aNMY5j/awesome-osint-mcp-servers) | Catálogo de servidores MCP para conectar OSINT a agentes de IA. | ✅ Activa | libre |  |
 | [Darknet MCP Server](https://github.com/badchars/darknet-mcp-server) | 66 herramientas de dark web e inteligencia de amenazas para agentes de IA. Código de terceros: revísalo. | ⚠️ Con precaución | libre |  |
 | [OpenTor](https://github.com/vichhka-git/OpenTor) | Skill para que un agente de IA (Claude Code) busque en 12 buscadores .onion y extraiga IOCs. Sin licencia clara. | ⚠️ Con precaución | libre |  |
@@ -311,6 +326,8 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [SIGIT](https://github.com/termuxhackers-id/SIGIT) | Kit de terminal: alias en 100+ plataformas, teléfono, email, DNS/WHOIS, subdominios, geolocalización de IP y cabeceras HTTP; dominio público. | ✅ Activa | libre | 🧪 Python |
 | [Pip-Intel](https://github.com/emrekybs/Pip-Intel) | Reúne varias utilidades OSINT (email, teléfono, alias, IP, subdominios) en un solo script. Sin cambios desde may-2024. | 🟡 Con límites | libre | 🧪 Python |
 | [ARTEMIS](https://github.com/Stanford-Trinity/ARTEMIS) | Agentes de IA autónomos de Stanford (Apache 2.0) que buscan y explotan vulnerabilidades. El alcance solo se indica en el prompt, sin bloqueo técnico; necesita claves pagas de LLM. Usar solo en laboratorio propio. | ⚠️ Con precaución | 💳 pago | 🧪 solo en VM |
+| [Strix](https://github.com/usestrix/strix) | Agentes de IA que hacen pentesting de apps y APIs y validan lo que encuentran con pruebas de concepto (Apache 2.0). El alcance lo controla el propio agente. Solo en sistemas propios y dentro de una VM. | ⚠️ Con precaución | 💳 pago | 🧪 solo en VM |
+| [PentAGI](https://github.com/vxcontrol/pentagi) | Sistema de agentes de IA que ejecuta pentests completos con herramientas de Kali en Docker (MIT + EULA). Corre como root con acceso al Docker del equipo. Solo en una VM dedicada y con autorización escrita. | ⚠️ Con precaución | 💳 pago | 🧪 solo en VM |
 
 ## Uso responsable
 
@@ -322,7 +339,7 @@ Los proveedores pueden patrocinar su herramienta: nos dan acceso de prueba, la e
 
 ## Cómo se actualiza
 
-El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 15 páginas, `dirlinks.js`, el sitemap y este README.
+El contenido vive en `directory.js` (una fila por herramienta, con descripción en ES/EN/PT). `python3 build.py` regenera las 18 páginas, `dirlinks.js`, el sitemap y este README.
 
 ## Licencia
 

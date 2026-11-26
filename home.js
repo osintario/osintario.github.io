@@ -9,6 +9,7 @@
   const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
   const ALL = tr("Todas", "All", "Todas");
   let cat = ALL;
+  const PAGE = 24; let limit = PAGE;
   const rows = TOOLS.map((t) => ({ c: t[0], cat: CATS[t[0]][L], n: t[1], d: t[2 + L], s: t[5], u: t[6], a: t[7] || "", i: t[8] || "" }));
   const GD = typeof GUIDED === "undefined" ? [] : GUIDED;
   const AN = typeof ANALYZED === "undefined" ? [] : ANALYZED;
@@ -28,14 +29,15 @@
     [ALL, ...cats].forEach((c) => {
       const b = document.createElement("button"); b.className = "chip"; b.type = "button"; b.setAttribute("aria-pressed", String(c === cat));
       b.innerHTML = esc(c) + '<span class="n">' + (c === ALL ? rows.length : rows.filter((r) => r.cat === c).length) + "</span>";
-      b.onclick = () => { cat = c; chips(); render(); }; el.appendChild(b);
+      b.onclick = () => { cat = c; limit = PAGE; chips(); render(); }; el.appendChild(b);
     });
   }
   function render() {
     const q = $("#q").value.trim().toLowerCase(), st = $("#st").value, ac = $("#ac").value;
     const list = rows.filter((r) => (cat === ALL || r.cat === cat) && (st === "all" || r.s === st) &&
       (ac === "all" || (ac === "free" ? !r.a : r.a.includes(ac))) && (!q || (r.n + " " + r.d + " " + r.cat).toLowerCase().includes(q)));
-    $("#grid").innerHTML = list.length ? list.map((r) => {
+    const shown = list.slice(0, limit);
+    $("#grid").innerHTML = list.length ? shown.map((r) => {
       const s = S[r.s];
       const badges = [...r.a].map((k) => '<span class="acc">' + ACC[k] + "</span>").join("");
       const link = r.s === "no" ? '<span class="note">' + tr("No enlazada", "Not linked", "Sem link") + "</span>" :
@@ -43,8 +45,14 @@
       return '<article class="card s-' + r.s + '"><h3>' + esc(r.n) + '<span class="pill ' + s[1] + '">' + s[0] + "</span></h3><p>" + esc(r.d) + "</p>" +
         ((badges || SP[r.n] || AN.includes(r.n) || (r.i && r.s !== "no") || (LA[r.n] && r.s !== "no")) ? '<div class="badges">' + spBadge(r.n) + badges + (AN.includes(r.n) ? '<a class="acc ins" href="' + GP + "#" + slug(r.n) + '">⚠️ ' + tr("Análisis de riesgo de OSINTario", "OSINTario risk analysis", "Análise de risco do OSINTario") + "</a>" : (r.i && r.s !== "no" ? '<a class="acc ins" href="' + GP + "#" + (GD.includes(r.n) ? slug(r.n) : r.i) + '" title="' + tr("Guía de instalación segura", "Safe installation guide", "Guia de instalação segura") + '">🧪 ' + (GD.includes(r.n) ? tr("Paso a paso", "Step by step", "Passo a passo") + " · " : "") + INS[r.i] + "</a>" : "")) + (LA[r.n] && r.s !== "no" ? '<a class="acc live" href="' + TP + "#" + Object.keys(LA[r.n])[0] + '">⚡ ' + tr("Se abre desde Multi-OSINT Lite", "Opens from Multi-OSINT Lite", "Abre a partir do Multi-OSINT Lite") + "</a>" : "") + "</div>" : "") + '<div class="meta"><span class="tag">' + esc(r.cat) + "</span>" + link + "</div></article>";
     }).join("") : '<div class="empty">' + tr("No hay herramientas con esos filtros. Prueba con otra categoría o borra la búsqueda.", "No tools match these filters. Try another category or clear the search.", "Nenhuma ferramenta com esses filtros. Tente outra categoria ou limpe a busca.") + "</div>";
+    let more = $("#grid-more");
+    if (!more) { more = document.createElement("div"); more.id = "grid-more"; more.className = "grid-more"; $("#grid").after(more); }
+    const left = list.length - shown.length;
+    more.innerHTML = left > 0 ? '<button type="button" class="btn ghost">' + tr("Mostrar " + Math.min(PAGE, left) + " más", "Show " + Math.min(PAGE, left) + " more", "Mostrar mais " + Math.min(PAGE, left)) + '</button> <span class="note">' + tr("Mostrando " + shown.length + " de " + list.length, "Showing " + shown.length + " of " + list.length, "A mostrar " + shown.length + " de " + list.length) + "</span>" : (list.length > PAGE ? '<span class="note">' + tr("Mostrando las " + list.length, "Showing all " + list.length, "A mostrar as " + list.length) + "</span>" : "");
+    const btn = more.querySelector("button"); if (btn) btn.onclick = () => { limit += PAGE; render(); };
   }
-  $("#q").addEventListener("input", render); $("#st").addEventListener("change", render); $("#ac").addEventListener("change", render);
+  const reset = () => { limit = PAGE; render(); };
+  $("#q").addEventListener("input", reset); $("#st").addEventListener("change", reset); $("#ac").addEventListener("change", reset);
   chips(); render();
   (() => {
     const ul = $("#sp-list"); if (!ul) return;
@@ -54,7 +62,7 @@
   (async () => {
     try {
       const j = await (await fetch("https://api.github.com/repos/osintario/osintario.github.io")).json();
-      const s = j.stargazers_count || 0; set("#stars", s); $("#stars-bar").style.width = Math.min(100, s) + "%";
+      const s = j.stargazers_count || 0; set("#stars", s); set("#stars-hero", s + " / 100"); $("#stars-bar").style.width = Math.min(100, s) + "%";
       set("#stars2", s); if ($("#stars2-bar")) $("#stars2-bar").style.width = Math.min(100, s) + "%";
       const j2 = await (await fetch("https://api.github.com/search/issues?q=repo:osintario/osintario.github.io+type:issue")).json();
       const n = j2.total_count || 0; set("#issues", n); $("#issues-bar").style.width = Math.min(100, n * 10) + "%";

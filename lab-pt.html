@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Laboratório OSINT no navegador · OSINTario</title>
+<meta name="description" content="Pratique com o ExifTool real dentro do navegador: arquivos de amostra, exercícios guiados e os seus próprios arquivos, sem instalar nada e sem que saiam do seu computador.">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="Laboratório OSINT no navegador · OSINTario"><meta property="og:description" content="Pratique com o ExifTool real dentro do navegador: arquivos de amostra, exercícios guiados e os seus próprios arquivos, sem instalar nada e sem que saiam do seu computador.">
+<meta property="og:image" content="https://osintario.github.io/og.png"><meta property="og:url" content="https://osintario.github.io/lab-pt.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://osintario.github.io/lab-pt.html">
+<link rel="alternate" hreflang="es" href="https://osintario.github.io/laboratorio.html"><link rel="alternate" hreflang="en" href="https://osintario.github.io/lab.html"><link rel="alternate" hreflang="pt" href="https://osintario.github.io/lab-pt.html"><link rel="alternate" hreflang="x-default" href="https://osintario.github.io/laboratorio.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+<script type="module" src="lab.js"></script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="pt.html"><span class="dot" aria-hidden="true"></span>OSINTario</a>
+  <span class="tag opt">Fontes abertas, com método</span>
+  <nav class="main" aria-label="Secciones"><a href="pt.html#directorio">Diretório</a><a href="instalacao-segura.html">Instalação segura</a><a href="lab-pt.html">🧪 Laboratório</a><a href="pt.html#pro">Lite e Pro</a><a class="opt" href="pt.html#metodo">Método</a><a class="opt" href="pt.html#sobre">Sobre mim</a><a href="estrela.html">⭐ Apoiar</a><a class="cta" href="ferramentas.html">Multi-OSINT Lite</a></nav>
+  <nav class="lang" aria-label="Idioma / Language"><a href="laboratorio.html" hreflang="es" lang="es" aria-current="false">ES</a><a href="lab.html" hreflang="en" lang="en" aria-current="false">EN</a><a href="lab-pt.html" hreflang="pt" lang="pt" aria-current="true">PT</a></nav>
+</div></header><main id="main"><section><div class="wrap guide lab">
+  <span class="tag">🧪 OSINTario</span>
+  <h1>Laboratório OSINT no navegador</h1>
+  <p class="lede">Ferramentas reais compiladas para WebAssembly que correm dentro do navegador. Não há servidor nem ligação a terceiros: os arquivos que abrir aqui não saem do seu computador. Hoje inclui o ExifTool 13.42, a mesma ferramenta da nossa <a href="avaliacao-exemplo.html">avaliação de exemplo</a>.</p>
+  <div class="gtype">
+    <h3>1. Escolha um arquivo</h3>
+    <p><label class="btn ghost lab-pick">O seu arquivo (não é enviado a lado nenhum)<input id="lab-input" type="file" hidden></label> <span class="note" id="lab-file">Nenhum arquivo escolhido</span></p>
+    <p class="lab-row"><span class="note">Amostras com dados fictícios:</span> <button type="button" class="chip" data-sample="muestra-exif-osintario.jpg">Foto com GPS</button><button type="button" class="chip" data-sample="lab-reguardada.jpg">Foto regravada</button><button type="button" class="chip" data-sample="lab-disfrazado.jpg">PNG disfarçado</button><button type="button" class="chip" data-sample="lab-informe.pdf">PDF</button></p>
+    <h3>2. Execute o ExifTool</h3>
+    <p class="lab-row"><button type="button" class="chip" data-args="-a -G1">Tudo</button><button type="button" class="chip" data-args="-n -GPSLatitude -GPSLongitude -GPSAltitude">GPS</button><button type="button" class="chip" data-args="-Make -Model -DateTimeOriginal -OffsetTimeOriginal -Software">Câmara e data</button><button type="button" class="chip" data-args="-Author -Creator -Producer -Title -CreateDate -ModifyDate">Autor do documento</button><button type="button" class="chip" data-args="-validate -warning -FileType -FileTypeExtension -MIMEType">Tipo real do arquivo</button><button type="button" class="chip" data-args="-json -n">JSON</button></p>
+    <form id="lab-form" class="lab-cmd"><span class="lab-prompt">$ exiftool</span><input id="lab-args" value="-a -G1" spellcheck="false" autocomplete="off" aria-label="exiftool"><button class="btn" type="submit">Executar</button><button class="btn ghost" type="button" id="lab-clear">Limpar</button></form>
+    <p class="note" id="lab-status">O motor (7,5 MB) é descarregado na primeira vez que executa um comando e é verificado com a sua impressão SHA-256.</p>
+    <div id="lab-out" class="lab-out" role="log" aria-live="polite"></div>
+  </div>
+  <h2>Exercícios guiados</h2>
+  <ol class="lab-ex"><li><b>Onde foi tirada esta foto?</b> <span>Leia o GPS e abra-o no mapa. Pista: é um local muito conhecido de Buenos Aires.</span> <button type="button" class="chip" data-sample="muestra-exif-osintario.jpg" data-args="-n -GPSLatitude -GPSLongitude">▶ Experimentar</button></li><li><b>A foto foi editada?</b> <span>Procure a miniatura incorporada. Se existir, extraia-a no seu computador com <code>exiftool -b -ThumbnailImage</code> e compare: se não coincidir com a imagem, é uma pista de edição.</span> <button type="button" class="chip" data-sample="muestra-exif-osintario.jpg" data-args="-ThumbnailImage -ImageSize">▶ Experimentar</button></li><li><b>O que aconteceu aos metadados?</b> <span>Esta é a mesma foto regravada, como quando é enviada a uma rede social. O que sobra?</span> <button type="button" class="chip" data-sample="lab-reguardada.jpg" data-args="-GPSLatitude -Make -DateTimeOriginal -ThumbnailImage">▶ Experimentar</button></li><li><b>É o que diz ser?</b> <span>O arquivo chama-se .jpg. Veja o tipo real e o aviso.</span> <button type="button" class="chip" data-sample="lab-disfrazado.jpg" data-args="-validate -warning -FileType">▶ Experimentar</button></li><li><b>Quem escreveu o documento?</b> <span>Procure o autor e o programa que gerou o PDF.</span> <button type="button" class="chip" data-sample="lab-informe.pdf" data-args="-Author -Creator -Producer -Title -CreateDate">▶ Experimentar</button></li></ol>
+  <p class="ethics" role="note"><span aria-hidden="true">💡</span> <span>Lembre-se: os metadados são uma pista, não uma prova. Podem ser apagados ao enviar um arquivo e falsificados em segundos.</span></p>
+  <h2>E uma máquina virtual completa?</h2>
+  <p class="lede">Um Linux completo dentro do navegador é possível (emuladores como o v86), mas não teria rede: o navegador não permite ligações diretas, por isso ferramentas como o Sherlock ou o Maigret não poderiam consultar sites. Por isso escolhemos ferramentas compiladas para o navegador, que funcionam de verdade sem rede. As ferramentas que precisam de internet chegam com o servidor da comunidade (metas de 100 e 1.000 ⭐) e, mais adiante, máquinas prontas para investigar.</p>
+  <p><a class="btn ghost" href="ferramentas.html#comunidad">Ver as metas</a></p>
+  <p class="note">Créditos: ExifTool de Phil Harvey (licença do Perl); zeroperl e @uswriting/exiftool (Apache 2.0), que o compilam para WebAssembly. Motor: zeroperl.wasm, SHA-256 a6ae97f1…3835e.</p>
+</div></section></main>
+<footer><div class="wrap"><div><b>Uso responsável.</b> Este diretório aponta para serviços de terceiros, sem afiliação. Investigar uma pessoa exige finalidade lícita e respeito ao RGPD e à lei de proteção de dados do seu país. Os serviços mudam: verifique sempre na fonte.</div><div>OSINTario · Federico Dosio</div></div></footer>
+</body>
+</html>
