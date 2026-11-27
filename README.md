@@ -22,7 +22,7 @@ Las herramientas más sensibles (búsqueda de personas, apps de citas, reconocim
 
 > *Federico Dosio · Profesor de Investigación con Fuentes Abiertas (IFA), Instituto Universitario de la Policía Federal Argentina (IUPFA)*
 
-**Herramientas:** 218 · **Última revisión:** 2026-11-26
+**Herramientas:** 222 · **Última revisión:** 2026-11-27
 
 Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descartada (no se enlaza). Acceso: 🔑 requiere registro · 💳 de pago o con funciones pagas. Instalación: 🧪 la herramienta se instala; sigue la [guía de instalación segura](https://osintario.github.io/instalacion-segura.html).
 
@@ -181,6 +181,10 @@ Estados: ✅ activa · 🟡 con límites · ⚠️ con precaución · ❌ descar
 | [Ventusky](https://www.ventusky.com/) | Mapa meteorológico mundial con historial: viento, lluvia, nubes y temperatura por hora. Clave para verificar el clima de una foto o video. | ✅ Activa | libre |  |
 | [WorldCam (mapa de webcams)](https://worldcam.tv/map) | Mapa de cámaras públicas en vivo de lugares turísticos. Sirve para comparar un lugar con una imagen; no la uses para vigilar personas. | ✅ Activa | libre |  |
 | [MapIndex](https://mapindex.org/) | Buscador de más de 2,8 millones de mapas por ubicación o palabra clave, incluidos mapas históricos. | ✅ Activa | libre |  |
+| [Mapillary](https://www.mapillary.com/app/) | Fotos a nivel de calle de todo el mundo subidas por la comunidad, con fecha de captura; cubre zonas sin Google Street View. Gratis; la cuenta solo se pide para subir fotos. | ✅ Activa | libre |  |
+| [Panoramax](https://panoramax.fr/) | Alternativa abierta a Street View: fotos de campo (360° o no) federadas por OpenStreetMap Francia, IGN y municipios, con datos libres. Cobertura fuerte en Francia y Europa. | ✅ Activa | libre |  |
+| [Lookmap (Apple Look Around)](https://lookmap.skzk.dev/) | Mapa web que muestra las panorámicas de Apple Look Around desde cualquier navegador, útil donde Apple tiene imágenes más nuevas que Google. MIT; usa una API no oficial de Apple, puede dejar de funcionar. | ✅ Activa | libre |  |
+| [Pano Date Resolver](https://pano-date.emily.bz/) | Calcula la fecha y hora exacta (±2 s) en que se tomó una panorámica de Google Street View a partir de su URL completa. Gratis; código abierto sin licencia declarada. | ✅ Activa | libre |  |
 
 ## Telegram
 
